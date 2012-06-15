@@ -17,7 +17,7 @@
  */
 
 /**
- * This is the model class for table "et_ophcocataractreferral_currentrefraction_left_sphere".
+ * This is the model class for table "et_ophcocataractreferral_currentrefraction_cylinder".
  *
  * The followings are the available columns in table:
  * @property string $id
@@ -26,7 +26,7 @@
  * The followings are the available model relations:
  */
 
-class EtOphcocataractreferralCurrentrefractionLeftSphere extends BaseActiveRecord
+class EtOphcocataractreferralCurrentrefractionCylinder extends BaseActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
@@ -42,7 +42,7 @@ class EtOphcocataractreferralCurrentrefractionLeftSphere extends BaseActiveRecor
 	 */
 	public function tableName()
 	{
-		return 'et_ophcocataractreferral_currentrefraction_left_sphere';
+		return 'et_ophcocataractreferral_currentrefraction_cylinder';
 	}
 
 	/**

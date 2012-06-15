@@ -20,27 +20,27 @@
 	<h4 class="elementTypeName"><?php  echo $element->elementType->name; ?></h4>
 
 	
-		<?php echo $form->dropDownList($element, 'right_sphere_id', CHtml::listData(EtOphcocataractreferralCurrentrefractionRightSphere::model()->findAll(),'id','name')); ?>
+		<?php echo $form->dropDownList($element, 'right_sphere_id', CHtml::listData(EtOphcocataractreferralCurrentrefractionSphere::model()->findAll(),'id','name')); ?>
 	
-		<?php echo $form->dropDownList($element, 'right_cylinder_id', CHtml::listData(EtOphcocataractreferralCurrentrefractionRightCylinder::model()->findAll(),'id','name')); ?>
+		<?php echo $form->dropDownList($element, 'right_cylinder_id', CHtml::listData(EtOphcocataractreferralCurrentrefractionCylinder::model()->findAll(),'id','name')); ?>
 	
-		<?php echo $form->dropDownList($element, 'right_axis_id', CHtml::listData(EtOphcocataractreferralCurrentrefractionRightAxis::model()->findAll(),'id','name')); ?>
+		<?php echo $form->dropDownList($element, 'right_axis_id', CHtml::listData(EtOphcocataractreferralCurrentrefractionAxis::model()->findAll(),'id','name')); ?>
 	
-		<?php echo $form->dropDownList($element, 'right_corr_va_id', CHtml::listData(EtOphcocataractreferralCurrentrefractionRightCorrVa::model()->findAll(),'id','name')); ?>
+		<?php echo $form->dropDownList($element, 'right_corr_va_id', CHtml::listData(EtOphcocataractreferralCurrentrefractionCorrVa::model()->findAll(),'id','name')); ?>
 	
-		<?php echo $form->dropDownList($element, 'right_near_va_id', CHtml::listData(EtOphcocataractreferralCurrentrefractionRightNearVa::model()->findAll(),'id','name')); ?>
+		<?php echo $form->dropDownList($element, 'right_near_va_id', CHtml::listData(EtOphcocataractreferralCurrentrefractionNearVa::model()->findAll(),'id','name')); ?>
 	
-		<?php echo $form->dropDownList($element, 'right_best_va_id', CHtml::listData(EtOphcocataractreferralCurrentrefractionRightBestVa::model()->findAll(),'id','name')); ?>
+		<?php echo $form->dropDownList($element, 'right_best_va_id', CHtml::listData(EtOphcocataractreferralCurrentrefractionBestVa::model()->findAll(),'id','name')); ?>
 	
-		<?php echo $form->dropDownList($element, 'left_sphere_id', CHtml::listData(EtOphcocataractreferralCurrentrefractionLeftSphere::model()->findAll(),'id','name')); ?>
+		<?php echo $form->dropDownList($element, 'left_sphere_id', CHtml::listData(EtOphcocataractreferralCurrentrefractionSphere::model()->findAll(),'id','name')); ?>
 	
-		<?php echo $form->dropDownList($element, 'left_cylinder_id', CHtml::listData(EtOphcocataractreferralCurrentrefractionLeftCylinder::model()->findAll(),'id','name')); ?>
+		<?php echo $form->dropDownList($element, 'left_cylinder_id', CHtml::listData(EtOphcocataractreferralCurrentrefractionCylinder::model()->findAll(),'id','name')); ?>
 	
-		<?php echo $form->dropDownList($element, 'left_axis_id', CHtml::listData(EtOphcocataractreferralCurrentrefractionLeftAxis::model()->findAll(),'id','name')); ?>
+		<?php echo $form->dropDownList($element, 'left_axis_id', CHtml::listData(EtOphcocataractreferralCurrentrefractionAxis::model()->findAll(),'id','name')); ?>
 	
-		<?php echo $form->dropDownList($element, 'left_corr_va_id', CHtml::listData(EtOphcocataractreferralCurrentrefractionLeftCorrVa::model()->findAll(),'id','name')); ?>
+		<?php echo $form->dropDownList($element, 'left_corr_va_id', CHtml::listData(EtOphcocataractreferralCurrentrefractionCorrVa::model()->findAll(),'id','name')); ?>
 	
-		<?php echo $form->dropDownList($element, 'left_near_va_id', CHtml::listData(EtOphcocataractreferralCurrentrefractionLeftNearVa::model()->findAll(),'id','name')); ?>
+		<?php echo $form->dropDownList($element, 'left_near_va_id', CHtml::listData(EtOphcocataractreferralCurrentrefractionNearVa::model()->findAll(),'id','name')); ?>
 	
-		<?php echo $form->dropDownList($element, 'left_best_va_id', CHtml::listData(EtOphcocataractreferralCurrentrefractionLeftBestVa::model()->findAll(),'id','name')); ?>
+		<?php echo $form->dropDownList($element, 'left_best_va_id', CHtml::listData(EtOphcocataractreferralCurrentrefractionBestVa::model()->findAll(),'id','name')); ?>
 	</div>

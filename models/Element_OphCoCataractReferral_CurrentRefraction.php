@@ -88,19 +88,19 @@ class Element_OphCoCataractReferral_CurrentRefraction extends BaseEventTypeEleme
 			'event' => array(self::BELONGS_TO, 'Event', 'event_id'),
 			'user' => array(self::BELONGS_TO, 'User', 'created_user_id'),
 			'usermodified' => array(self::BELONGS_TO, 'User', 'last_modified_user_id'),
-						'right_sphere' => array(self::BELONGS_TO, 'EtOphcocataractreferralCurrentrefractionRightSphere', 'right_sphere_id'),
-						'right_cylinder' => array(self::BELONGS_TO, 'EtOphcocataractreferralCurrentrefractionRightCylinder', 'right_cylinder_id'),
-						'right_axis' => array(self::BELONGS_TO, 'EtOphcocataractreferralCurrentrefractionRightAxis', 'right_axis_id'),
-						'right_corr_va' => array(self::BELONGS_TO, 'EtOphcocataractreferralCurrentrefractionRightCorrVa', 'right_corr_va_id'),
-						'right_near_va' => array(self::BELONGS_TO, 'EtOphcocataractreferralCurrentrefractionRightNearVa', 'right_near_va_id'),
-						'right_best_va' => array(self::BELONGS_TO, 'EtOphcocataractreferralCurrentrefractionRightBestVa', 'right_best_va_id'),
-						'left_sphere' => array(self::BELONGS_TO, 'EtOphcocataractreferralCurrentrefractionLeftSphere', 'left_sphere_id'),
-						'left_cylinder' => array(self::BELONGS_TO, 'EtOphcocataractreferralCurrentrefractionLeftCylinder', 'left_cylinder_id'),
-						'left_axis' => array(self::BELONGS_TO, 'EtOphcocataractreferralCurrentrefractionLeftAxis', 'left_axis_id'),
-						'left_corr_va' => array(self::BELONGS_TO, 'EtOphcocataractreferralCurrentrefractionLeftCorrVa', 'left_corr_va_id'),
-						'left_near_va' => array(self::BELONGS_TO, 'EtOphcocataractreferralCurrentrefractionLeftNearVa', 'left_near_va_id'),
-						'left_best_va' => array(self::BELONGS_TO, 'EtOphcocataractreferralCurrentrefractionLeftBestVa', 'left_best_va_id'),
-					);
+			'right_sphere' => array(self::BELONGS_TO, 'EtOphcocataractreferralCurrentrefractionSphere', 'right_sphere_id'),
+			'right_cylinder' => array(self::BELONGS_TO, 'EtOphcocataractreferralCurrentrefractionCylinder', 'right_cylinder_id'),
+			'right_axis' => array(self::BELONGS_TO, 'EtOphcocataractreferralCurrentrefractionAxis', 'right_axis_id'),
+			'right_corr_va' => array(self::BELONGS_TO, 'EtOphcocataractreferralCurrentrefractionCorrVa', 'right_corr_va_id'),
+			'right_near_va' => array(self::BELONGS_TO, 'EtOphcocataractreferralCurrentrefractionNearVa', 'right_near_va_id'),
+			'right_best_va' => array(self::BELONGS_TO, 'EtOphcocataractreferralCurrentrefractionBestVa', 'right_best_va_id'),
+			'left_sphere' => array(self::BELONGS_TO, 'EtOphcocataractreferralCurrentrefractionSphere', 'left_sphere_id'),
+			'left_cylinder' => array(self::BELONGS_TO, 'EtOphcocataractreferralCurrentrefractionCylinder', 'left_cylinder_id'),
+			'left_axis' => array(self::BELONGS_TO, 'EtOphcocataractreferralCurrentrefractionAxis', 'left_axis_id'),
+			'left_corr_va' => array(self::BELONGS_TO, 'EtOphcocataractreferralCurrentrefractionCorrVa', 'left_corr_va_id'),
+			'left_near_va' => array(self::BELONGS_TO, 'EtOphcocataractreferralCurrentrefractionNearVa', 'left_near_va_id'),
+			'left_best_va' => array(self::BELONGS_TO, 'EtOphcocataractreferralCurrentrefractionBestVa', 'left_best_va_id'),
+		);
 	}
 
 	/**
@@ -163,9 +163,19 @@ $criteria->compare('left_best_va_id', $this->left_best_va_id);
 	 */
 	public function setDefaultOptions()
 	{
-		$this->right_sphere_id = 2;$this->right_cylinder_id = 2;$this->right_axis_id = 2;$this->right_corr_va_id = 1;$this->right_near_va_id = 1;$this->right_best_va_id = 1;$this->left_sphere_id = 2;$this->left_cylinder_id = 2;$this->left_axis_id = 2;$this->left_corr_va_id = 1;$this->left_near_va_id = 1;$this->left_best_va_id = 1;	}
-
-	
+		$this->right_sphere_id = 61;
+		$this->right_cylinder_id = 61;
+		$this->right_axis_id = 19;
+		$this->right_corr_va_id = 1;
+		$this->right_near_va_id = 1;
+		$this->right_best_va_id = 1;
+		$this->left_sphere_id = 61;
+		$this->left_cylinder_id = 61;
+		$this->left_axis_id = 19;
+		$this->left_corr_va_id = 1;
+		$this->left_near_va_id = 1;
+		$this->left_best_va_id = 1;
+	}
 	
 	protected function beforeSave()
 	{

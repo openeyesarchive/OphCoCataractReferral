@@ -17,7 +17,7 @@
  */
 
 /**
- * This is the model class for table "et_ophcocataractreferral_currentrefraction_right_best_va".
+ * This is the model class for table "et_ophcocataractreferral_currentrefraction_near_va".
  *
  * The followings are the available columns in table:
  * @property string $id
@@ -26,7 +26,7 @@
  * The followings are the available model relations:
  */
 
-class EtOphcocataractreferralCurrentrefractionRightBestVa extends BaseActiveRecord
+class EtOphcocataractreferralCurrentrefractionNearVa extends BaseActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
@@ -42,7 +42,7 @@ class EtOphcocataractreferralCurrentrefractionRightBestVa extends BaseActiveReco
 	 */
 	public function tableName()
 	{
-		return 'et_ophcocataractreferral_currentrefraction_right_best_va';
+		return 'et_ophcocataractreferral_currentrefraction_va2';
 	}
 
 	/**

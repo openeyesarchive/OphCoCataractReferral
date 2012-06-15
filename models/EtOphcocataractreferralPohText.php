@@ -17,7 +17,7 @@
  */
 
 /**
- * This is the model class for table "et_ophcocataractreferral_poh_left_eye".
+ * This is the model class for table "et_ophcocataractreferral_poh_text".
  *
  * The followings are the available columns in table:
  * @property string $id
@@ -26,7 +26,7 @@
  * The followings are the available model relations:
  */
 
-class EtOphcocataractreferralPohLeftEye extends BaseActiveRecord
+class EtOphcocataractreferralPohText extends BaseActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
@@ -42,7 +42,7 @@ class EtOphcocataractreferralPohLeftEye extends BaseActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'et_ophcocataractreferral_poh_left_eye';
+		return 'et_ophcocataractreferral_poh_text';
 	}
 
 	/**

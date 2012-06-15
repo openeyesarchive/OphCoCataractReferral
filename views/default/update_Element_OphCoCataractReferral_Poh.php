@@ -20,7 +20,7 @@
 	<h4 class="elementTypeName"><?php  echo $element->elementType->name; ?></h4>
 
 	
-		<?php echo $form->dropDownListNoPost('right_eye', CHtml::listData(EtOphcocataractreferralPohRightEye::model()->findAll(),'id','name'),'',array('empty'=>'- Right eye -','class'=>'populate_textarea')); ?>		<?php echo $form->textArea($element, 'right_eye', array('rows' => 6, 'cols' => 80)); ?>
+		<?php echo $form->dropDownListNoPost('right_eye', CHtml::listData(EtOphcocataractreferralPohText::model()->findAll(),'id','name'),'',array('empty'=>'- Right eye -','class'=>'populate_textarea')); ?>		<?php echo $form->textArea($element, 'right_eye', array('rows' => 6, 'cols' => 80)); ?>
 	
-		<?php echo $form->dropDownListNoPost('left_eye', CHtml::listData(EtOphcocataractreferralPohLeftEye::model()->findAll(),'id','name'),'',array('empty'=>'- Left eye -','class'=>'populate_textarea')); ?>		<?php echo $form->textArea($element, 'left_eye', array('rows' => 6, 'cols' => 80)); ?>
+		<?php echo $form->dropDownListNoPost('left_eye', CHtml::listData(EtOphcocataractreferralPohText::model()->findAll(),'id','name'),'',array('empty'=>'- Left eye -','class'=>'populate_textarea')); ?>		<?php echo $form->textArea($element, 'left_eye', array('rows' => 6, 'cols' => 80)); ?>
 	</div>

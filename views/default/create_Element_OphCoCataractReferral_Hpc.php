@@ -20,9 +20,11 @@
 	<h4 class="elementTypeName"><?php  echo $element->elementType->name; ?></h4>
 
 	
-		<?php echo $form->dropDownListNoPost('history', CHtml::listData(EtOphcocataractreferralHpcHistory::model()->findAll(),'id','name'),'',array('empty'=>'- History -','class'=>'populate_textarea')); ?>		<?php echo $form->textArea($element, 'history', array('rows' => 6, 'cols' => 80)); ?>
+		<?php echo $form->dropDownListNoPost('history', CHtml::listData(EtOphcocataractreferralHpcHistory::model()->findAll(),'id','name'),'',array('empty'=>'- History -','class'=>'populate_textarea')); ?>
+		<?php echo $form->textArea($element, 'history', array('rows' => 6, 'cols' => 80)); ?>
 	
-		<?php echo $form->dropDownListNoPost('impact', CHtml::listData(EtOphcocataractreferralHpcImpact::model()->findAll(),'id','name'),'',array('empty'=>'- Impact -','class'=>'populate_textarea')); ?>		<?php echo $form->textArea($element, 'impact', array('rows' => 6, 'cols' => 80)); ?>
+		<?php echo $form->dropDownListNoPost('impact', CHtml::listData(EtOphcocataractreferralHpcImpact::model()->findAll(),'id','name'),'',array('empty'=>'- Impact -','class'=>'populate_textarea')); ?>
+		<?php echo $form->textArea($element, 'impact', array('rows' => 6, 'cols' => 80)); ?>
 	
 		<?php echo $form->dropDownList($element, 'refraction_id', CHtml::listData(EtOphcocataractreferralHpcRefraction::model()->findAll(),'id','name'),array('empty'=>'- Please select -')); ?>
 	

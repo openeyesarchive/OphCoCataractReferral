@@ -20,11 +20,11 @@
 	<h4 class="elementTypeName"><?php  echo $element->elementType->name; ?></h4>
 
 	
-		<?php echo $form->dropDownList($element, 'left_instrument_id', CHtml::listData(EtOphcocataractreferralIntraocularpressureLeftInstrument::model()->findAll(),'id','name')); ?>
+		<?php echo $form->dropDownList($element, 'left_instrument_id', CHtml::listData(EtOphcocataractreferralIntraocularpressureInstrument::model()->findAll(),'id','name')); ?>
 	
-		<?php echo $form->dropDownList($element, 'left_pressure_id', CHtml::listData(EtOphcocataractreferralIntraocularpressureLeftPressure::model()->findAll(),'id','name'),array('empty'=>'- Please select -')); ?>
+		<?php echo $form->dropDownList($element, 'left_pressure_id', CHtml::listData(EtOphcocataractreferralIntraocularpressurePressure::model()->findAll(),'id','name'),array('empty'=>'- Please select -')); ?>
 	
-		<?php echo $form->dropDownList($element, 'right_instrument_id', CHtml::listData(EtOphcocataractreferralIntraocularpressureRightInstrument::model()->findAll(),'id','name')); ?>
+		<?php echo $form->dropDownList($element, 'right_instrument_id', CHtml::listData(EtOphcocataractreferralIntraocularpressureInstrument::model()->findAll(),'id','name')); ?>
 	
-		<?php echo $form->dropDownList($element, 'right_pressure_id', CHtml::listData(EtOphcocataractreferralIntraocularpressureRightPressure::model()->findAll(),'id','name')); ?>
+		<?php echo $form->dropDownList($element, 'right_pressure_id', CHtml::listData(EtOphcocataractreferralIntraocularpressurePressure::model()->findAll(),'id','name')); ?>
 	</div>

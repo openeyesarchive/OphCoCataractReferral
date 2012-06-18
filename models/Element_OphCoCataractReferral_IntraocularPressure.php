@@ -80,11 +80,11 @@ class Element_OphCoCataractReferral_IntraocularPressure extends BaseEventTypeEle
 			'event' => array(self::BELONGS_TO, 'Event', 'event_id'),
 			'user' => array(self::BELONGS_TO, 'User', 'created_user_id'),
 			'usermodified' => array(self::BELONGS_TO, 'User', 'last_modified_user_id'),
-						'left_instrument' => array(self::BELONGS_TO, 'EtOphcocataractreferralIntraocularpressureLeftInstrument', 'left_instrument_id'),
-						'left_pressure' => array(self::BELONGS_TO, 'EtOphcocataractreferralIntraocularpressureLeftPressure', 'left_pressure_id'),
-						'right_instrument' => array(self::BELONGS_TO, 'EtOphcocataractreferralIntraocularpressureRightInstrument', 'right_instrument_id'),
-						'right_pressure' => array(self::BELONGS_TO, 'EtOphcocataractreferralIntraocularpressureRightPressure', 'right_pressure_id'),
-					);
+			'left_instrument' => array(self::BELONGS_TO, 'EtOphcocataractreferralIntraocularpressureInstrument', 'left_instrument_id'),
+			'left_pressure' => array(self::BELONGS_TO, 'EtOphcocataractreferralIntraocularpressurePressure', 'left_pressure_id'),
+			'right_instrument' => array(self::BELONGS_TO, 'EtOphcocataractreferralIntraocularpressureInstrument', 'right_instrument_id'),
+			'right_pressure' => array(self::BELONGS_TO, 'EtOphcocataractreferralIntraocularpressurePressure', 'right_pressure_id'),
+		);
 	}
 
 	/**

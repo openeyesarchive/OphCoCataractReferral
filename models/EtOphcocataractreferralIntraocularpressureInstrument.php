@@ -17,7 +17,7 @@
  */
 
 /**
- * This is the model class for table "et_ophcocataractreferral_intraocularpressure_right_pressure".
+ * This is the model class for table "et_ophcocataractreferral_intraocularpressure_instrument".
  *
  * The followings are the available columns in table:
  * @property string $id
@@ -26,7 +26,7 @@
  * The followings are the available model relations:
  */
 
-class EtOphcocataractreferralIntraocularpressureRightPressure extends BaseActiveRecord
+class EtOphcocataractreferralIntraocularpressureInstrument extends BaseActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
@@ -42,7 +42,7 @@ class EtOphcocataractreferralIntraocularpressureRightPressure extends BaseActive
 	 */
 	public function tableName()
 	{
-		return 'et_ophcocataractreferral_intraocularpressure_right_pressure';
+		return 'et_ophcocataractreferral_intraocularpressure_instrument';
 	}
 
 	/**

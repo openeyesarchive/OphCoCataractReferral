@@ -25,5 +25,5 @@
 	
 		<?php echo $form->dropDownList($element, 'driving_status_id', CHtml::listData(EtOphcocataractreferralPatientdetailsDrivingStatus::model()->findAll(),'id','name')); ?>
 	
-		<?php echo $form->dropDownList($element, 'interpreter_id', CHtml::listData(Language::model()->findAll(),'id','name'),array('empty'=>'- Please select -')); ?>
+		<?php echo $form->dropDownList($element, 'interpreter_id', CHtml::listData(Language::model()->findAll(),'id','name'),array('empty'=>'- None needed -')); ?>
 	</div>

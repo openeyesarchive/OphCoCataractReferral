@@ -67,11 +67,11 @@ class Element_OphCoCataractReferral_CurrentRefraction extends BaseEventTypeEleme
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('event_id, right_sphere_id, right_cylinder_id, right_axis_id, right_corr_va_id, right_near_va_id, right_best_va_id, left_sphere_id, left_cylinder_id, left_axis_id, left_corr_va_id, left_near_va_id, left_best_va_id, ', 'safe'),
-			array('right_sphere_id, right_cylinder_id, right_axis_id, right_corr_va_id, right_near_va_id, right_best_va_id, left_sphere_id, left_cylinder_id, left_axis_id, left_corr_va_id, left_near_va_id, left_best_va_id, ', 'required'),
+			array('event_id, right_sphere, right_cylinder, right_axis, right_corr_va_id, right_near_va_id, right_best_va_id, left_sphere, left_cylinder, left_axis, left_corr_va_id, left_near_va_id, left_best_va_id, ', 'safe'),
+			array('right_sphere, right_cylinder, right_axis, right_corr_va_id, right_near_va_id, right_best_va_id, left_sphere, left_cylinder, left_axis, left_corr_va_id, left_near_va_id, left_best_va_id, ', 'required'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, event_id, right_sphere_id, right_cylinder_id, right_axis_id, right_corr_va_id, right_near_va_id, right_best_va_id, left_sphere_id, left_cylinder_id, left_axis_id, left_corr_va_id, left_near_va_id, left_best_va_id, ', 'safe', 'on' => 'search'),
+			array('id, event_id, right_sphere, right_cylinder, right_axis, right_corr_va_id, right_near_va_id, right_best_va_id, left_sphere, left_cylinder, left_axis, left_corr_va_id, left_near_va_id, left_best_va_id, ', 'safe', 'on' => 'search'),
 		);
 	}
 	
@@ -88,15 +88,9 @@ class Element_OphCoCataractReferral_CurrentRefraction extends BaseEventTypeEleme
 			'event' => array(self::BELONGS_TO, 'Event', 'event_id'),
 			'user' => array(self::BELONGS_TO, 'User', 'created_user_id'),
 			'usermodified' => array(self::BELONGS_TO, 'User', 'last_modified_user_id'),
-			'right_sphere' => array(self::BELONGS_TO, 'EtOphcocataractreferralCurrentrefractionSphere', 'right_sphere_id'),
-			'right_cylinder' => array(self::BELONGS_TO, 'EtOphcocataractreferralCurrentrefractionCylinder', 'right_cylinder_id'),
-			'right_axis' => array(self::BELONGS_TO, 'EtOphcocataractreferralCurrentrefractionAxis', 'right_axis_id'),
 			'right_corr_va' => array(self::BELONGS_TO, 'EtOphcocataractreferralCurrentrefractionCorrVa', 'right_corr_va_id'),
 			'right_near_va' => array(self::BELONGS_TO, 'EtOphcocataractreferralCurrentrefractionNearVa', 'right_near_va_id'),
 			'right_best_va' => array(self::BELONGS_TO, 'EtOphcocataractreferralCurrentrefractionBestVa', 'right_best_va_id'),
-			'left_sphere' => array(self::BELONGS_TO, 'EtOphcocataractreferralCurrentrefractionSphere', 'left_sphere_id'),
-			'left_cylinder' => array(self::BELONGS_TO, 'EtOphcocataractreferralCurrentrefractionCylinder', 'left_cylinder_id'),
-			'left_axis' => array(self::BELONGS_TO, 'EtOphcocataractreferralCurrentrefractionAxis', 'left_axis_id'),
 			'left_corr_va' => array(self::BELONGS_TO, 'EtOphcocataractreferralCurrentrefractionCorrVa', 'left_corr_va_id'),
 			'left_near_va' => array(self::BELONGS_TO, 'EtOphcocataractreferralCurrentrefractionNearVa', 'left_near_va_id'),
 			'left_best_va' => array(self::BELONGS_TO, 'EtOphcocataractreferralCurrentrefractionBestVa', 'left_best_va_id'),
@@ -111,18 +105,18 @@ class Element_OphCoCataractReferral_CurrentRefraction extends BaseEventTypeEleme
 		return array(
 			'id' => 'ID',
 			'event_id' => 'Event',
-'right_sphere_id' => 'Right sphere',
-'right_cylinder_id' => 'Right cylinder',
-'right_axis_id' => 'Right axis',
-'right_corr_va_id' => 'Right Corr VA',
-'right_near_va_id' => 'Right Near VA',
-'right_best_va_id' => 'Right Best VA',
-'left_sphere_id' => 'Left sphere',
-'left_cylinder_id' => 'Left cylinder',
-'left_axis_id' => 'Left axis',
-'left_corr_va_id' => 'Left Corr VA',
-'left_near_va_id' => 'Left Near VA',
-'left_best_va_id' => 'Left Best VA',
+			'right_sphere' => 'Right sphere',
+			'right_cylinder' => 'Right cylinder',
+			'right_axis' => 'Right axis',
+			'right_corr_va_id' => 'Right Corr VA',
+			'right_near_va_id' => 'Right Near VA',
+			'right_best_va_id' => 'Right Best VA',
+			'left_sphere' => 'Left sphere',
+			'left_cylinder' => 'Left cylinder',
+			'left_axis' => 'Left axis',
+			'left_corr_va_id' => 'Left Corr VA',
+			'left_near_va_id' => 'Left Near VA',
+			'left_best_va_id' => 'Left Best VA',
 		);
 	}
 
@@ -139,19 +133,18 @@ class Element_OphCoCataractReferral_CurrentRefraction extends BaseEventTypeEleme
 
 		$criteria->compare('id', $this->id, true);
 		$criteria->compare('event_id', $this->event_id, true);
-
-$criteria->compare('right_sphere_id', $this->right_sphere_id);
-$criteria->compare('right_cylinder_id', $this->right_cylinder_id);
-$criteria->compare('right_axis_id', $this->right_axis_id);
-$criteria->compare('right_corr_va_id', $this->right_corr_va_id);
-$criteria->compare('right_near_va_id', $this->right_near_va_id);
-$criteria->compare('right_best_va_id', $this->right_best_va_id);
-$criteria->compare('left_sphere_id', $this->left_sphere_id);
-$criteria->compare('left_cylinder_id', $this->left_cylinder_id);
-$criteria->compare('left_axis_id', $this->left_axis_id);
-$criteria->compare('left_corr_va_id', $this->left_corr_va_id);
-$criteria->compare('left_near_va_id', $this->left_near_va_id);
-$criteria->compare('left_best_va_id', $this->left_best_va_id);
+		$criteria->compare('right_sphere', $this->right_sphere_id);
+		$criteria->compare('right_cylinder', $this->right_cylinder_id);
+		$criteria->compare('right_axis', $this->right_axis_id);
+		$criteria->compare('right_corr_va_id', $this->right_corr_va_id);
+		$criteria->compare('right_near_va_id', $this->right_near_va_id);
+		$criteria->compare('right_best_va_id', $this->right_best_va_id);
+		$criteria->compare('left_sphere', $this->left_sphere_id);
+		$criteria->compare('left_cylinder', $this->left_cylinder_id);
+		$criteria->compare('left_axis', $this->left_axis_id);
+		$criteria->compare('left_corr_va_id', $this->left_corr_va_id);
+		$criteria->compare('left_near_va_id', $this->left_near_va_id);
+		$criteria->compare('left_best_va_id', $this->left_best_va_id);
 		
 		return new CActiveDataProvider(get_class($this), array(
 				'criteria' => $criteria,
@@ -163,18 +156,6 @@ $criteria->compare('left_best_va_id', $this->left_best_va_id);
 	 */
 	public function setDefaultOptions()
 	{
-		$this->right_sphere_id = 61;
-		$this->right_cylinder_id = 61;
-		$this->right_axis_id = 19;
-		$this->right_corr_va_id = 1;
-		$this->right_near_va_id = 1;
-		$this->right_best_va_id = 1;
-		$this->left_sphere_id = 61;
-		$this->left_cylinder_id = 61;
-		$this->left_axis_id = 19;
-		$this->left_corr_va_id = 1;
-		$this->left_near_va_id = 1;
-		$this->left_best_va_id = 1;
 	}
 	
 	protected function beforeSave()

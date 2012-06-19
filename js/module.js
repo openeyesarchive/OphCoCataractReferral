@@ -60,6 +60,14 @@ $(document).ready(function() {
 			}
 		}
 	});
+
+	$('#Element_OphCoCataractReferral_CurrentRefraction_right_sphere').change(function() {
+		if (parseFloat($(this).val()) <= -10.5 || parseFloat($(this).val()) >= 10.5) {
+			$(this).attr('step','0.5');
+		} else {
+			$(this).attr('step','0.25');
+		}
+	});
 });
 
 function ucfirst(str) { str += ''; var f = str.charAt(0).toUpperCase(); return f + str.substr(1); }

@@ -18,29 +18,16 @@
  ?>
 <div class="<?php echo $element->elementType->class_name?>">
 	<h4 class="elementTypeName"><?php  echo $element->elementType->name; ?></h4>
-
-	
-		<?php echo $form->dropDownList($element, 'right_sphere_id', CHtml::listData(EtOphcocataractreferralCurrentrefractionSphere::model()->findAll(),'id','name')); ?>
-	
-		<?php echo $form->dropDownList($element, 'right_cylinder_id', CHtml::listData(EtOphcocataractreferralCurrentrefractionCylinder::model()->findAll(),'id','name')); ?>
-	
-		<?php echo $form->dropDownList($element, 'right_axis_id', CHtml::listData(EtOphcocataractreferralCurrentrefractionAxis::model()->findAll(),'id','name')); ?>
-	
+		<?php echo $form->slider($element, 'right_sphere', array('min' => -20, 'max' => 20, 'step' => '0.25', 'force_dp' => 2, 'prefix_positive' => '+', 'remap' => array('10.25' => '10.5', '-10.25' => '-10.5')))?>
+		<?php echo $form->slider($element, 'right_cylinder', array('min' => -20, 'max' => 20, 'step' => '0.25', 'force_dp' => 2, 'prefix_positive' => '+', 'remap' => array('10.25' => '10.5', '-10.25' => '-10.5')))?>
+		<?php echo $form->slider($element, 'right_axis', array('min' => -180, 'max' => 180, 'step' => 10))?>
 		<?php echo $form->dropDownList($element, 'right_corr_va_id', CHtml::listData(EtOphcocataractreferralCurrentrefractionCorrVa::model()->findAll(),'id','name')); ?>
-	
 		<?php echo $form->dropDownList($element, 'right_near_va_id', CHtml::listData(EtOphcocataractreferralCurrentrefractionNearVa::model()->findAll(),'id','name')); ?>
-	
 		<?php echo $form->dropDownList($element, 'right_best_va_id', CHtml::listData(EtOphcocataractreferralCurrentrefractionBestVa::model()->findAll(),'id','name')); ?>
-	
-		<?php echo $form->dropDownList($element, 'left_sphere_id', CHtml::listData(EtOphcocataractreferralCurrentrefractionSphere::model()->findAll(),'id','name')); ?>
-	
-		<?php echo $form->dropDownList($element, 'left_cylinder_id', CHtml::listData(EtOphcocataractreferralCurrentrefractionCylinder::model()->findAll(),'id','name')); ?>
-	
-		<?php echo $form->dropDownList($element, 'left_axis_id', CHtml::listData(EtOphcocataractreferralCurrentrefractionAxis::model()->findAll(),'id','name')); ?>
-	
+		<?php echo $form->slider($element, 'left_sphere', array('min' => -20, 'max' => 20, 'step' => '0.25', 'force_dp' => 2, 'prefix_positive' => '+', 'remap' => array('10.25' => '10.5', '-10.25' => '-10.5')))?>
+		<?php echo $form->slider($element, 'left_cylinder', array('min' => -20, 'max' => 20, 'step' => '0.25', 'force_dp' => 2, 'prefix_positive' => '+', 'remap' => array('10.25' => '10.5', '-10.25' => '-10.5')))?>
+		<?php echo $form->slider($element, 'left_axis', array('min' => -180, 'max' => 180, 'step' => 10))?>
 		<?php echo $form->dropDownList($element, 'left_corr_va_id', CHtml::listData(EtOphcocataractreferralCurrentrefractionCorrVa::model()->findAll(),'id','name')); ?>
-	
 		<?php echo $form->dropDownList($element, 'left_near_va_id', CHtml::listData(EtOphcocataractreferralCurrentrefractionNearVa::model()->findAll(),'id','name')); ?>
-	
 		<?php echo $form->dropDownList($element, 'left_best_va_id', CHtml::listData(EtOphcocataractreferralCurrentrefractionBestVa::model()->findAll(),'id','name')); ?>
 	</div>

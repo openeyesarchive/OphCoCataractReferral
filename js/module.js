@@ -92,6 +92,17 @@ $(document).ready(function() {
       $(this).attr('step','0.25');
     }
   });
+
+	if (window.Element_OphCoCataractReferral_IntraocularPressure_link_instrument_selects !== undefined) {
+		if (Element_OphCoCataractReferral_IntraocularPressure_link_instrument_selects) {
+			$('#Element_OphCoCataractReferral_IntraocularPressure_left_instrument_id').change(function() {
+				$('#Element_OphCoCataractReferral_IntraocularPressure_right_instrument_id').val($(this).val());
+			});
+			$('#Element_OphCoCataractReferral_IntraocularPressure_right_instrument_id').change(function() {
+				$('#Element_OphCoCataractReferral_IntraocularPressure_left_instrument_id').val($(this).val());
+			});
+		}
+	}
 });
 
 function ucfirst(str) { str += ''; var f = str.charAt(0).toUpperCase(); return f + str.substr(1); }

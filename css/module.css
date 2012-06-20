@@ -6,3 +6,8 @@
 
 #Element_OphCoCataractReferral_CurrentRefraction_right_axis { width: 380px !important; }
 #Element_OphCoCataractReferral_CurrentRefraction_left_axis { width: 380px !important; }
+
+div.Element_OphCoCataractReferral_CurrentRefraction_iop_left_instrument { float: left; margin-left: 170px; }
+div.Element_OphCoCataractReferral_CurrentRefraction_iop_left_pressure { float: left; margin-left: 40px; margin-top: 8px; }
+div.Element_OphCoCataractReferral_CurrentRefraction_iop_right_pressure { float: left; margin-left: -70px; margin-top: 8px; }
+div.Element_OphCoCataractReferral_CurrentRefraction_iop_right_instrument { float: left; margin-left: 40px; }

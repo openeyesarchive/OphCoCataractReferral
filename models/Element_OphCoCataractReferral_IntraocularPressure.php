@@ -95,10 +95,10 @@ class Element_OphCoCataractReferral_IntraocularPressure extends BaseEventTypeEle
 		return array(
 			'id' => 'ID',
 			'event_id' => 'Event',
-'left_instrument_id' => 'Left instrument',
-'left_pressure_id' => 'Left pressure',
-'right_instrument_id' => 'Right instrument',
-'right_pressure_id' => 'Right pressure',
+			'left_instrument_id' => 'Left instrument',
+			'left_pressure_id' => 'Left pressure',
+			'right_instrument_id' => 'Right instrument',
+			'right_pressure_id' => 'Right pressure',
 		);
 	}
 
@@ -115,11 +115,10 @@ class Element_OphCoCataractReferral_IntraocularPressure extends BaseEventTypeEle
 
 		$criteria->compare('id', $this->id, true);
 		$criteria->compare('event_id', $this->event_id, true);
-
-$criteria->compare('left_instrument_id', $this->left_instrument_id);
-$criteria->compare('left_pressure_id', $this->left_pressure_id);
-$criteria->compare('right_instrument_id', $this->right_instrument_id);
-$criteria->compare('right_pressure_id', $this->right_pressure_id);
+		$criteria->compare('left_instrument_id', $this->left_instrument_id);
+		$criteria->compare('left_pressure_id', $this->left_pressure_id);
+		$criteria->compare('right_instrument_id', $this->right_instrument_id);
+		$criteria->compare('right_pressure_id', $this->right_pressure_id);
 		
 		return new CActiveDataProvider(get_class($this), array(
 				'criteria' => $criteria,
@@ -131,9 +130,13 @@ $criteria->compare('right_pressure_id', $this->right_pressure_id);
 	 */
 	public function setDefaultOptions()
 	{
-		$this->left_instrument_id = 1;$this->left_pressure_id = 1;$this->right_instrument_id = 1;$this->right_pressure_id = 1;	}
+		$default_instrument = $this->getSetting('default_instrument');
 
-	
+		$this->left_instrument_id = is_object($default_instrument) ? $default_instrument->id : $default_instrument;
+		$this->left_pressure_id = 1;
+		$this->right_instrument_id = is_object($default_instrument) ? $default_instrument->id : $default_instrument;
+		$this->right_pressure_id = 1;
+	}
 	
 	protected function beforeSave()
 	{

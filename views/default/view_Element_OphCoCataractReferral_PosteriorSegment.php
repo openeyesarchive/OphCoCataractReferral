@@ -1,13 +1,15 @@
 
 <h4 class="elementTypeName"><?php  echo $element->elementType->name ?></h4>
 
-<div class="view">
-	<div class="view">
-		<b><?php	echo CHtml::encode($element->getAttributeLabel('left_eye'))?></b>
-		<?php echo $element->left_eye?><br/>
-	</div>
-	<div class="view">
-		<b><?php	echo CHtml::encode($element->getAttributeLabel('right_eye'))?></b>
-		<?php echo $element->right_eye?><br/>
-	</div>
-</div>
+<table class="subtleWhite normalText">
+	<tbody>
+		<tr>
+			<td width="30%"><?php echo CHtml::encode($element->getAttributeLabel('right_eye'))?>:</td>
+			<td><span class="big"><?php echo $element->right_eye?></span></td>
+		</tr>
+		<tr>
+			<td width="30%"><?php echo CHtml::encode($element->getAttributeLabel('left_eye'))?>:</td>
+			<td><span class="big"><?php echo $element->left_eye?></span></td>
+		</tr>
+	</tbody>
+</table>

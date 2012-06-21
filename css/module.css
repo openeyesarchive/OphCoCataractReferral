@@ -11,3 +11,7 @@ div.Element_OphCoCataractReferral_CurrentRefraction_iop_left_instrument { float:
 div.Element_OphCoCataractReferral_CurrentRefraction_iop_left_pressure { float: left; margin-left: 40px; margin-top: 8px; }
 div.Element_OphCoCataractReferral_CurrentRefraction_iop_right_pressure { float: left; margin-left: -70px; margin-top: 8px; }
 div.Element_OphCoCataractReferral_CurrentRefraction_iop_right_instrument { float: left; margin-left: 40px; }
+div.view_Element_OphCoCataractReferral_CurrentRefraction_iop_left_instrument { float: left; margin-right: 47px; margin-top: 8px; }
+div.view_Element_OphCoCataractReferral_CurrentRefraction_iop_left_pressure { float: left; margin-left: 40px; margin-top: 8px; }
+div.view_Element_OphCoCataractReferral_CurrentRefraction_iop_right_pressure { float: left; margin-left: -70px; margin-top: 8px; }
+div.view_Element_OphCoCataractReferral_CurrentRefraction_iop_right_instrument { float: left; margin-left: 40px; margin-top: 8px; }

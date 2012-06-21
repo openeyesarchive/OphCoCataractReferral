@@ -2,22 +2,28 @@
 <h4 class="elementTypeName"><?php  echo $element->elementType->name ?></h4>
 
 <table class="subtleWhite normalText">
-	<tbody>
-		<tr>
-			<td width="30%"><?php echo CHtml::encode($element->getAttributeLabel('left_instrument_id'))?>:</td>
-			<td><span class="big"><?php echo $element->left_instrument ? $element->left_instrument->name : 'None'?></span></td>
-		</tr>
-		<tr>
-			<td width="30%"><?php echo CHtml::encode($element->getAttributeLabel('left_pressure_id'))?>:</td>
-			<td><span class="big"><?php echo $element->left_pressure ? $element->left_pressure->name : 'None'?></span></td>
-		</tr>
-		<tr>
-			<td width="30%"><?php echo CHtml::encode($element->getAttributeLabel('right_instrument_id'))?>:</td>
-			<td><span class="big"><?php echo $element->right_instrument ? $element->right_instrument->name : 'None'?></span></td>
-		</tr>
-		<tr>
-			<td width="30%"><?php echo CHtml::encode($element->getAttributeLabel('right_pressure_id'))?>:</td>
-			<td><span class="big"><?php echo $element->right_pressure ? $element->right_pressure->name : 'None'?></span></td>
+  <tbody>
+    <tr>
+      <td width="130px"></td>
+      <td>
+				<div class="view_Element_OphCoCataractReferral_CurrentRefraction_iop_left_instrument">
+					<?php if ($element->getSetting('show_instruments')) {?>
+						<?php echo $element->left_instrument ? $element->left_instrument->name : 'None'?>
+					<?php }?>
+				</div>
+				<div class="view_Element_OphCoCataractReferral_CurrentRefraction_iop_left_pressure"<?php if (!$element->getSetting('show_instruments')) {?> style="margin-left: 185px;"<?php }?>>
+					<?php echo $element->left_pressure ? $element->left_pressure->name : 'None'?>
+				</div>
+				<img src="<?php echo $this->imgPath?>/iop_divider.png" style="float: left; margin-left: -70px; margin-top: 2px" />
+				<div class="view_Element_OphCoCataractReferral_CurrentRefraction_iop_right_pressure">
+					<?php echo $element->right_pressure ? $element->right_pressure->name : 'None'?>
+				</div>
+				<div class="view_Element_OphCoCataractReferral_CurrentRefraction_iop_right_instrument">
+					<?php if ($element->getSetting('show_instruments')) {?>
+						<?php echo $element->right_instrument ? $element->right_instrument->name : 'None'?>
+					<?php }?>
+				</div>
+			</td>
 		</tr>
 	</tbody>
 </table>

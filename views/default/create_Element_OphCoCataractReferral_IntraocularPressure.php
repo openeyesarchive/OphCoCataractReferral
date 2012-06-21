@@ -18,30 +18,18 @@
  ?>
 <div class="<?php echo $element->elementType->class_name?>">
 	<h4 class="elementTypeName"><?php  echo $element->elementType->name; ?></h4>
-
-	<div class="splitElement clearfix" style="background-color: #DAE6F1;">
-		<div class="Element_OphCoCataractReferral_CurrentRefraction_iop_left_instrument">
-			<?php if ($element->getSetting('show_instruments')) {?>
-				<?php echo $form->dropDownList($element, 'left_instrument_id', CHtml::listData(EtOphcocataractreferralIntraocularpressureInstrument::model()->findAll(),'id','name'),array('nolabel'=>true))?>
-			<?php }else{?>
-				<?php echo $form->hiddenInput($element, 'left_instrument_id', 1)?>
-			<?php }?>
-		</div>
-		<div class="Element_OphCoCataractReferral_CurrentRefraction_iop_left_pressure"<?php if (!$element->getSetting('show_instruments')) {?> style="margin-left: 185px;"<?php }?>>
-			<?php echo $form->dropDownList($element, 'left_pressure_id', CHtml::listData(EtOphcocataractreferralIntraocularpressurePressure::model()->findAll(),'id','name'),array('nolabel'=>true))?>
-		</div>
-		<img src="<?php echo $this->imgPath?>/iop_divider.png" style="float: left; margin-left: -70px; margin-top: 2px" />
-		<div class="Element_OphCoCataractReferral_CurrentRefraction_iop_right_pressure">
-			<?php echo $form->dropDownList($element, 'right_pressure_id', CHtml::listData(EtOphcocataractreferralIntraocularpressurePressure::model()->findAll(),'id','name'),array('nolabel'=>true))?>
-		</div>
-		<div class="Element_OphCoCataractReferral_CurrentRefraction_iop_right_instrument">
-			<?php if ($element->getSetting('show_instruments')) {?>
-				<?php echo $form->dropDownList($element, 'right_instrument_id', CHtml::listData(EtOphcocataractreferralIntraocularpressureInstrument::model()->findAll(),'id','name'),array('nolabel'=>true))?>
-			<?php }else{?>
-				<?php echo $form->hiddenInput($element, 'right_instrument_id', 1)?>
-			<?php }?>
-		</div>
-	</div>
+  <?php if ($element->getSetting('show_instruments')) {?>
+    <?php echo $form->dropDownList($element, 'right_instrument_id', CHtml::listData(EtOphcocataractreferralIntraocularpressureInstrument::model()->findAll(),'id','name'))?>
+  <?php }else{?>
+    <?php echo $form->hiddenInput($element, 'right_instrument_id', 1)?>
+  <?php }?>
+	<?php echo $form->slider($element, 'right_pressure', array('min'=>0,'max'=>80,'step'=>1,'null'=>'NR'))?>
+	<?php echo $form->slider($element, 'left_pressure', array('min'=>0,'max'=>80,'step'=>1,'null'=>'NR'))?>
+	<?php if ($element->getSetting('show_instruments')) {?>
+		<?php echo $form->dropDownList($element, 'left_instrument_id', CHtml::listData(EtOphcocataractreferralIntraocularpressureInstrument::model()->findAll(),'id','name'))?>
+	<?php }else{?>
+		<?php echo $form->hiddenInput($element, 'left_instrument_id', 1)?>
+	<?php }?>
 </div>
 <script type="text/javascript">
 var <?php echo get_class($element)?>_link_instrument_selects = <?php echo $element->getSetting('link_selects') ? 'true' : 'false'?>;

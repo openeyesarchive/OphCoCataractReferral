@@ -59,11 +59,11 @@ class Element_OphCoCataractReferral_IntraocularPressure extends BaseEventTypeEle
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('event_id, left_instrument_id, left_pressure_id, right_instrument_id, right_pressure_id, ', 'safe'),
-			array('left_instrument_id, left_pressure_id, right_instrument_id, right_pressure_id, ', 'required'),
+			array('event_id, left_instrument_id, left_pressure, right_instrument_id, right_pressure, ', 'safe'),
+			array('left_instrument_id, left_pressure, right_instrument_id, right_pressure, ', 'required'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, event_id, left_instrument_id, left_pressure_id, right_instrument_id, right_pressure_id, ', 'safe', 'on' => 'search'),
+			array('id, event_id, left_instrument_id, left_pressure, right_instrument_id, right_pressure, ', 'safe', 'on' => 'search'),
 		);
 	}
 	
@@ -81,9 +81,7 @@ class Element_OphCoCataractReferral_IntraocularPressure extends BaseEventTypeEle
 			'user' => array(self::BELONGS_TO, 'User', 'created_user_id'),
 			'usermodified' => array(self::BELONGS_TO, 'User', 'last_modified_user_id'),
 			'left_instrument' => array(self::BELONGS_TO, 'EtOphcocataractreferralIntraocularpressureInstrument', 'left_instrument_id'),
-			'left_pressure' => array(self::BELONGS_TO, 'EtOphcocataractreferralIntraocularpressurePressure', 'left_pressure_id'),
 			'right_instrument' => array(self::BELONGS_TO, 'EtOphcocataractreferralIntraocularpressureInstrument', 'right_instrument_id'),
-			'right_pressure' => array(self::BELONGS_TO, 'EtOphcocataractreferralIntraocularpressurePressure', 'right_pressure_id'),
 		);
 	}
 
@@ -96,9 +94,9 @@ class Element_OphCoCataractReferral_IntraocularPressure extends BaseEventTypeEle
 			'id' => 'ID',
 			'event_id' => 'Event',
 			'left_instrument_id' => 'Left instrument',
-			'left_pressure_id' => 'Left pressure',
+			'left_pressure' => 'Left pressure',
 			'right_instrument_id' => 'Right instrument',
-			'right_pressure_id' => 'Right pressure',
+			'right_pressure' => 'Right pressure',
 		);
 	}
 
@@ -116,9 +114,9 @@ class Element_OphCoCataractReferral_IntraocularPressure extends BaseEventTypeEle
 		$criteria->compare('id', $this->id, true);
 		$criteria->compare('event_id', $this->event_id, true);
 		$criteria->compare('left_instrument_id', $this->left_instrument_id);
-		$criteria->compare('left_pressure_id', $this->left_pressure_id);
+		$criteria->compare('left_pressure', $this->left_pressure);
 		$criteria->compare('right_instrument_id', $this->right_instrument_id);
-		$criteria->compare('right_pressure_id', $this->right_pressure_id);
+		$criteria->compare('right_pressure', $this->right_pressure);
 		
 		return new CActiveDataProvider(get_class($this), array(
 				'criteria' => $criteria,
@@ -133,19 +131,29 @@ class Element_OphCoCataractReferral_IntraocularPressure extends BaseEventTypeEle
 		$default_instrument = $this->getSetting('default_instrument');
 
 		$this->left_instrument_id = is_object($default_instrument) ? $default_instrument->id : $default_instrument;
-		$this->left_pressure_id = 1;
+		$this->left_pressure = null;
 		$this->right_instrument_id = is_object($default_instrument) ? $default_instrument->id : $default_instrument;
-		$this->right_pressure_id = 1;
+		$this->right_pressure = null;
 	}
 	
 	protected function beforeSave()
 	{
+		$this->left_pressure -= 1;
+		$this->right_pressure -= 1;
+
+		if ($this->left_pressure <0) {
+			$this->left_pressure = null;
+		}
+
+		if ($this->right_pressure <0) {
+			$this->right_pressure = null;
+		}
+
 		return parent::beforeSave();
 	}
 
 	protected function afterSave()
 	{
-		
 		return parent::afterSave();
 	}
 

@@ -18,13 +18,19 @@
  ?>
 <div class="<?php echo $element->elementType->class_name?>">
 	<h4 class="elementTypeName"><?php  echo $element->elementType->name; ?></h4>
-
-	
-		<?php echo $form->dropDownList($element, 'left_instrument_id', CHtml::listData(EtOphcocataractreferralIntraocularpressureInstrument::model()->findAll(),'id','name')); ?>
-	
-		<?php echo $form->dropDownList($element, 'left_pressure_id', CHtml::listData(EtOphcocataractreferralIntraocularpressurePressure::model()->findAll(),'id','name'),array('empty'=>'- Please select -')); ?>
-	
-		<?php echo $form->dropDownList($element, 'right_instrument_id', CHtml::listData(EtOphcocataractreferralIntraocularpressureInstrument::model()->findAll(),'id','name')); ?>
-	
-		<?php echo $form->dropDownList($element, 'right_pressure_id', CHtml::listData(EtOphcocataractreferralIntraocularpressurePressure::model()->findAll(),'id','name')); ?>
-	</div>
+	<?php if ($element->getSetting('show_instruments')) {?>
+		<?php echo $form->dropDownList($element, 'right_instrument_id', CHtml::listData(EtOphcocataractreferralIntraocularpressureInstrument::model()->findAll(),'id','name'))?>
+	<?php }else{?>
+		<?php echo $form->hiddenInput($element, 'right_instrument_id', 1)?>
+	<?php }?>
+	<?php echo $form->slider($element, 'right_pressure', array('min'=>0,'max'=>80,'step'=>1,'null'=>'NR'))?>
+	<?php echo $form->slider($element, 'left_pressure', array('min'=>0,'max'=>80,'step'=>1,'null'=>'NR'))?>
+	<?php if ($element->getSetting('show_instruments')) {?>
+		<?php echo $form->dropDownList($element, 'left_instrument_id', CHtml::listData(EtOphcocataractreferralIntraocularpressureInstrument::model()->findAll(),'id','name'))?>
+	<?php }else{?>
+		<?php echo $form->hiddenInput($element, 'left_instrument_id', 1)?>
+	<?php }?>
+</div>
+<script type="text/javascript">
+var <?php echo get_class($element)?>_link_instrument_selects = <?php echo $element->getSetting('link_selects') ? 'true' : 'false'?>;
+</script>

@@ -86,6 +86,21 @@ $(document).ready(function() {
 		var field = $(this).nextAll('input');
 		updateSegmentedField(field);
 	});
+
+	$('input:checkbox[name="Element_OphCoCataractReferral_PreviousRefraction[previous_refraction_different]"]').click(function() {
+		var datepicker_div = $('#Element_OphCoCataractReferral_PreviousRefraction_previous_refraction_date_0').parent().parent();
+
+		if ($('input:checkbox[name="Element_OphCoCataractReferral_PreviousRefraction[previous_refraction_different]"]').attr('checked')) {
+			$('div.PreviousRefraction:hidden').slideToggle('fast');
+			datepicker_div.slideToggle('fast');
+			$('#Element_OphCoCataractReferral_PreviousRefraction_previous_refraction_date_0').attr('hidden',false);
+		} else {
+			$('div.PreviousRefraction:visible').slideToggle('fast');
+			if (datepicker_div.is(':visible')) {
+				datepicker_div.slideToggle('fast');
+			}
+		}
+	});
 });
 
 function updateSegmentedField(field) {
@@ -98,6 +113,13 @@ function updateElement_OphCoCataractReferral_CurrentRefraction(drawing, doodle) 
 	if (doodle && doodle.className == 'TrialLens') {
 		var side = (drawing.eye == 0) ? 'right' : 'left';
 		$('#Element_OphCoCataractReferral_CurrentRefraction_'+side+'_axis').val(doodle.getParameter('axis'));
+	}
+}
+
+function updateElement_OphCoCataractReferral_PreviousRefraction(drawing, doodle) {
+	if (doodle && doodle.className == 'TrialLens') {
+		var side = (drawing.eye == 0) ? 'right' : 'left';
+		$('#Element_OphCoCataractReferral_PreviousRefraction_'+side+'_axis').val(doodle.getParameter('axis'));
 	}
 }
 

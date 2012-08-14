@@ -8,8 +8,8 @@
 			<td><span class="big"><?php echo $element->refraction ? $element->refraction->name : 'None'?></span></td>
 		</tr>
 		<tr>
-			<td width="30%"><?php echo CHtml::encode($element->getAttributeLabel('site_id'))?>:</td>
-			<td><span class="big"><?php echo $element->site ? $element->site->name : 'None'?></span></td>
+			<td width="30%"><?php echo CHtml::encode($element->getAttributeLabel('eye_id'))?>:</td>
+			<td><span class="big"><?php echo $element->eye ? $element->eye->name : 'None'?></span></td>
 		</tr>
 		<tr>
 			<td width="30%"><?php echo CHtml::encode($element->getAttributeLabel('onset_id'))?>:</td>

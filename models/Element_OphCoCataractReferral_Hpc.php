@@ -23,7 +23,7 @@
  * @property string $id
  * @property integer $event_id
  * @property integer $refraction_id
- * @property integer $site_id
+ * @property integer $eye_id
  * @property integer $onset_id
  * @property integer $first_second_eye_id
  *
@@ -59,11 +59,11 @@ class Element_OphCoCataractReferral_Hpc extends BaseEventTypeElement
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('event_id, history, impact, refraction_id, site_id, onset_id, first_second_eye_id, ', 'safe'),
-			array('history, impact, refraction_id, site_id, onset_id, first_second_eye_id, ', 'required'),
+			array('event_id, history, impact, refraction_id, eye_id, onset_id, first_second_eye_id, ', 'safe'),
+			array('history, impact, refraction_id, eye_id, onset_id, first_second_eye_id, ', 'required'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, event_id, history, impact, refraction_id, site_id, onset_id, first_second_eye_id, ', 'safe', 'on' => 'search'),
+			array('id, event_id, history, impact, refraction_id, eye_id, onset_id, first_second_eye_id, ', 'safe', 'on' => 'search'),
 		);
 	}
 	
@@ -121,7 +121,7 @@ class Element_OphCoCataractReferral_Hpc extends BaseEventTypeElement
 $criteria->compare('history', $this->history);
 $criteria->compare('impact', $this->impact);
 $criteria->compare('refraction_id', $this->refraction_id);
-$criteria->compare('site_id', $this->site_id);
+$criteria->compare('eye_id', $this->eye_id);
 $criteria->compare('onset_id', $this->onset_id);
 $criteria->compare('first_second_eye_id', $this->first_second_eye_id);
 		

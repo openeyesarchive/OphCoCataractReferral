@@ -22,8 +22,6 @@
  * The followings are the available columns in table:
  * @property string $id
  * @property integer $event_id
- * @property integer $sex_id
- * @property string $age
  * @property integer $driving_status_id
  * @property integer $interpreter_id
  *
@@ -59,11 +57,11 @@ class Element_OphCoCataractReferral_PatientDetails extends BaseEventTypeElement
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('event_id, sex_id, age, driving_status_id, interpreter_id, ', 'safe'),
-			array('sex_id, age, driving_status_id, ', 'required'),
+			array('event_id, driving_status_id, interpreter_id, ', 'safe'),
+			array('driving_status_id, ', 'required'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, event_id, sex_id, age, driving_status_id, interpreter_id, ', 'safe', 'on' => 'search'),
+			array('id, event_id, driving_status_id, interpreter_id, ', 'safe', 'on' => 'search'),
 		);
 	}
 	
@@ -80,10 +78,9 @@ class Element_OphCoCataractReferral_PatientDetails extends BaseEventTypeElement
 			'event' => array(self::BELONGS_TO, 'Event', 'event_id'),
 			'user' => array(self::BELONGS_TO, 'User', 'created_user_id'),
 			'usermodified' => array(self::BELONGS_TO, 'User', 'last_modified_user_id'),
-						'sex' => array(self::BELONGS_TO, 'Gender', 'sex_id'),
-						'driving_status' => array(self::BELONGS_TO, 'EtOphcocataractreferralPatientdetailsDrivingStatus', 'driving_status_id'),
-						'interpreter' => array(self::BELONGS_TO, 'Language', 'interpreter_id'),
-					);
+			'driving_status' => array(self::BELONGS_TO, 'EtOphcocataractreferralPatientdetailsDrivingStatus', 'driving_status_id'),
+			'interpreter' => array(self::BELONGS_TO, 'Language', 'interpreter_id'),
+		);
 	}
 
 	/**
@@ -94,10 +91,8 @@ class Element_OphCoCataractReferral_PatientDetails extends BaseEventTypeElement
 		return array(
 			'id' => 'ID',
 			'event_id' => 'Event',
-'sex_id' => 'Sex',
-'age' => 'Age',
-'driving_status_id' => 'Driving status',
-'interpreter_id' => 'Interpreter',
+			'driving_status_id' => 'Driving status',
+			'interpreter_id' => 'Interpreter',
 		);
 	}
 
@@ -114,11 +109,8 @@ class Element_OphCoCataractReferral_PatientDetails extends BaseEventTypeElement
 
 		$criteria->compare('id', $this->id, true);
 		$criteria->compare('event_id', $this->event_id, true);
-
-$criteria->compare('sex_id', $this->sex_id);
-$criteria->compare('age', $this->age);
-$criteria->compare('driving_status_id', $this->driving_status_id);
-$criteria->compare('interpreter_id', $this->interpreter_id);
+		$criteria->compare('driving_status_id', $this->driving_status_id);
+		$criteria->compare('interpreter_id', $this->interpreter_id);
 		
 		return new CActiveDataProvider(get_class($this), array(
 				'criteria' => $criteria,

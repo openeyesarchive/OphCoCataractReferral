@@ -80,11 +80,11 @@ class Element_OphCoCataractReferral_Hpc extends BaseEventTypeElement
 			'event' => array(self::BELONGS_TO, 'Event', 'event_id'),
 			'user' => array(self::BELONGS_TO, 'User', 'created_user_id'),
 			'usermodified' => array(self::BELONGS_TO, 'User', 'last_modified_user_id'),
-						'refraction' => array(self::BELONGS_TO, 'EtOphcocataractreferralHpcRefraction', 'refraction_id'),
-						'site' => array(self::BELONGS_TO, 'EtOphcocataractreferralHpcSite', 'site_id'),
-						'onset' => array(self::BELONGS_TO, 'EtOphcocataractreferralHpcOnset', 'onset_id'),
-						'first_second_eye' => array(self::BELONGS_TO, 'EtOphcocataractreferralHpcFirstSecondEye', 'first_second_eye_id'),
-					);
+			'refraction' => array(self::BELONGS_TO, 'EtOphcocataractreferralHpcRefraction', 'refraction_id'),
+			'eye' => array(self::BELONGS_TO, 'Eye', 'eye_id'),
+			'onset' => array(self::BELONGS_TO, 'EtOphcocataractreferralHpcOnset', 'onset_id'),
+			'first_second_eye' => array(self::BELONGS_TO, 'EtOphcocataractreferralHpcFirstSecondEye', 'first_second_eye_id'),
+		);
 	}
 
 	/**
@@ -95,12 +95,12 @@ class Element_OphCoCataractReferral_Hpc extends BaseEventTypeElement
 		return array(
 			'id' => 'ID',
 			'event_id' => 'Event',
-'history' => 'History',
-'impact' => 'Impact',
-'refraction_id' => 'Refraction',
-'site_id' => 'Site',
-'onset_id' => 'Onset',
-'first_second_eye_id' => '1st 2nd eye',
+			'history' => 'History',
+			'impact' => 'Impact',
+			'refraction_id' => 'Refraction',
+			'eye_id' => 'Eye',
+			'onset_id' => 'Onset',
+			'first_second_eye_id' => '1st 2nd eye',
 		);
 	}
 

@@ -25,17 +25,17 @@
 	<div class="cols2 clearfix">
 		<div class="eventDetail">
 			<div class="label"></div>
-			<input type="hidden" name="Element_OphCoCataractReferral_PreviousRefraction[previous_refraction_different]" value="0" />
-			<?php echo $form->checkBox($element, 'previous_refraction_different', array('nowrapper'=>true))?>
-			Previous refraction different<br/>
+			<input type="hidden" name="Element_OphCoCataractReferral_RefractionPriorToRefractiveSurgery[refractive_surgery]" value="0" />
+			<?php echo $form->checkBox($element, 'refractive_surgery', array('nowrapper'=>true))?>
+			Refractive surgery<br/>
 		</div>
-		<?php echo $form->datePicker($element, 'previous_refraction_date', array('maxDate' => 'today'), array('hidden' => $element->hidden))?>
+		<?php echo $form->datePicker($element, 'refractive_surgery_date', array('maxDate' => 'today'), array('hidden' => $element->hidden))?>
 
-		<div class="left eventDetail PreviousRefraction"<?php if ($element->hidden) {?> style="display: none;"<?php }?>>
+		<div class="left eventDetail RefractionPriorToRefractiveSurgery"<?php if ($element->hidden) {?> style="display: none;"<?php }?>>
 			<div data-side="right">
 				<?php
 				$this->widget('application.modules.eyedraw.OEEyeDrawWidgetRefraction', array(
-						'identifier' => 'PreviousRefraction',
+						'identifier' => 'RefractionPriorToRefractiveSurgery',
 						'side' => 'R',
 						'mode' => 'edit',
 						'model' => $element,
@@ -90,11 +90,11 @@
 				</div>
 			</div>
 		</div>
-		<div class="right eventDetail PreviousRefraction"<?php if ($element->hidden) {?> style="display: none;"<?php }?>>
+		<div class="right eventDetail RefractionPriorToRefractiveSurgery"<?php if ($element->hidden) {?> style="display: none;"<?php }?>>
 			<div data-side="left">
 				<?php
 				$this->widget('application.modules.eyedraw.OEEyeDrawWidgetRefraction', array(
-						'identifier' => 'PreviousRefraction',
+						'identifier' => 'RefractionPriorToRefractiveSurgery',
 						'side' => 'L',
 						'mode' => 'edit',
 						'model' => $element,

@@ -101,6 +101,21 @@ $(document).ready(function() {
 			}
 		}
 	});
+
+	$('input:checkbox[name="Element_OphCoCataractReferral_RefractionPriorToRefractiveSurgery[refractive_surgery]"]').click(function() {
+		var datepicker_div = $('#Element_OphCoCataractReferral_RefractionPriorToRefractiveSurgery_refractive_surgery_date_0').parent().parent();
+
+		if ($('input:checkbox[name="Element_OphCoCataractReferral_RefractionPriorToRefractiveSurgery[refractive_surgery]"]').attr('checked')) {
+			$('div.RefractionPriorToRefractiveSurgery:hidden').slideToggle('fast');
+			datepicker_div.slideToggle('fast');
+			$('#Element_OphCoCataractReferral_RefractionPriorToRefractiveSurgery_refractive_surgery_date_0').attr('hidden',false);
+		} else {
+			$('div.RefractionPriorToRefractiveSurgery:visible').slideToggle('fast');
+			if (datepicker_div.is(':visible')) {
+				datepicker_div.slideToggle('fast');
+			}
+		}
+	});
 });
 
 function updateSegmentedField(field) {
@@ -120,6 +135,13 @@ function updateElement_OphCoCataractReferral_PreviousRefraction(drawing, doodle)
 	if (doodle && doodle.className == 'TrialLens') {
 		var side = (drawing.eye == 0) ? 'right' : 'left';
 		$('#Element_OphCoCataractReferral_PreviousRefraction_'+side+'_axis').val(doodle.getParameter('axis'));
+	}
+}
+
+function updateElement_OphCoCataractReferral_RefractionPriorToRefractiveSurgery(drawing, doodle) {
+	if (doodle && doodle.className == 'TrialLens') {
+		var side = (drawing.eye == 0) ? 'right' : 'left';
+		$('#Element_OphCoCataractReferral_RefractionPriorToRefractiveSurgery_'+side+'_axis').val(doodle.getParameter('axis'));
 	}
 }
 

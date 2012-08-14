@@ -17,29 +17,17 @@
  */
 
 /**
- * This is the model class for table "et_ophcocataractreferral_currentrefraction".
+ * This is the model class for table "et_ophcocataractreferral_refraction_type".
  *
  * The followings are the available columns in table:
  * @property string $id
- * @property integer $event_id
- * @property integer $right_sphere
- * @property integer $right_cylinder
- * @property integer $right_axis
- * @property string $right_axis_eyedraw
- * @property integer $right_refraction_type_id
- * @property integer $left_sphere
- * @property integer $left_cylinder
- * @property integer $left_axis
- * @property string $left_axis_eyedraw
- * @property integer $left_refraction_type_id
+ * @property string $name
  *
  * The followings are the available model relations:
  */
 
-class Element_OphCoCataractReferral_CurrentRefraction extends BaseEventTypeElement
+class EtOphcocataractreferralRefractionType extends BaseActiveRecord
 {
-	public $service;
-
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @return the static model class
@@ -54,7 +42,7 @@ class Element_OphCoCataractReferral_CurrentRefraction extends BaseEventTypeEleme
 	 */
 	public function tableName()
 	{
-		return 'et_ophcocataractreferral_currentrefraction';
+		return 'et_ophcocataractreferral_refraction_type';
 	}
 
 	/**
@@ -65,11 +53,11 @@ class Element_OphCoCataractReferral_CurrentRefraction extends BaseEventTypeEleme
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('event_id, right_sphere, right_cylinder, right_axis, right_axis_eyedraw, right_refraction_type_id, left_sphere, left_cylinder, left_axis, left_axis_eyedraw, left_refraction_type_id', 'safe'),
-			array('right_sphere, right_cylinder, right_axis, right_axis_eyedraw, right_refraction_type_id, left_sphere, left_cylinder, left_axis, left_axis_eyedraw, left_refraction_type_id', 'required'),
+			array('name', 'safe'),
+			array('name', 'required'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, event_id, right_cylinder, right_axis, right_axis_eyedraw, right_refraction_type_id, left_sphere, left_cylinder, left_axis, left_axis_eyedraw, left_refraction_type_id', 'safe', 'on' => 'search'),
+			array('id, name', 'safe', 'on' => 'search'),
 		);
 	}
 	
@@ -96,20 +84,8 @@ class Element_OphCoCataractReferral_CurrentRefraction extends BaseEventTypeEleme
 	{
 		return array(
 			'id' => 'ID',
-			'event_id' => 'Event',
-			'right_sphere' => 'Sphere',
-			'left_sphere' => 'Sphere',
-			'right_cylinder' => 'Cylinder',
-			'left_cylinder' => 'Cylinder',
-			'right_axis' => 'Axis',
-			'left_axis' => 'Axis',
-			'right_refraction_type_id' => 'Type',
-			'left_refraction_type_id' => 'Type',
+			'name' => 'Name',
 		);
-	}
-
-	public function getCombined($side) {
-		return $this->{$side.'_sphere'} . '/' . $this->{$side.'_cylinder'} . ' @ ' . $this->{$side.'_axis'} . '&deg;';
 	}
 
 	/**
@@ -124,46 +100,11 @@ class Element_OphCoCataractReferral_CurrentRefraction extends BaseEventTypeEleme
 		$criteria = new CDbCriteria;
 
 		$criteria->compare('id', $this->id, true);
-		$criteria->compare('event_id', $this->event_id, true);
-		$criteria->compare('right_sphere', $this->right_sphere_id);
-		$criteria->compare('right_cylinder', $this->right_cylinder_id);
-		$criteria->compare('right_axis', $this->right_axis_id);
-		$criteria->compare('right_corr_va_id', $this->right_corr_va_id);
-		$criteria->compare('right_near_va_id', $this->right_near_va_id);
-		$criteria->compare('right_best_va_id', $this->right_best_va_id);
-		$criteria->compare('left_sphere', $this->left_sphere_id);
-		$criteria->compare('left_cylinder', $this->left_cylinder_id);
-		$criteria->compare('left_axis', $this->left_axis_id);
-		$criteria->compare('left_corr_va_id', $this->left_corr_va_id);
-		$criteria->compare('left_near_va_id', $this->left_near_va_id);
-		$criteria->compare('left_best_va_id', $this->left_best_va_id);
-		
+		$criteria->compare('name', $this->name, true);
+
 		return new CActiveDataProvider(get_class($this), array(
 				'criteria' => $criteria,
 			));
-	}
-
-	/**
-	 * Set default values for forms on create
-	 */
-	public function setDefaultOptions()
-	{
-	}
-	
-	protected function beforeSave()
-	{
-		return parent::beforeSave();
-	}
-
-	protected function afterSave()
-	{
-		
-		return parent::afterSave();
-	}
-
-	protected function beforeValidate()
-	{
-		return parent::beforeValidate();
 	}
 }
 ?>

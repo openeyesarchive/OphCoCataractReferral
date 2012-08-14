@@ -61,38 +61,6 @@ $(document).ready(function() {
 		}
 	});
 
-	$('#Element_OphCoCataractReferral_CurrentRefraction_right_sphere').change(function() {
-		if (parseFloat($(this).val()) <= -10.5 || parseFloat($(this).val()) >= 10.5) {
-			$(this).attr('step','0.5');
-		} else {
-			$(this).attr('step','0.25');
-		}
-	});
-
-  $('#Element_OphCoCataractReferral_CurrentRefraction_left_sphere').change(function() {
-    if (parseFloat($(this).val()) <= -10.5 || parseFloat($(this).val()) >= 10.5) {
-      $(this).attr('step','0.5');
-    } else {
-      $(this).attr('step','0.25');
-    }
-  });
-
-  $('#Element_OphCoCataractReferral_CurrentRefraction_right_cylinder').change(function() {
-    if (parseFloat($(this).val()) <= -10.5 || parseFloat($(this).val()) >= 10.5) {
-      $(this).attr('step','0.5');
-    } else {
-      $(this).attr('step','0.25');
-    }
-  });
-
-  $('#Element_OphCoCataractReferral_CurrentRefraction_left_cylinder').change(function() {
-    if (parseFloat($(this).val()) <= -10.5 || parseFloat($(this).val()) >= 10.5) {
-      $(this).attr('step','0.5');
-    } else {
-      $(this).attr('step','0.25');
-    }
-  });
-
 	if (window.Element_OphCoCataractReferral_IntraocularPressure_link_instrument_selects !== undefined) {
 		if (Element_OphCoCataractReferral_IntraocularPressure_link_instrument_selects) {
 			$('#Element_OphCoCataractReferral_IntraocularPressure_left_instrument_id').change(function() {
@@ -103,12 +71,45 @@ $(document).ready(function() {
 			});
 		}
 	}
+
+	$('#event_display').delegate('.element input.axis', 'change', function() {
+		var axis = $(this).val();
+		axis = axis % 180;
+		$(this).val(axis);
+		var side = $(this).closest('[data-side]').attr('data-side');
+		var element_type_id = $(this).closest('.element').attr('data-element-type-id');
+		var eyedraw = window['ed_drawing_edit_' + side + '_' + element_type_id];
+		eyedraw.setParameterForDoodleOfClass('TrialLens', 'axis', axis);
+	});
+
+	$('#event_display').delegate('.element .segmented select', 'change', function() {
+		var field = $(this).nextAll('input');
+		updateSegmentedField(field);
+	});
 });
+
+function updateSegmentedField(field) {
+	var parts = $(field).parent().children('select');
+	var value = $(parts[0]).val() * (parseFloat($(parts[1]).val()) + parseFloat($(parts[2]).val()));
+	$(field).val(value.toFixed(2));
+}
+
+function updateElement_OphCoCataractReferral_CurrentRefraction(drawing, doodle) {
+	if (doodle && doodle.className == 'TrialLens') {
+		var side = (drawing.eye == 0) ? 'right' : 'left';
+		$('#Element_OphCoCataractReferral_CurrentRefraction_'+side+'_axis').val(doodle.getParameter('axis'));
+	}
+}
 
 function ucfirst(str) { str += ''; var f = str.charAt(0).toUpperCase(); return f + str.substr(1); }
 
 function eDparameterListener(_drawing) {
-	if (_drawing.selectedDoodle != null) {
-		// handle event
+	var doodle = null;
+	if (_drawing.selectedDoodle) {
+		doodle = _drawing.selectedDoodle;
+	}
+	var element_type = $(_drawing.canvasParent).closest('.element').attr('data-element-type-class');
+	if (typeof window['update' + element_type] === 'function') {
+		window['update' + element_type](_drawing, doodle);
 	}
 }

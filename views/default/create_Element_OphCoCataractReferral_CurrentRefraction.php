@@ -16,18 +16,128 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.html The GNU General Public License V3.0
  */
  ?>
-<div class="<?php echo $element->elementType->class_name?>">
+<div class="element <?php echo $element->elementType->class_name ?>"
+	data-element-type-id="<?php echo $element->elementType->id ?>"
+	data-element-type-class="<?php echo $element->elementType->class_name ?>"
+	data-element-type-name="<?php echo $element->elementType->name ?>"
+	data-element-display-order="<?php echo $element->elementType->display_order ?>">
 	<h4 class="elementTypeName"><?php  echo $element->elementType->name; ?></h4>
-		<?php echo $form->slider($element, 'right_sphere', array('min' => -20, 'max' => 20, 'step' => '0.25', 'force_dp' => 2, 'prefix_positive' => '+', 'remap' => array('10.25' => '10.5', '-10.25' => '-10.5')))?>
-		<?php echo $form->slider($element, 'right_cylinder', array('min' => -20, 'max' => 20, 'step' => '0.25', 'force_dp' => 2, 'prefix_positive' => '+', 'remap' => array('10.25' => '10.5', '-10.25' => '-10.5')))?>
-		<?php echo $form->slider($element, 'right_axis', array('min' => -180, 'max' => 180, 'step' => 10))?>
-		<?php echo $form->dropDownList($element, 'right_corr_va_id', CHtml::listData(EtOphcocataractreferralCurrentrefractionCorrVa::model()->findAll(),'id','name')); ?>
-		<?php echo $form->dropDownList($element, 'right_near_va_id', CHtml::listData(EtOphcocataractreferralCurrentrefractionNearVa::model()->findAll(),'id','name')); ?>
-		<?php echo $form->dropDownList($element, 'right_best_va_id', CHtml::listData(EtOphcocataractreferralCurrentrefractionBestVa::model()->findAll(),'id','name')); ?>
-		<?php echo $form->slider($element, 'left_sphere', array('min' => -20, 'max' => 20, 'step' => '0.25', 'force_dp' => 2, 'prefix_positive' => '+', 'remap' => array('10.25' => '10.5', '-10.25' => '-10.5')))?>
-		<?php echo $form->slider($element, 'left_cylinder', array('min' => -20, 'max' => 20, 'step' => '0.25', 'force_dp' => 2, 'prefix_positive' => '+', 'remap' => array('10.25' => '10.5', '-10.25' => '-10.5')))?>
-		<?php echo $form->slider($element, 'left_axis', array('min' => -180, 'max' => 180, 'step' => 10))?>
-		<?php echo $form->dropDownList($element, 'left_corr_va_id', CHtml::listData(EtOphcocataractreferralCurrentrefractionCorrVa::model()->findAll(),'id','name')); ?>
-		<?php echo $form->dropDownList($element, 'left_near_va_id', CHtml::listData(EtOphcocataractreferralCurrentrefractionNearVa::model()->findAll(),'id','name')); ?>
-		<?php echo $form->dropDownList($element, 'left_best_va_id', CHtml::listData(EtOphcocataractreferralCurrentrefractionBestVa::model()->findAll(),'id','name')); ?>
+	<div class="cols2 clearfix">
+		<div class="left eventDetail">
+			<div data-side="right">
+				<?php
+				$this->widget('application.modules.eyedraw.OEEyeDrawWidgetRefraction', array(
+						'side' => 'R',
+						'mode' => 'edit',
+						'model' => $element,
+						'attribute' => 'right_axis_eyedraw',
+				));
+				?>
+				<div class="eyedrawFields">
+					<div>
+						<div class="label">
+							<?php echo $element->getAttributeLabel('right_sphere'); ?>
+							:
+						</div>
+						<div class="data segmented">
+							<?php $this->renderPartial(
+									'_segmented_field',
+									array('element' => $element, 'field' => 'right_sphere'),
+									false, false
+							) ?>
+						</div>
+					</div>
+					<div>
+						<div class="label">
+							<?php echo $element->getAttributeLabel('right_cylinder'); ?>
+							:
+						</div>
+						<div class="data segmented">
+							<?php $this->renderPartial(
+									'_segmented_field',
+									array('element' => $element, 'field' => 'right_cylinder'),
+									false, false
+							) ?>
+						</div>
+					</div>
+					<div>
+						<div class="label">
+							<?php echo $element->getAttributeLabel('right_axis'); ?>
+							:
+						</div>
+						<div class="data">
+							<?php echo CHtml::activeTextField($element, 'right_axis', array('class' => 'axis')) ?>
+						</div>
+					</div>
+					<div>
+						<div class="label">
+							<?php echo $element->getAttributeLabel('right_refraction_type_id'); ?>
+							:
+						</div>
+						<div class="data">
+							<?php echo CHtml::activeDropDownList($element, 'right_refraction_type_id', CHtml::listData(EtOphcocataractreferralRefractionType::model()->findAll(array('order'=>'display_order')),'id','name'))?>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="right eventDetail">
+			<div data-side="left">
+				<?php
+				$this->widget('application.modules.eyedraw.OEEyeDrawWidgetRefraction', array(
+						'side' => 'L',
+						'mode' => 'edit',
+						'model' => $element,
+						'attribute' => 'left_axis_eyedraw',
+				));
+				?>
+				<div class="eyedrawFields">
+					<div>
+						<div class="label">
+							<?php echo $element->getAttributeLabel('left_sphere'); ?>
+							:
+						</div>
+						<div class="data segmented">
+							<?php $this->renderPartial(
+									'_segmented_field',
+									array('element' => $element, 'field' => 'left_sphere'),
+									false, false
+							) ?>
+						</div>
+					</div>
+					<div>
+						<div class="label">
+							<?php echo $element->getAttributeLabel('left_cylinder'); ?>
+							:
+						</div>
+						<div class="data segmented">
+							<?php $this->renderPartial(
+									'_segmented_field',
+									array('element' => $element, 'field' => 'left_cylinder'),
+									false, false
+							) ?>
+						</div>
+					</div>
+					<div>
+						<div class="label">
+							<?php echo $element->getAttributeLabel('left_axis'); ?>
+							:
+						</div>
+						<div class="data">
+							<?php echo CHtml::activeTextField($element, 'left_axis', array('class' => 'axis')) ?>
+						</div>
+					</div>
+					<div>
+						<div class="label">
+							<?php echo $element->getAttributeLabel('left_refraction_type_id'); ?>
+							:
+						</div>
+						<div class="data">
+							<?php echo CHtml::activeDropDownList($element, 'left_refraction_type_id', CHtml::listData(EtOphcocataractreferralRefractionType::model()->findAll(array('order'=>'display_order')),'id','name')) ?>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
+</div>

@@ -18,12 +18,6 @@
  ?>
 <div class="<?php echo $element->elementType->class_name?>">
 	<h4 class="elementTypeName"><?php  echo $element->elementType->name; ?></h4>
-
-	
-		<?php echo $form->dropDownList($element, 'sex_id', CHtml::listData(Gender::model()->findAll(),'id','name'),array('empty'=>'- Please select -')); ?>
-			<?php echo $form->textField($element, 'age', array('size' => '10')); ?>
-	
-		<?php echo $form->dropDownList($element, 'driving_status_id', CHtml::listData(EtOphcocataractreferralPatientdetailsDrivingStatus::model()->findAll(),'id','name')); ?>
-	
-		<?php echo $form->dropDownList($element, 'interpreter_id', CHtml::listData(Language::model()->findAll(),'id','name'),array('empty'=>'- None needed -')); ?>
-	</div>
+	<?php echo $form->dropDownList($element, 'driving_status_id', CHtml::listData(EtOphcocataractreferralPatientdetailsDrivingStatus::model()->findAll(),'id','name')); ?>
+	<?php echo $form->dropDownList($element, 'interpreter_id', CHtml::listData(Language::model()->findAll(),'id','name'),array('empty'=>'- None needed -')); ?>
+</div>

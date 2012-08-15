@@ -18,9 +18,18 @@
  ?>
 <div class="<?php echo $element->elementType->class_name?>">
 	<h4 class="elementTypeName"><?php  echo $element->elementType->name; ?></h4>
-
-	
-		<?php echo $form->checkBox($element, 'risks_discussed'); ?>
-	
-		<?php echo $form->checkBox($element, 'consider_surgery'); ?>
+	<div class="eventDetail">
+		<div class="label"></div>
+		<div class="data">
+			<?php echo $form->checkBox($element, 'risks_discussed', array('nowrapper' => true))?>
+			<?php echo $element->getAttributeLabel('risks_discussed')?>
+		</div>
 	</div>
+	<div class="eventDetail">
+		<div class="label"></div>
+		<div class="data">
+			<?php echo $form->checkBox($element, 'consider_surgery', array('nowrapper' => true))?>
+			<?php echo $element->getAttributeLabel('consider_surgery')?>
+		</div>
+	</div>
+</div>

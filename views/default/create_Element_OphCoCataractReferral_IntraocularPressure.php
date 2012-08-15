@@ -18,18 +18,28 @@
  ?>
 <div class="<?php echo $element->elementType->class_name?>">
 	<h4 class="elementTypeName"><?php  echo $element->elementType->name; ?></h4>
-  <?php if ($element->getSetting('show_instruments')) {?>
-    <?php echo $form->dropDownList($element, 'right_instrument_id', CHtml::listData(EtOphcocataractreferralIntraocularpressureInstrument::model()->findAll(),'id','name'))?>
-  <?php }else{?>
-    <?php echo $form->hiddenInput($element, 'right_instrument_id', 1)?>
-  <?php }?>
-	<?php echo $form->slider($element, 'right_pressure', array('min'=>0,'max'=>80,'step'=>1,'null'=>'NR'))?>
-	<?php echo $form->slider($element, 'left_pressure', array('min'=>0,'max'=>80,'step'=>1,'null'=>'NR'))?>
-	<?php if ($element->getSetting('show_instruments')) {?>
-		<?php echo $form->dropDownList($element, 'left_instrument_id', CHtml::listData(EtOphcocataractreferralIntraocularpressureInstrument::model()->findAll(),'id','name'))?>
-	<?php }else{?>
-		<?php echo $form->hiddenInput($element, 'left_instrument_id', 1)?>
-	<?php }?>
+	<div class="cols2 clearfix">
+		<div class="left eventDetail">
+			<div class="data">
+				<?php if($element->getSetting('show_instruments')) {
+					echo CHtml::activeDropDownList($element, 'right_instrument_id', $element->getInstrumentValues(), array('class' => 'iopInstrument'));
+				} else {
+					echo CHtml::activeHiddenField($element, 'right_instrument_id');
+				} ?>
+				<?php echo CHtml::activeDropDownList($element, 'right_pressure', $element->getReadingValues(), array('class' => 'iopReading')); ?>
+			</div>
+		</div>
+		<div class="right eventDetail">
+			<div class="data">
+				<?php echo CHtml::activeDropDownList($element, 'left_pressure', $element->getReadingValues(), array('class' => 'iopReading')); ?>
+				<?php if($element->getSetting('show_instruments')) {
+					echo CHtml::activeDropDownList($element, 'left_instrument_id', $element->getInstrumentValues(), array('class' => 'iopInstrument'));
+				} else {
+					echo CHtml::activeHiddenField($element, 'left_instrument_id');
+				} ?>
+			</div>
+		</div>
+	</div>
 </div>
 <script type="text/javascript">
 var <?php echo get_class($element)?>_link_instrument_selects = <?php echo $element->getSetting('link_selects') ? 'true' : 'false'?>;

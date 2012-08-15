@@ -59,11 +59,11 @@ class Element_OphCoCataractReferral_IntraocularPressure extends BaseEventTypeEle
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('event_id, left_instrument_id, left_pressure, right_instrument_id, right_pressure, ', 'safe'),
-			array('left_instrument_id, left_pressure, right_instrument_id, right_pressure, ', 'required'),
+			array('event_id, left_instrument_id, right_instrument_id', 'safe'),
+			array('left_instrument_id, right_instrument_id', 'required'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, event_id, left_instrument_id, left_pressure, right_instrument_id, right_pressure, ', 'safe', 'on' => 'search'),
+			array('id, event_id, left_instrument_id, right_instrument_id', 'safe', 'on' => 'search'),
 		);
 	}
 	
@@ -121,6 +121,15 @@ class Element_OphCoCataractReferral_IntraocularPressure extends BaseEventTypeEle
 		return new CActiveDataProvider(get_class($this), array(
 				'criteria' => $criteria,
 			));
+	}
+
+	public function getInstrumentValues() {
+		return CHtml::listData(OphCiExamination_Instrument::model()->findAll(), 'id', 'name') ;
+	}
+
+	public function getReadingValues() {
+		$range = range(1, 80);
+		return array(null => 'NR') + array_combine($range, $range);
 	}
 
 	/**

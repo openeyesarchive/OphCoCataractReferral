@@ -147,6 +147,9 @@ class Element_OphCoCataractReferral_PreviousOphthalmicHistory extends BaseEventT
 			));
 	}
 
+	public function setDefaultOptions() {
+	}
+
 	public function getOphthalmicHistoryRight() {
 		$history = '';
 

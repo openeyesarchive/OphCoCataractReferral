@@ -18,12 +18,12 @@
  ?>
 <div class="<?php echo $element->elementType->class_name?>">
 	<h4 class="elementTypeName"><?php  echo $element->elementType->name; ?></h4>
-		<?php echo $form->dropDownListNoPost('history', CHtml::listData(EtOphcocataractreferralHpcHistory::model()->findAll(),'id','name'),'',array('empty'=>'- History -','class'=>'populate_textarea')); ?>
-		<?php echo $form->textArea($element, 'history', array('rows' => 6, 'cols' => 80)); ?>
-		<?php echo $form->dropDownListNoPost('impact', CHtml::listData(EtOphcocataractreferralHpcImpact::model()->findAll(),'id','name'),'',array('empty'=>'- Impact -','class'=>'populate_textarea')); ?>
-		<?php echo $form->textArea($element, 'impact', array('rows' => 6, 'cols' => 80)); ?>
-		<?php echo $form->dropDownList($element, 'refraction_id', CHtml::listData(EtOphcocataractreferralHpcRefraction::model()->findAll(),'id','name'),array('empty'=>'- Please select -')); ?>
-		<?php echo $form->dropDownList($element, 'eye_id', CHtml::listData(Eye::model()->findAll(),'id','name'),array('empty'=>'- Please select -')); ?>
-		<?php echo $form->dropDownList($element, 'onset_id', CHtml::listData(EtOphcocataractreferralHpcOnset::model()->findAll(),'id','name'),array('empty'=>'- Please select -')); ?>
-		<?php echo $form->dropDownList($element, 'first_second_eye_id', CHtml::listData(EtOphcocataractreferralHpcFirstSecondEye::model()->findAll(),'id','name'),array('empty'=>'- Please select -')); ?>
-	</div>
+	<?php echo $form->dropDownListNoPost('history', CHtml::listData(EtOphcocataractreferralHpcHistory::model()->findAll(),'id','name'),'',array('empty'=>'- History -','class'=>'populate_textarea')); ?>
+	<?php echo $form->textArea($element, 'history', array('rows' => 6, 'cols' => 80)); ?>
+	<?php echo $form->dropDownListNoPost('impact', CHtml::listData(EtOphcocataractreferralHpcImpact::model()->findAll(),'id','name'),'',array('empty'=>'- Impact -','class'=>'populate_textarea')); ?>
+	<?php echo $form->textArea($element, 'impact', array('rows' => 6, 'cols' => 80)); ?>
+	<?php echo $form->radioButtons($element, 'refraction_id', 'et_ophcocataractreferral_hpc_refraction')?>
+	<?php echo $form->radioButtons($element, 'eye_id', 'eye')?>
+	<?php echo $form->radioButtons($element, 'onset_id', 'et_ophcocataractreferral_hpc_onset')?>
+	<?php echo $form->radioButtons($element, 'first_second_eye_id', 'et_ophcocataractreferral_hpc_first_second_eye')?>
+</div>

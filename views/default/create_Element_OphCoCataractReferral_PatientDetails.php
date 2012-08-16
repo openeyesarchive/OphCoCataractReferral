@@ -18,6 +18,6 @@
  ?>
 <div class="<?php echo $element->elementType->class_name?>">
 	<h4 class="elementTypeName"><?php  echo $element->elementType->name; ?></h4>
-	<?php echo $form->dropDownList($element, 'driving_status_id', CHtml::listData(EtOphcocataractreferralPatientdetailsDrivingStatus::model()->findAll(),'id','name')); ?>
+	<?php echo $form->radioButtons($element, 'driving_status_id', 'et_ophcocataractreferral_patientdetails_driving_status')?>
 	<?php echo $form->dropDownList($element, 'interpreter_id', CHtml::listData(Language::model()->findAll(),'id','name'),array('empty'=>'- None needed -')); ?>
 </div>

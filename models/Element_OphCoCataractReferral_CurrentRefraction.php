@@ -26,12 +26,12 @@
  * @property integer $right_cylinder
  * @property integer $right_axis
  * @property string $right_axis_eyedraw
- * @property integer $right_refraction_type_id
+ * @property integer $right_type_id
  * @property integer $left_sphere
  * @property integer $left_cylinder
  * @property integer $left_axis
  * @property string $left_axis_eyedraw
- * @property integer $left_refraction_type_id
+ * @property integer $left_type_id
  *
  * The followings are the available model relations:
  */
@@ -65,10 +65,10 @@ class Element_OphCoCataractReferral_CurrentRefraction extends BaseEventTypeEleme
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('event_id, right_sphere, right_cylinder, right_axis, right_axis_eyedraw, right_refraction_type_id, left_sphere, left_cylinder, left_axis, left_axis_eyedraw, left_refraction_type_id', 'safe'),
+			array('event_id, right_sphere, right_cylinder, right_axis, right_axis_eyedraw, right_type_id, left_sphere, left_cylinder, left_axis, left_axis_eyedraw, left_type_id', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, event_id, right_cylinder, right_axis, right_axis_eyedraw, right_refraction_type_id, left_sphere, left_cylinder, left_axis, left_axis_eyedraw, left_refraction_type_id', 'safe', 'on' => 'search'),
+			array('id, event_id, right_cylinder, right_axis, right_axis_eyedraw, right_type_id, left_sphere, left_cylinder, left_axis, left_axis_eyedraw, left_type_id', 'safe', 'on' => 'search'),
 		);
 	}
 	
@@ -102,8 +102,8 @@ class Element_OphCoCataractReferral_CurrentRefraction extends BaseEventTypeEleme
 			'left_cylinder' => 'Cylinder',
 			'right_axis' => 'Axis',
 			'left_axis' => 'Axis',
-			'right_refraction_type_id' => 'Type',
-			'left_refraction_type_id' => 'Type',
+			'right_type_id' => 'Type',
+			'left_type_id' => 'Type',
 		);
 	}
 

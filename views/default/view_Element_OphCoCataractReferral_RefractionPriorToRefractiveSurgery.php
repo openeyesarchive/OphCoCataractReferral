@@ -23,44 +23,24 @@
 		</table>
 		<div class="cols2 clearfix">
 			<div class="left">
-				<div>
-					<?php
-					$this->widget('application.modules.eyedraw.OEEyeDrawWidgetRefraction', array(
-							'identifier' => 'RefractionPriorToRefractiveSurgery',
-							'side' => 'R',
-							'mode' => 'view',
-							'model' => $element,
-							'attribute' => 'right_axis_eyedraw',
-					));
-					?>
-				</div>
-				<div class="eyedrawFields view">
-					<div>
-						<div class="data">
-							<?php echo $element->getCombined('right') ?>
-						</div>
-					</div>
-				</div>
+				<?php
+				$this->widget('application.modules.eyedraw.OEEyeDrawWidgetRefraction', array(
+						'identifier' => 'RefractionPriorToRefractiveSurgery',
+						'side' => 'R',
+						'mode' => 'view',
+						'model' => $element,
+						'attribute' => 'right_axis_eyedraw',
+				))?>
 			</div>
 			<div class="right">
-				<div>
-					<?php
-					$this->widget('application.modules.eyedraw.OEEyeDrawWidgetRefraction', array(
-							'identifier' => 'RefractionPriorToRefractiveSurgery',
-							'side' => 'L',
-							'mode' => 'view',
-							'model' => $element,
-							'attribute' => 'left_axis_eyedraw',
-					));
-					?>
-				</div>
-				<div class="eyedrawFields view">
-					<div>
-						<div class="data">
-							<?php echo $element->getCombined('left') ?>
-						</div>
-					</div>
-				</div>
+				<?php
+				$this->widget('application.modules.eyedraw.OEEyeDrawWidgetRefraction', array(
+						'identifier' => 'RefractionPriorToRefractiveSurgery',
+						'side' => 'L',
+						'mode' => 'view',
+						'model' => $element,
+						'attribute' => 'left_axis_eyedraw',
+				))?>
 			</div>
 		</div>
 	<?php }?>

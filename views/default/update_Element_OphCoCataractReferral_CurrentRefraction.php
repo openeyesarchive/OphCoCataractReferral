@@ -71,11 +71,11 @@
 					</div>
 					<div>
 						<div class="label">
-							<?php echo $element->getAttributeLabel('right_refraction_type_id'); ?>
+							<?php echo $element->getAttributeLabel('right_type_id'); ?>
 							:
 						</div>
 						<div class="data">
-							<?php echo CHtml::activeDropDownList($element, 'right_refraction_type_id', CHtml::listData(EtOphcocataractreferralRefractionType::model()->findAll(array('order'=>'display_order')),'id','name'))?>
+							<?php echo CHtml::activeDropDownList($element, 'right_type_id', CHtml::listData(EtOphcocataractreferralRefractionType::model()->findAll(array('order'=>'display_order')),'id','name'))?>
 						</div>
 					</div>
 				</div>
@@ -129,11 +129,11 @@
 					</div>
 					<div>
 						<div class="label">
-							<?php echo $element->getAttributeLabel('left_refraction_type_id'); ?>
+							<?php echo $element->getAttributeLabel('left_type_id'); ?>
 							:
 						</div>
 						<div class="data">
-							<?php echo CHtml::activeDropDownList($element, 'left_refraction_type_id', CHtml::listData(EtOphcocataractreferralRefractionType::model()->findAll(array('order'=>'display_order')),'id','name')) ?>
+							<?php echo CHtml::activeDropDownList($element, 'left_type_id', CHtml::listData(EtOphcocataractreferralRefractionType::model()->findAll(array('order'=>'display_order')),'id','name')) ?>
 						</div>
 					</div>
 				</div>

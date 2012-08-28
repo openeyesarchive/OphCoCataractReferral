@@ -13,7 +13,7 @@ div.view_Element_OphCoCataractReferral_CurrentRefraction_iop_left_pressure { flo
 div.view_Element_OphCoCataractReferral_CurrentRefraction_iop_right_pressure { float: left; margin-left: -70px; margin-top: 8px; }
 div.view_Element_OphCoCataractReferral_CurrentRefraction_iop_right_instrument { float: left; margin-left: 40px; margin-top: 8px; }
 
-#event_content .eyedrawFields { float: left; width: 180px; margin: 5px 0 0 10px; }
+#event_content .eyedrawFields { float: left; width: 300px; margin: 5px 0 0 10px; }
 #event_content .eyedrawFields.view { width: 280px; }
 #event_content .eyedrawFields>div { margin: 5px 0; }
 #event_content .eyedrawFields .label,#event_content .eyedrawFields .data { display: inline-block; }

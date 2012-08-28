@@ -24,120 +24,24 @@
 	<h4 class="elementTypeName"><?php  echo $element->elementType->name; ?></h4>
 	<div class="cols2 clearfix">
 		<div class="left eventDetail">
-			<div data-side="right">
-				<?php
-				$this->widget('application.modules.eyedraw.OEEyeDrawWidgetRefraction', array(
-						'side' => 'R',
-						'mode' => 'edit',
-						'model' => $element,
-						'attribute' => 'right_axis_eyedraw',
-				));
-				?>
-				<div class="eyedrawFields">
-					<div>
-						<div class="label">
-							<?php echo $element->getAttributeLabel('right_sphere'); ?>
-							:
-						</div>
-						<div class="data segmented">
-							<?php $this->renderPartial(
-									'_segmented_field',
-									array('element' => $element, 'field' => 'right_sphere'),
-									false, false
-							) ?>
-						</div>
-					</div>
-					<div>
-						<div class="label">
-							<?php echo $element->getAttributeLabel('right_cylinder'); ?>
-							:
-						</div>
-						<div class="data segmented">
-							<?php $this->renderPartial(
-									'_segmented_field',
-									array('element' => $element, 'field' => 'right_cylinder'),
-									false, false
-							) ?>
-						</div>
-					</div>
-					<div>
-						<div class="label">
-							<?php echo $element->getAttributeLabel('right_axis'); ?>
-							:
-						</div>
-						<div class="data">
-							<?php echo CHtml::activeTextField($element, 'right_axis', array('class' => 'axis')) ?>
-						</div>
-					</div>
-					<div>
-						<div class="label">
-							<?php echo $element->getAttributeLabel('right_refraction_type_id'); ?>
-							:
-						</div>
-						<div class="data">
-							<?php echo CHtml::activeDropDownList($element, 'right_refraction_type_id', CHtml::listData(EtOphcocataractreferralRefractionType::model()->findAll(array('order'=>'display_order')),'id','name'))?>
-						</div>
-					</div>
-				</div>
-			</div>
+			<?php
+			$this->widget('application.modules.eyedraw.OEEyeDrawWidgetRefraction', array(
+					'side' => 'R',
+					'mode' => 'edit',
+					'model' => $element,
+					'attribute' => 'right_axis_eyedraw',
+			));
+			?>
 		</div>
 		<div class="right eventDetail">
-			<div data-side="left">
-				<?php
-				$this->widget('application.modules.eyedraw.OEEyeDrawWidgetRefraction', array(
-						'side' => 'L',
-						'mode' => 'edit',
-						'model' => $element,
-						'attribute' => 'left_axis_eyedraw',
-				));
-				?>
-				<div class="eyedrawFields">
-					<div>
-						<div class="label">
-							<?php echo $element->getAttributeLabel('left_sphere'); ?>
-							:
-						</div>
-						<div class="data segmented">
-							<?php $this->renderPartial(
-									'_segmented_field',
-									array('element' => $element, 'field' => 'left_sphere'),
-									false, false
-							) ?>
-						</div>
-					</div>
-					<div>
-						<div class="label">
-							<?php echo $element->getAttributeLabel('left_cylinder'); ?>
-							:
-						</div>
-						<div class="data segmented">
-							<?php $this->renderPartial(
-									'_segmented_field',
-									array('element' => $element, 'field' => 'left_cylinder'),
-									false, false
-							) ?>
-						</div>
-					</div>
-					<div>
-						<div class="label">
-							<?php echo $element->getAttributeLabel('left_axis'); ?>
-							:
-						</div>
-						<div class="data">
-							<?php echo CHtml::activeTextField($element, 'left_axis', array('class' => 'axis')) ?>
-						</div>
-					</div>
-					<div>
-						<div class="label">
-							<?php echo $element->getAttributeLabel('left_refraction_type_id'); ?>
-							:
-						</div>
-						<div class="data">
-							<?php echo CHtml::activeDropDownList($element, 'left_refraction_type_id', CHtml::listData(EtOphcocataractreferralRefractionType::model()->findAll(array('order'=>'display_order')),'id','name')) ?>
-						</div>
-					</div>
-				</div>
-			</div>
+			<?php
+			$this->widget('application.modules.eyedraw.OEEyeDrawWidgetRefraction', array(
+					'side' => 'L',
+					'mode' => 'edit',
+					'model' => $element,
+					'attribute' => 'left_axis_eyedraw',
+			));
+			?>
 		</div>
 	</div>
 </div>

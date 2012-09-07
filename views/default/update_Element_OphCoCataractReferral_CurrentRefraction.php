@@ -34,52 +34,6 @@
 						'refraction_types' => CHtml::listData(EtOphcocataractreferralRefractionType::model()->findAll(array('order'=>'display_order')),'id','name'),
 				));
 				?>
-				<div class="eyedrawFields">
-					<div>
-						<div class="label">
-							<?php echo $element->getAttributeLabel('right_sphere'); ?>
-							:
-						</div>
-						<div class="data segmented">
-							<?php $this->renderPartial(
-									'_segmented_field',
-									array('element' => $element, 'field' => 'right_sphere'),
-									false, false
-							) ?>
-						</div>
-					</div>
-					<div>
-						<div class="label">
-							<?php echo $element->getAttributeLabel('right_cylinder'); ?>
-							:
-						</div>
-						<div class="data segmented">
-							<?php $this->renderPartial(
-									'_segmented_field',
-									array('element' => $element, 'field' => 'right_cylinder'),
-									false, false
-							) ?>
-						</div>
-					</div>
-					<div>
-						<div class="label">
-							<?php echo $element->getAttributeLabel('right_axis'); ?>
-							:
-						</div>
-						<div class="data">
-							<?php echo CHtml::activeTextField($element, 'right_axis', array('class' => 'axis')) ?>
-						</div>
-					</div>
-					<div>
-						<div class="label">
-							<?php echo $element->getAttributeLabel('right_type_id'); ?>
-							:
-						</div>
-						<div class="data">
-							<?php echo CHtml::activeDropDownList($element, 'right_type_id', CHtml::listData(EtOphcocataractreferralRefractionType::model()->findAll(array('order'=>'display_order')),'id','name'))?>
-						</div>
-					</div>
-				</div>
 			</div>
 		</div>
 		<div class="right eventDetail">

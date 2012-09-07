@@ -16,13 +16,6 @@
 				));
 				?>
 			</div>
-			<div class="eyedrawFields view">
-				<div>
-					<div class="data">
-						<?php echo $element->getCombined('right') ?>
-					</div>
-				</div>
-			</div>
 		</div>
 		<div class="right">
 			<div>

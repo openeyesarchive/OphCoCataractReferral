@@ -124,7 +124,7 @@ class Element_OphCoCataractReferral_IntraocularPressure extends BaseEventTypeEle
 	}
 
 	public function getInstrumentValues() {
-		return CHtml::listData(OphCiExamination_Instrument::model()->findAll(), 'id', 'name') ;
+		return CHtml::listData(EtOphcocataractreferralIntraocularpressureInstrument::model()->findAll(), 'id', 'name') ;
 	}
 
 	public function getReadingValues() {

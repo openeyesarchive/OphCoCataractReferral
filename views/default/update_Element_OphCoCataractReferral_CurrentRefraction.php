@@ -31,6 +31,7 @@
 						'mode' => 'edit',
 						'model' => $element,
 						'attribute' => 'right_axis_eyedraw',
+						'refraction_types' => CHtml::listData(EtOphcocataractreferralRefractionType::model()->findAll(array('order'=>'display_order')),'id','name'),
 				));
 				?>
 				<div class="eyedrawFields">
@@ -89,6 +90,7 @@
 						'mode' => 'edit',
 						'model' => $element,
 						'attribute' => 'left_axis_eyedraw',
+						'refraction_types' => CHtml::listData(EtOphcocataractreferralRefractionType::model()->findAll(array('order'=>'display_order')),'id','name'),
 				));
 				?>
 				<div class="eyedrawFields">

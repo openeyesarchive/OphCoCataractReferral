@@ -106,5 +106,10 @@ class EtOphcocataractreferralRefractionType extends BaseActiveRecord
 				'criteria' => $criteria,
 			));
 	}
+	
+	public function getOptions() {
+		$options = $this->findAll(array('order'=>'display_order'));
+		return CHtml::listData($options, 'id', 'name') + array('' => 'Other');
+	}
 }
 ?>

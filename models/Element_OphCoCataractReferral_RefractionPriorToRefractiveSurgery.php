@@ -29,16 +29,18 @@
  * @property integer $right_axis
  * @property string $right_axis_eyedraw
  * @property integer $right_type_id
+ * @property string $right_type_other
  * @property integer $left_sphere
  * @property integer $left_cylinder
  * @property integer $left_axis
  * @property string $left_axis_eyedraw
  * @property integer $left_type_id
+ * @property string $left_type_other
  *
  * The followings are the available model relations:
  */
 
-class Element_OphCoCataractReferral_RefractionPriorToRefractiveSurgery extends BaseEventTypeElement
+class Element_OphCoCataractReferral_RefractionPriorToRefractiveSurgery extends OphCoCataractReferral_Refraction
 {
 	public $service;
 
@@ -58,87 +60,25 @@ class Element_OphCoCataractReferral_RefractionPriorToRefractiveSurgery extends B
 	{
 		return 'et_ophcocataractreferral_surgeryrefraction';
 	}
-
+	
 	/**
 	 * @return array validation rules for model attributes.
 	 */
 	public function rules()
 	{
-		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
-		return array(
-			array('event_id, right_sphere, right_cylinder, right_axis, right_axis_eyedraw, right_type_id, left_sphere, left_cylinder, left_axis, left_axis_eyedraw, left_type_id, refractive_surgery, refractive_surgery_date', 'safe'),
-			// The following rule is used by search().
-			// Please remove those attributes that should not be searched.
-			array('id, event_id, right_cylinder, right_axis, right_axis_eyedraw, right_type_id, left_sphere, left_cylinder, left_axis, left_axis_eyedraw, left_type_id, refractive_surgery, refractive_surgery_date', 'safe', 'on' => 'search'),
+		$p_rules = parent::rules();
+		array_push($p_rules,
+		array('refractive_surgery', 'required'),
+		array('refractive_surgery, refractive_surgery_date', 'safe')
 		);
-	}
-	
-	/**
-	 * @return array relational rules.
-	 */
-	public function relations()
-	{
-		// NOTE: you may need to adjust the relation name and the related
-		// class name for the relations automatically generated below.
-		return array(
-			'element_type' => array(self::HAS_ONE, 'ElementType', 'id','on' => "element_type.class_name='".get_class($this)."'"),
-			'eventType' => array(self::BELONGS_TO, 'EventType', 'event_type_id'),
-			'event' => array(self::BELONGS_TO, 'Event', 'event_id'),
-			'user' => array(self::BELONGS_TO, 'User', 'created_user_id'),
-			'usermodified' => array(self::BELONGS_TO, 'User', 'last_modified_user_id'),
-		);
+		return $p_rules;
 	}
 
 	/**
-	 * @return array customized attribute labels (name=>label)
+	 * @return boolean whether the element should be hidden based on if it has been enabled or not
+	 * 
+	 * TODO: move this logic to the controller
 	 */
-	public function attributeLabels()
-	{
-		return array(
-			'id' => 'ID',
-			'event_id' => 'Event',
-			'refractive_surgery_date' => 'Previous refraction',
-			'right_sphere' => 'Sphere',
-			'left_sphere' => 'Sphere',
-			'right_cylinder' => 'Cylinder',
-			'left_cylinder' => 'Cylinder',
-			'right_axis' => 'Axis',
-			'left_axis' => 'Axis',
-			'right_type_id' => 'Type',
-			'left_type_id' => 'Type',
-		);
-	}
-
-	public function getCombined($side) {
-		return $this->{$side.'_sphere'} . '/' . $this->{$side.'_cylinder'} . ' @ ' . $this->{$side.'_axis'} . '&deg;';
-	}
-
-	/**
-	 * Retrieves a list of models based on the current search/filter conditions.
-	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
-	 */
-	public function search()
-	{
-		// Warning: Please modify the following code to remove attributes that
-		// should not be searched.
-
-		$criteria = new CDbCriteria;
-
-		$criteria->compare('id', $this->id, true);
-		$criteria->compare('event_id', $this->event_id, true);
-		$criteria->compare('right_sphere', $this->right_sphere_id);
-		$criteria->compare('right_cylinder', $this->right_cylinder_id);
-		$criteria->compare('right_axis', $this->right_axis_id);
-		$criteria->compare('left_sphere', $this->left_sphere_id);
-		$criteria->compare('left_cylinder', $this->left_cylinder_id);
-		$criteria->compare('left_axis', $this->left_axis_id);
-		
-		return new CActiveDataProvider(get_class($this), array(
-				'criteria' => $criteria,
-			));
-	}
-
 	public function getHidden() {
 		if (Yii::app()->getController()->getAction()->id == 'create') {
 			return !@$_POST['Element_OphCoCataractReferral_RefractionPriorToRefractiveSurgery']['refractive_surgery'];
@@ -159,22 +99,8 @@ class Element_OphCoCataractReferral_RefractionPriorToRefractiveSurgery extends B
 		if (Yii::app()->getController()->getAction()->id == 'create') {
 			$this->refractive_surgery_date = date('j M Y');
 		}
+		parent::setDefaultOptions();
 	}
 	
-	protected function beforeSave()
-	{
-		return parent::beforeSave();
-	}
-
-	protected function afterSave()
-	{
-		
-		return parent::afterSave();
-	}
-
-	protected function beforeValidate()
-	{
-		return parent::beforeValidate();
-	}
 }
 ?>

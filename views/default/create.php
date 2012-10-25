@@ -12,7 +12,8 @@
 		));
 	?>
 	<?php  $this->displayErrors($errors)?>
-	<?php  $this->renderDefaultElements($this->action->id, $form); ?>	<?php  $this->renderOptionalElements($this->action->id, $form); ?>
+	<?php  $this->renderDefaultElements($this->action->id, $form); ?>	
+	<?php  $this->renderOptionalElements($this->action->id, $form); ?>
 	<?php  $this->displayErrors($errors)?>
 		<div class="cleartall"></div>
 		<div class="form_button">

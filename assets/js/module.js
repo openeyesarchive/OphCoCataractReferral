@@ -145,6 +145,30 @@ function updateElement_OphCoCataractReferral_RefractionPriorToRefractiveSurgery(
 	}
 }
 
+/*
+ * TODO: this masking of the 'other' field should be abstracted to be part of the eyedraw widget
+ * 
+ */
+function OphCoCataractReferral_Refraction_updateType(field) {
+	var other = $(field).next();
+	if ($(field).val() == '') {
+		other.show();
+		other.focus();
+	} else {
+		other.val('');
+		other.hide();
+	}
+}
+
+function OphCoCataractReferral_Refraction_init(element_type) {
+	$('#event_content .' + element_type + ' .refractionType').each(function() {
+		OphCoCataractReferral_Refraction_updateType(this);
+	});
+	$(this).delegate('#event_content .' + element_type + ' .refractionType', 'change', function() {
+		OphCoCataractReferral_Refraction_updateType(this);
+	});
+}
+
 function ucfirst(str) { str += ''; var f = str.charAt(0).toUpperCase(); return f + str.substr(1); }
 
 function eDparameterListener(_drawing) {

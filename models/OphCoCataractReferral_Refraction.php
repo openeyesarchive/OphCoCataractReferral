@@ -17,20 +17,28 @@
  */
 
 /**
- * This is the model class for table "et_ophcocataractreferral_intraocularpressure".
+ * This is an abstract model class for Refraction records.
  *
  * The followings are the available columns in table:
  * @property string $id
  * @property integer $event_id
- * @property integer $left_instrument_id
- * @property integer $left_pressure
- * @property integer $right_instrument_id
- * @property integer $right_pressure
+ * @property integer $right_sphere
+ * @property integer $right_cylinder
+ * @property integer $right_axis
+ * @property string $right_axis_eyedraw
+ * @property integer $right_type_id
+ * @property string $right_type_other
+ * @property integer $left_sphere
+ * @property integer $left_cylinder
+ * @property integer $left_axis
+ * @property string $left_axis_eyedraw
+ * @property integer $left_type_id
+ * @property string $left_type_other
  *
  * The followings are the available model relations:
  */
 
-class Element_OphCoCataractReferral_IntraocularPressure extends BaseEventTypeElement
+class OphCoCataractReferral_Refraction extends BaseEventTypeElement
 {
 	public $service;
 
@@ -44,14 +52,6 @@ class Element_OphCoCataractReferral_IntraocularPressure extends BaseEventTypeEle
 	}
 
 	/**
-	 * @return string the associated database table name
-	 */
-	public function tableName()
-	{
-		return 'et_ophcocataractreferral_intraocularpressure';
-	}
-
-	/**
 	 * @return array validation rules for model attributes.
 	 */
 	public function rules()
@@ -59,11 +59,10 @@ class Element_OphCoCataractReferral_IntraocularPressure extends BaseEventTypeEle
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('event_id, left_instrument_id, right_instrument_id, left_pressure, right_pressure', 'safe'),
-			array('left_instrument_id, right_instrument_id, left_pressure, right_pressure', 'required'),
+			array('event_id, right_sphere, right_cylinder, right_axis, right_axis_eyedraw, right_type_id, right_type_other, left_sphere, left_cylinder, left_axis, left_axis_eyedraw, left_type_id, left_type_other', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, event_id, left_instrument_id, right_instrument_id, left_pressure, right_pressure', 'safe', 'on' => 'search'),
+			array('id, event_id, right_cylinder, right_axis, right_axis_eyedraw, right_type_id, right_type_other, left_sphere, left_cylinder, left_axis, left_axis_eyedraw, left_type_id, left_type_other', 'safe', 'on' => 'search'),
 		);
 	}
 	
@@ -80,8 +79,8 @@ class Element_OphCoCataractReferral_IntraocularPressure extends BaseEventTypeEle
 			'event' => array(self::BELONGS_TO, 'Event', 'event_id'),
 			'user' => array(self::BELONGS_TO, 'User', 'created_user_id'),
 			'usermodified' => array(self::BELONGS_TO, 'User', 'last_modified_user_id'),
-			'left_instrument' => array(self::BELONGS_TO, 'EtOphcocataractreferralIntraocularpressureInstrument', 'left_instrument_id'),
-			'right_instrument' => array(self::BELONGS_TO, 'EtOphcocataractreferralIntraocularpressureInstrument', 'right_instrument_id'),
+			'left_type' => array(self::BELONGS_TO, 'EtOphcocataractreferralRefractionType', 'left_type_id'),
+			'right_type' => array(self::BELONGS_TO, 'EtOphcocataractreferralRefractionType', 'right_type_id'),
 		);
 	}
 
@@ -93,13 +92,32 @@ class Element_OphCoCataractReferral_IntraocularPressure extends BaseEventTypeEle
 		return array(
 			'id' => 'ID',
 			'event_id' => 'Event',
-			'left_instrument_id' => 'Left instrument',
-			'left_pressure' => 'Left pressure',
-			'right_instrument_id' => 'Right instrument',
-			'right_pressure' => 'Right pressure',
+			'right_sphere' => 'Sphere',
+			'left_sphere' => 'Sphere',
+			'right_cylinder' => 'Cylinder',
+			'left_cylinder' => 'Cylinder',
+			'right_axis' => 'Axis',
+			'left_axis' => 'Axis',
+			'right_type_id' => 'Type',
+			'left_type_id' => 'Type',
+			'left_type_other' => 'Other type',
+			'right_type_other' => 'Other type',
 		);
 	}
 
+	public function getCombined($side) {
+		return $this->{$side.'_sphere'} . '/' . $this->{$side.'_cylinder'} . ' @ ' . $this->{$side.'_axis'} . '&deg; ' . $this->getType($side);
+	}
+
+	public function getType($side) {
+		if($this->{$side.'_type_id'}) {
+			return $this->{$side.'_type'}->name;
+		} else {
+			return $this->{$side.'_type_other'};
+		}
+	}
+
+	
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
@@ -113,23 +131,24 @@ class Element_OphCoCataractReferral_IntraocularPressure extends BaseEventTypeEle
 
 		$criteria->compare('id', $this->id, true);
 		$criteria->compare('event_id', $this->event_id, true);
-		$criteria->compare('left_instrument_id', $this->left_instrument_id);
-		$criteria->compare('left_pressure', $this->left_pressure);
-		$criteria->compare('right_instrument_id', $this->right_instrument_id);
-		$criteria->compare('right_pressure', $this->right_pressure);
+		$criteria->compare('right_sphere', $this->right_sphere);
+		$criteria->compare('right_cylinder', $this->right_cylinder);
+		$criteria->compare('right_axis', $this->right_axis);
+		$criteria->compare('right_corr_va_id', $this->right_corr_va_id);
+		$criteria->compare('right_near_va_id', $this->right_near_va_id);
+		$criteria->compare('right_best_va_id', $this->right_best_va_id);
+		$criteria->compare('right_type_other', $this->right_type_other);
+		$criteria->compare('left_sphere', $this->left_sphere);
+		$criteria->compare('left_cylinder', $this->left_cylinder);
+		$criteria->compare('left_axis', $this->left_axis);
+		$criteria->compare('left_corr_va_id', $this->left_corr_va_id);
+		$criteria->compare('left_near_va_id', $this->left_near_va_id);
+		$criteria->compare('left_best_va_id', $this->left_best_va_id);
+		$criteria->compare('left_type_other', $this->left_type_other);
 		
 		return new CActiveDataProvider(get_class($this), array(
 				'criteria' => $criteria,
 			));
-	}
-
-	public function getInstrumentValues() {
-		return CHtml::listData(EtOphcocataractreferralIntraocularpressureInstrument::model()->findAll(), 'id', 'name') ;
-	}
-
-	public function getReadingValues() {
-		$range = range(1, 80);
-		return array(0 => 'NR') + array_combine($range, $range);
 	}
 
 	/**
@@ -137,32 +156,18 @@ class Element_OphCoCataractReferral_IntraocularPressure extends BaseEventTypeEle
 	 */
 	public function setDefaultOptions()
 	{
-		$default_instrument = $this->getSetting('default_instrument');
-
-		$this->left_instrument_id = is_object($default_instrument) ? $default_instrument->id : $default_instrument;
-		$this->left_pressure = null;
-		$this->right_instrument_id = is_object($default_instrument) ? $default_instrument->id : $default_instrument;
-		$this->right_pressure = null;
+		$this->left_type_id = 1;
+		$this->right_type_id = 1;
 	}
 	
 	protected function beforeSave()
 	{
-		//$this->left_pressure = 1;
-		//$this->right_pressure = 1;
-
-		if ($this->left_pressure == 0) {
-			$this->left_pressure = null;
-		}
-
-		if ($this->right_pressure == 0) {
-			$this->right_pressure = null;
-		}
-
 		return parent::beforeSave();
 	}
 
 	protected function afterSave()
 	{
+		
 		return parent::afterSave();
 	}
 

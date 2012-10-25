@@ -8,11 +8,12 @@
 			<div>
 				<?php
 				$this->widget('application.modules.eyedraw.OEEyeDrawWidgetRefraction', array(
+						'identifier' => 'right_'.$element->elementType->id,
 						'side' => 'R',
 						'mode' => 'view',
 						'model' => $element,
 						'attribute' => 'right_axis_eyedraw',
-						'refraction_types' => CHtml::listData(EtOphcocataractreferralRefractionType::model()->findAll(array('order'=>'display_order')),'id','name'),
+						'refraction_types' => EtOphcocataractreferralRefractionType::model()->getOptions(),
 				));
 				?>
 			</div>
@@ -21,11 +22,12 @@
 			<div>
 				<?php
 				$this->widget('application.modules.eyedraw.OEEyeDrawWidgetRefraction', array(
+						'identifier' => 'left_'.$element->elementType->id,
 						'side' => 'L',
 						'mode' => 'view',
 						'model' => $element,
 						'attribute' => 'left_axis_eyedraw',
-						'refraction_types' => CHtml::listData(EtOphcocataractreferralRefractionType::model()->findAll(array('order'=>'display_order')),'id','name'),
+						'refraction_types' => EtOphcocataractreferralRefractionType::model()->getOptions(),
 				));
 				?>
 			</div>

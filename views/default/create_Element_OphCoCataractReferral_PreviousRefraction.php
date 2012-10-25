@@ -34,24 +34,32 @@
 		<div class="left eventDetail PreviousRefraction"<?php if ($element->hidden) {?> style="display: none;"<?php }?>>
 			<?php
 			$this->widget('application.modules.eyedraw.OEEyeDrawWidgetRefraction', array(
-					'identifier' => 'PreviousRefraction',
+					'identifier' => 'right_'.$element->elementType->id,
 					'side' => 'R',
 					'mode' => 'edit',
 					'model' => $element,
 					'attribute' => 'right_axis_eyedraw',
-					'refraction_types' => CHtml::listData(EtOphcocataractreferralRefractionType::model()->findAll(array('order'=>'display_order')),'id','name'),
-			))?>
+					'refraction_types' => EtOphcocataractreferralRefractionType::model()->getOptions(),
+			))
+			?>
 		</div>
 		<div class="right eventDetail PreviousRefraction"<?php if ($element->hidden) {?> style="display: none;"<?php }?>>
 			<?php
 			$this->widget('application.modules.eyedraw.OEEyeDrawWidgetRefraction', array(
-					'identifier' => 'PreviousRefraction',
+					'identifier' => 'left_'.$element->elementType->id,
 					'side' => 'L',
 					'mode' => 'edit',
 					'model' => $element,
 					'attribute' => 'left_axis_eyedraw',
-					'refraction_types' => CHtml::listData(EtOphcocataractreferralRefractionType::model()->findAll(array('order'=>'display_order')),'id','name'),
-			))?>
+					'refraction_types' => EtOphcocataractreferralRefractionType::model()->getOptions(),
+			))
+			?>
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+	$(document).ready(function() {
+		OphCoCataractReferral_Refraction_init('<?php echo $element->elementType->class_name ?>');
+	});
+</script>
+

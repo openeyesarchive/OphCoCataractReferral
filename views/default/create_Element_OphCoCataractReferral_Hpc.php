@@ -1,4 +1,5 @@
-<?php /**
+<?php
+/**
  * OpenEyes
  *
  * (C) Moorfields Eye Hospital NHS Foundation Trust, 2008-2011
@@ -15,19 +16,9 @@
  * @copyright Copyright (c) 2011-2012, OpenEyes Foundation
  * @license http://www.gnu.org/licenses/gpl-3.0.html The GNU General Public License V3.0
  */
- ?>
-<div class="element <?php echo $element->elementType->class_name?>"
-	data-element-type-id="<?php echo $element->elementType->id ?>"
-	data-element-type-class="<?php echo $element->elementType->class_name ?>"
-	data-element-type-name="<?php echo $element->elementType->name ?>"
-	data-element-display-order="<?php echo $element->elementType->display_order ?>">
-	<h4 class="elementTypeName"><?php  echo $element->elementType->name; ?></h4>
-	<?php echo $form->dropDownListNoPost('history', CHtml::listData(EtOphcocataractreferralHpcHistory::model()->findAll(),'id','name'),'',array('empty'=>'- History -','class'=>'populate_textarea')); ?>
-	<?php echo $form->textArea($element, 'history', array('rows' => 6, 'cols' => 80)); ?>
-	<?php echo $form->dropDownListNoPost('impact', CHtml::listData(EtOphcocataractreferralHpcImpact::model()->findAll(),'id','name'),'',array('empty'=>'- Impact -','class'=>'populate_textarea')); ?>
-	<?php echo $form->textArea($element, 'impact', array('rows' => 6, 'cols' => 80)); ?>
-	<?php echo $form->radioButtons($element, 'refraction_id', 'et_ophcocataractreferral_hpc_refraction')?>
-	<?php echo $form->radioButtons($element, 'eye_id', 'eye')?>
-	<?php echo $form->radioButtons($element, 'onset_id', 'et_ophcocataractreferral_hpc_onset')?>
-	<?php echo $form->radioButtons($element, 'first_second_eye_id', 'et_ophcocataractreferral_hpc_first_second_eye')?>
-</div>
+?>
+<?php $this->renderPartial(
+	'form_' . get_class($element),
+	array('element' => $element, 'data' => $data, 'form' => $form),
+	false, false
+)?>

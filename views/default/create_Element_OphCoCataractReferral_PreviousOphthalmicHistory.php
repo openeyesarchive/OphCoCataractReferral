@@ -1,4 +1,5 @@
-<?php /**
+<?php
+/**
  * OpenEyes
  *
  * (C) Moorfields Eye Hospital NHS Foundation Trust, 2008-2011
@@ -15,24 +16,9 @@
  * @copyright Copyright (c) 2011-2012, OpenEyes Foundation
  * @license http://www.gnu.org/licenses/gpl-3.0.html The GNU General Public License V3.0
  */
- ?>
-<div class="element <?php echo $element->elementType->class_name?>"
-	data-element-type-id="<?php echo $element->elementType->id ?>"
-	data-element-type-class="<?php echo $element->elementType->class_name ?>"
-	data-element-type-name="<?php echo $element->elementType->name ?>"
-	data-element-display-order="<?php echo $element->elementType->display_order ?>">
-	<h4 class="elementTypeName"><?php  echo $element->elementType->name; ?></h4>
-	<div class="splitElement clearfix" style="background-color: #DAE6F1;">
-	<div class="left" style="width: 50%">
-<?php foreach (array('right_corneal_graft','right_glaucoma','right_dry_eye','right_scleritis','right_squint_surgery','right_trabeculectomy','right_traumatic_cataract','right_uveitis','right_vitrectomy') as $field) {?>
-			<input type="hidden" name="<?php echo get_class($element)?>[<?php echo $field?>]" value="0" />
-		<?php }?>
-		<?php echo $form->checkBoxArray($element, '', array('right_corneal_graft','right_glaucoma','right_dry_eye','right_scleritis','right_squint_surgery','right_trabeculectomy','right_traumatic_cataract','right_uveitis','right_vitrectomy'), array('header'=>'Right eye'))?>
-	</div>
-	<div class="right" style="width: 50%">
-		<?php foreach (array('left_corneal_graft','left_glaucoma','left_dry_eye','left_scleritis','left_squint_surgery','left_trabeculectomy','left_traumatic_cataract','left_uveitis','left_vitrectomy') as $field) {?>
-			<input type="hidden" name="<?php echo get_class($element)?>[<?php echo $field?>]" value="0" />
-		<?php }?>
-		<?php echo $form->checkBoxArray($element, '', array('left_corneal_graft','left_glaucoma','left_dry_eye','left_scleritis','left_squint_surgery','left_trabeculectomy','left_traumatic_cataract','left_uveitis','left_vitrectomy'), array('header'=>'Left eye', 'nolabel' => true))?>
-	</div>
-</div>
+?>
+<?php $this->renderPartial(
+	'form_' . get_class($element),
+	array('element' => $element, 'data' => $data, 'form' => $form),
+	false, false
+)?>

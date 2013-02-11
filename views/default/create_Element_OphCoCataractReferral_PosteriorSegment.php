@@ -1,4 +1,5 @@
-<?php /**
+<?php
+/**
  * OpenEyes
  *
  * (C) Moorfields Eye Hospital NHS Foundation Trust, 2008-2011
@@ -15,15 +16,9 @@
  * @copyright Copyright (c) 2011-2012, OpenEyes Foundation
  * @license http://www.gnu.org/licenses/gpl-3.0.html The GNU General Public License V3.0
  */
- ?>
-<div class="element <?php echo $element->elementType->class_name?>"
-	data-element-type-id="<?php echo $element->elementType->id ?>"
-	data-element-type-class="<?php echo $element->elementType->class_name ?>"
-	data-element-type-name="<?php echo $element->elementType->name ?>"
-	data-element-display-order="<?php echo $element->elementType->display_order ?>">
-	<h4 class="elementTypeName"><?php  echo $element->elementType->name; ?></h4>
-	<?php echo $form->dropDownListNoPost('right_eye', CHtml::listData(EtOphcocataractreferralPosteriorsegmentText::model()->findAll(),'id','name'),'',array('empty'=>'- Right eye -','class'=>'populate_textarea')); ?>
-	<?php echo $form->textArea($element, 'right_eye', array('rows' => 6, 'cols' => 80)); ?>
-	<?php echo $form->dropDownListNoPost('left_eye', CHtml::listData(EtOphcocataractreferralPosteriorsegmentText::model()->findAll(),'id','name'),'',array('empty'=>'- Left eye -','class'=>'populate_textarea')); ?>
-	<?php echo $form->textArea($element, 'left_eye', array('rows' => 6, 'cols' => 80)); ?>
-</div>
+?>
+<?php $this->renderPartial(
+	'form_' . get_class($element),
+	array('element' => $element, 'data' => $data, 'form' => $form),
+	false, false
+)?>

@@ -1,4 +1,5 @@
-<?php /**
+<?php
+/**
  * OpenEyes
  *
  * (C) Moorfields Eye Hospital NHS Foundation Trust, 2008-2011
@@ -15,36 +16,9 @@
  * @copyright Copyright (c) 2011-2012, OpenEyes Foundation
  * @license http://www.gnu.org/licenses/gpl-3.0.html The GNU General Public License V3.0
  */
- ?>
-<div class="element <?php echo $element->elementType->class_name?>"
-	data-element-type-id="<?php echo $element->elementType->id ?>"
-	data-element-type-class="<?php echo $element->elementType->class_name ?>"
-	data-element-type-name="<?php echo $element->elementType->name ?>"
-	data-element-display-order="<?php echo $element->elementType->display_order ?>">
-	<h4 class="elementTypeName"><?php  echo $element->elementType->name; ?></h4>
-	<div class="cols2 clearfix">
-		<div class="left eventDetail">
-			<div class="data">
-				<?php if($element->getSetting('show_instruments')) {
-					echo CHtml::activeDropDownList($element, 'right_instrument_id', $element->getInstrumentValues(), array('class' => 'iopInstrument'));
-				} else {
-					echo CHtml::activeHiddenField($element, 'right_instrument_id');
-				} ?>
-				<?php echo CHtml::activeDropDownList($element, 'right_pressure', $element->getReadingValues(), array('class' => 'iopReading')); ?>
-			</div>
-		</div>
-		<div class="right eventDetail">
-			<div class="data">
-				<?php echo CHtml::activeDropDownList($element, 'left_pressure', $element->getReadingValues(), array('class' => 'iopReading')); ?>
-				<?php if($element->getSetting('show_instruments')) {
-					echo CHtml::activeDropDownList($element, 'left_instrument_id', $element->getInstrumentValues(), array('class' => 'iopInstrument'));
-				} else {
-					echo CHtml::activeHiddenField($element, 'left_instrument_id');
-				} ?>
-			</div>
-		</div>
-	</div>
-</div>
-<script type="text/javascript">
-var <?php echo get_class($element)?>_link_instrument_selects = <?php echo $element->getSetting('link_selects') ? 'true' : 'false'?>;
-</script>
+?>
+<?php $this->renderPartial(
+	'form_' . get_class($element),
+	array('element' => $element, 'data' => $data, 'form' => $form),
+	false, false
+)?>

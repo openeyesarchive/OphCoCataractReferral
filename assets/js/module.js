@@ -116,6 +116,61 @@ $(document).ready(function() {
 			}
 		}
 	});
+
+	$(this).delegate('#event_content .Element_OphCoCataractReferral_VisualAcuity .removeReading', 'click', function(e) {
+		var block = $(this).closest('.data');
+		$(this).closest('tr').remove();
+		if ($('tbody', block).children('tr').length == 0) {
+			$('.noReadings', block).show();
+			$('table', block).hide();
+		}
+		e.preventDefault();
+	});
+
+	$(this).delegate('#event_content .Element_OphCoCataractReferral_VisualAcuity .addReading', 'click', function(e) {
+		var side = $(this).closest('.side').attr('data-side');
+		OphCoCataractReferral_VisualAcuity_addReading(side);
+		e.preventDefault();
+	});
+
+	$(this).delegate('#event_content .side .activeForm a.removeSide', 'click', function(e) {
+	 
+		// Update side field to indicate other side
+		var side = $(this).closest('.side');
+	 
+		var remove_physical_side = 'left';
+		var show_physical_side = 'right';
+	 
+		var eye_side = 1;
+		if(side.attr('data-side') == 'left') {
+			eye_side = 2; // Right
+			remove_physical_side = 'right';
+			show_physical_side = 'left';
+		}
+	 
+		$(this).closest('.element').find('input.sideField').each(function() {
+			$(this).val(eye_side);
+		});
+	 
+		// If other side is already inactive, then activate it (can't have both sides inactive)
+		$(this).closest('.element').find('.side.'+show_physical_side).removeClass('inactive');
+	 
+		// Make this side inactive
+		$(this).closest('.element').find('.side.'+remove_physical_side).addClass('inactive');
+
+		e.preventDefault();
+	});
+
+	$(this).delegate('#event_content .side .inactiveForm a', 'click', function(e) {
+		var element = $(this).closest('.element');
+		element.find('input.sideField').each(function() {
+			$(this).val(3); // Both eyes
+		});
+
+		element.find('.side').removeClass('inactive');
+
+		e.preventDefault();
+	});
 });
 
 function updateSegmentedField(field) {
@@ -180,4 +235,50 @@ function eDparameterListener(_drawing) {
 	if (typeof window['update' + element_type] === 'function') {
 		window['update' + element_type](_drawing, doodle);
 	}
+}
+
+function OphCoCataractReferral_VisualAcuity_init() {
+}
+
+function OphCoCataractReferral_VisualAcuity_getNextKey() {
+	var keys = $('#event_content .Element_OphCoCataractReferral_VisualAcuity .visualAcuityReading').map(function(index, el) {
+		return parseInt($(el).attr('data-key'));
+	}).get();
+	if(keys.length) {
+		return Math.max.apply(null, keys) + 1;
+	} else {
+		return 0;
+	}
+}
+
+function OphCoCataractReferral_VisualAcuity_addReading(side) {
+	var template = $('#visualacuity_reading_template').html();
+	var data = {
+		"key" : OphCoCataractReferral_VisualAcuity_getNextKey(),
+		"side" : (side == 'right' ? 0 : 1),
+	};
+	var form = Mustache.render(template, data);
+	$('#event_content .Element_OphCoCataractReferral_VisualAcuity .[data-side="' + side + '"] .noReadings').hide();
+	var table = $('#event_content .Element_OphCoCataractReferral_VisualAcuity .[data-side="' + side + '"] table');
+	table.show();
+	var nextMethodId = OphCoCataractReferral_VisualAcuity_getNextMethodId(side);
+	$('tbody', table).append(form);
+	$('.method_id', table).last().val(nextMethodId);
+}
+
+/**
+ * Which method ID to preselect on newly added readings.
+ * Returns the next unused ID.
+ * @param side
+ * @returns integer
+ */
+function OphCoCataractReferral_VisualAcuity_getNextMethodId(side) {
+	var method_ids = OphCoCataractReferral_VisualAcuity_method_ids;
+	$('#event_content .Element_OphCoCataractReferral_VisualAcuity .[data-side="' + side + '"] .method_id').each(function() {
+		var method_id = $(this).val();
+		method_ids = $.grep(method_ids, function(value) {
+			return value != method_id;
+		});
+	});
+	return method_ids.shift();
 }

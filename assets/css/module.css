@@ -29,3 +29,21 @@ div.view_Element_OphCoCataractReferral_CurrentRefraction_iop_left_instrument { f
 #div_Element_OphCoCataractReferral_Hpc_history .label { width: 161px !important; }
 #div_Element_OphCoCataractReferral_Hpc_impact .label { width: 161px !important; }
 #history_impact_fields { background-color: #dae6f1; }
+
+#event_content .cols2 { padding-bottom: 0 !important; }
+#event_content .cols2 .inactive .activeForm,
+#event_content .cols2 .inactiveForm { display: none; }
+#event_content .cols2 .activeForm,
+#event_content .cols2 .inactive .inactiveForm  { display: block; }
+#event_content .cols2 .inactiveForm { margin: 10px 10px 20px; text-align: center; }
+#event_content .cols2 .inactiveForm a { padding-right: 23px; background: url(../../../img/_elements/icons/extra-element_view.png) center right no-repeat; }
+#event_content .cols2 .activeForm a.removeSide { display: block; position: absolute; top: 5px; right: 5px; width: 16px; height: 16px;
+  background: url(../../../img/_elements/icons/extra-element_remove.png) -10px -2px no-repeat; text-decoration: none; text-indent: -9999px; }
+#event_content .cols2 .activeForm a.removeSide:hover { border: none; }
+#event_content .metaData { margin-top: 20px; }
+#event_content .Element_OphCoCataractReferral_VisualAcuity th { font-weight: normal; text-align: left; padding: 2px 5px 2px 0; }
+#event_content .Element_OphCoCataractReferral_VisualAcuity td { padding: 2px 10px 2px 0; }
+#event_content .Element_OphCoCataractReferral_VisualAcuity .eventDetail { padding-bottom: 0; }
+#event_content .Element_OphCoCataractReferral_VisualAcuity .data { margin-bottom: 10px; }
+#event_content .Element_OphCoCataractReferral_VisualAcuity table { margin-bottom: 5px; }
+#event_content .Element_OphCoCataractReferral_VisualAcuity .readingActions { font-size: 11px; line-height: 16px;}

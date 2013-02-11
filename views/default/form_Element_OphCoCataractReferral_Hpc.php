@@ -22,10 +22,16 @@
 	data-element-type-name="<?php echo $element->elementType->name ?>"
 	data-element-display-order="<?php echo $element->elementType->display_order ?>">
 	<h4 class="elementTypeName"><?php  echo $element->elementType->name; ?></h4>
-	<?php echo $form->dropDownListNoPost('history', CHtml::listData(EtOphcocataractreferralHpcHistory::model()->findAll(),'id','name'),'',array('empty'=>'- History -','class'=>'populate_textarea')); ?>
-	<?php echo $form->textArea($element, 'history', array('rows' => 6, 'cols' => 80)); ?>
-	<?php echo $form->dropDownListNoPost('impact', CHtml::listData(EtOphcocataractreferralHpcImpact::model()->findAll(),'id','name'),'',array('empty'=>'- Impact -','class'=>'populate_textarea')); ?>
-	<?php echo $form->textArea($element, 'impact', array('rows' => 6, 'cols' => 80)); ?>
+	<div class="cols2 clearfix">
+		<div class="left eventDetail">
+			<?php echo $form->dropDownListNoPost('history', CHtml::listData(EtOphcocataractreferralHpcHistory::model()->findAll(),'id','name'),'',array('empty'=>'- History -','class'=>'populate_textarea', 'nowrapper'=>true))?>
+			<?php echo $form->textArea($element, 'history', array('rows' => 6, 'cols' => 40)); ?>
+		</div>
+		<div class="right eventDetail">
+			<?php echo $form->dropDownListNoPost('impact', CHtml::listData(EtOphcocataractreferralHpcImpact::model()->findAll(),'id','name'),'',array('empty'=>'- Impact -','class'=>'populate_textarea', 'nowrapper'=>true))?>
+			<?php echo $form->textArea($element, 'impact', array('rows' => 6, 'cols' => 40)); ?>
+		</div>
+	</div>
 	<?php echo $form->radioButtons($element, 'refraction_id', 'et_ophcocataractreferral_hpc_refraction')?>
 	<?php echo $form->radioButtons($element, 'eye_id', 'eye')?>
 	<?php echo $form->radioButtons($element, 'onset_id', 'et_ophcocataractreferral_hpc_onset')?>

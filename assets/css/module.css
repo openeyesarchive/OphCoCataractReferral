@@ -25,3 +25,6 @@ div.view_Element_OphCoCataractReferral_CurrentRefraction_iop_left_instrument { f
 #event_content .Element_OphCoCataractReferral_IntraocularPressure .cols2 > .right { border-width: 4px 0 0 0; border-color: #000; border-style: solid; width: 493px; }
 #event_content .Element_OphCoCataractReferral_IntraocularPressure .cols2 > .left { border-right-width: 2px; text-align: right; }
 #event_content .Element_OphCoCataractReferral_IntraocularPressure .cols2 > .right { border-left-width: 2px; }
+
+#div_Element_OphCoCataractReferral_Hpc_history .label { width: 161px !important; }
+#div_Element_OphCoCataractReferral_Hpc_impact .label { width: 161px !important; }

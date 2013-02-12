@@ -22,7 +22,7 @@
 	data-element-type-name="<?php echo $element->elementType->name ?>"
 	data-element-display-order="<?php echo $element->elementType->display_order ?>">
 	<h4 class="elementTypeName"><?php  echo $element->elementType->name; ?></h4>
-	<div class="cols2 colsX clearfix" id="history_impact_fields">
+	<div class="cols2 colsX clearfix" id="left_right_textareas">
 		<div class="left eventDetail">
 			<?php echo $form->dropDownListNoPost('history', CHtml::listData(EtOphcocataractreferralHpcHistory::model()->findAll(),'id','name'),'',array('empty'=>'- History -','class'=>'populate_textarea', 'nowrapper'=>true))?>
 			<?php echo $form->textArea($element, 'history', array('rows' => 6, 'cols' => 40)); ?>

@@ -28,7 +28,9 @@ div.view_Element_OphCoCataractReferral_CurrentRefraction_iop_left_instrument { f
 
 #div_Element_OphCoCataractReferral_Hpc_history .label { width: 161px !important; }
 #div_Element_OphCoCataractReferral_Hpc_impact .label { width: 161px !important; }
-#history_impact_fields { background-color: #dae6f1; }
+#div_Element_OphCoCataractReferral_PosteriorSegment_right_eye .label { width: 161px !important; }
+#div_Element_OphCoCataractReferral_PosteriorSegment_left_eye .label { width: 161px !important; }
+#left_right_textareas { background-color: #dae6f1; }
 
 #event_content .cols2 { padding-bottom: 0 !important; }
 #event_content .cols2 .inactive .activeForm,

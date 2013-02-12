@@ -22,8 +22,14 @@
 	data-element-type-name="<?php echo $element->elementType->name ?>"
 	data-element-display-order="<?php echo $element->elementType->display_order ?>">
 	<h4 class="elementTypeName"><?php  echo $element->elementType->name; ?></h4>
-	<?php echo $form->dropDownListNoPost('right_eye', CHtml::listData(EtOphcocataractreferralPosteriorsegmentText::model()->findAll(),'id','name'),'',array('empty'=>'- Right eye -','class'=>'populate_textarea')); ?>
-	<?php echo $form->textArea($element, 'right_eye', array('rows' => 6, 'cols' => 80)); ?>
-	<?php echo $form->dropDownListNoPost('left_eye', CHtml::listData(EtOphcocataractreferralPosteriorsegmentText::model()->findAll(),'id','name'),'',array('empty'=>'- Left eye -','class'=>'populate_textarea')); ?>
-	<?php echo $form->textArea($element, 'left_eye', array('rows' => 6, 'cols' => 80)); ?>
+	<div class="cols2 colsX clearfix" id="left_right_textareas">
+		<div class="left eventDetail">
+			<?php echo $form->dropDownListNoPost('right_eye', CHtml::listData(EtOphcocataractreferralPosteriorsegmentText::model()->findAll(),'id','name'),'',array('empty'=>'- Right eye -','class'=>'populate_textarea','nowrapper'=>true)); ?>
+			<?php echo $form->textArea($element, 'right_eye', array('rows' => 6, 'cols' => 40)); ?>
+		</div>
+		<div class="right eventDetail">
+			<?php echo $form->dropDownListNoPost('left_eye', CHtml::listData(EtOphcocataractreferralPosteriorsegmentText::model()->findAll(),'id','name'),'',array('empty'=>'- Left eye -','class'=>'populate_textarea','nowrapper'=>true)); ?>
+			<?php echo $form->textArea($element, 'left_eye', array('rows' => 6, 'cols' => 40)); ?>
+		</div>
+	</div>
 </div>

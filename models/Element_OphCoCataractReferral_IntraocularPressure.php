@@ -119,8 +119,8 @@ class Element_OphCoCataractReferral_IntraocularPressure extends BaseEventTypeEle
 		$criteria->compare('right_pressure', $this->right_pressure);
 		
 		return new CActiveDataProvider(get_class($this), array(
-				'criteria' => $criteria,
-			));
+			'criteria' => $criteria,
+		));
 	}
 
 	public function getInstrumentValues() {
@@ -128,8 +128,9 @@ class Element_OphCoCataractReferral_IntraocularPressure extends BaseEventTypeEle
 	}
 
 	public function getReadingValues() {
-		$range = range(1, 80);
-		return array(0 => 'NR') + array_combine($range, $range);
+		$range1 = range(1, 16);
+		$range2 = range(17, 80);
+		return array_combine($range1, $range1) + array(0 => 'NR') + array_combine($range2, $range2);
 	}
 
 	/**
@@ -140,24 +141,13 @@ class Element_OphCoCataractReferral_IntraocularPressure extends BaseEventTypeEle
 		$default_instrument = $this->getSetting('default_instrument');
 
 		$this->left_instrument_id = is_object($default_instrument) ? $default_instrument->id : $default_instrument;
-		$this->left_pressure = null;
+		$this->left_pressure = 0;
 		$this->right_instrument_id = is_object($default_instrument) ? $default_instrument->id : $default_instrument;
-		$this->right_pressure = null;
+		$this->right_pressure = 0;
 	}
 	
 	protected function beforeSave()
 	{
-		//$this->left_pressure = 1;
-		//$this->right_pressure = 1;
-
-		if ($this->left_pressure == 0) {
-			$this->left_pressure = null;
-		}
-
-		if ($this->right_pressure == 0) {
-			$this->right_pressure = null;
-		}
-
 		return parent::beforeSave();
 	}
 

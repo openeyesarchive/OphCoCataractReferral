@@ -24,15 +24,15 @@
 	<h4 class="elementTypeName"><?php  echo $element->elementType->name; ?></h4>
 	<div class="splitElement clearfix" style="background-color: #DAE6F1;">
 	<div class="left" style="width: 50%">
-		<?php foreach (array('right_corneal_graft','right_glaucoma','right_dry_eye','right_scleritis','right_squint_surgery','right_trabeculectomy','right_traumatic_cataract','right_uveitis','right_vitrectomy') as $field) {?>
+		<?php foreach (array('right_amblyopia','right_corneal_graft','right_glaucoma','right_dry_eye','right_scleritis','right_squint_surgery','right_trabeculectomy','right_traumatic_cataract','right_uveitis','right_vitrectomy') as $field) {?>
 			<input type="hidden" name="<?php echo get_class($element)?>[<?php echo $field?>]" value="0" />
 		<?php }?>
-		<?php echo $form->checkBoxArray($element, '', array('right_corneal_graft','right_glaucoma','right_dry_eye','right_scleritis','right_squint_surgery','right_trabeculectomy','right_traumatic_cataract','right_uveitis','right_vitrectomy'), array('header'=>'Right eye'))?>
+		<?php echo $form->checkBoxArray($element, '', array('right_amblyopia','right_corneal_graft','right_glaucoma','right_dry_eye','right_scleritis','right_squint_surgery','right_trabeculectomy','right_traumatic_cataract','right_uveitis','right_vitrectomy'), array('header'=>'Right eye'))?>
 	</div>
 	<div class="right" style="width: 50%">
-		<?php foreach (array('left_corneal_graft','left_glaucoma','left_dry_eye','left_scleritis','left_squint_surgery','left_trabeculectomy','left_traumatic_cataract','left_uveitis','left_vitrectomy') as $field) {?>
+		<?php foreach (array('left_amblyopia','left_corneal_graft','left_glaucoma','left_dry_eye','left_scleritis','left_squint_surgery','left_trabeculectomy','left_traumatic_cataract','left_uveitis','left_vitrectomy') as $field) {?>
 			<input type="hidden" name="<?php echo get_class($element)?>[<?php echo $field?>]" value="0" />
 		<?php }?>
-		<?php echo $form->checkBoxArray($element, '', array('left_corneal_graft','left_glaucoma','left_dry_eye','left_scleritis','left_squint_surgery','left_trabeculectomy','left_traumatic_cataract','left_uveitis','left_vitrectomy'), array('header'=>'Left eye', 'nolabel' => true))?>
+		<?php echo $form->checkBoxArray($element, '', array('left_amblyopia','left_corneal_graft','left_glaucoma','left_dry_eye','left_scleritis','left_squint_surgery','left_trabeculectomy','left_traumatic_cataract','left_uveitis','left_vitrectomy'), array('header'=>'Left eye', 'nolabel' => true))?>
 	</div>
 </div>

@@ -171,6 +171,24 @@ $(document).ready(function() {
 
 		e.preventDefault();
 	});
+
+	$('input[type="checkbox"][id="Element_OphCoCataractReferral_Confirmation_risks_discussed"]').hover(function(e) {
+		var offsetY = 28;
+		var offsetX = 10;
+		var tipWidth = 0;
+
+		$('<p class="alertIconHelp"></p>').text($(this).data('hover')).appendTo('body');
+		tipWidth = $('.alertIconHelp').outerWidth();
+		$('.alertIconHelp').css('top', (e.pageY - offsetY) + 'px').css('left', (e.pageX - (tipWidth + offsetX)) + 'px').fadeIn('fast');
+	},function(e) {
+		$('.alertIconHelp').remove();
+	}).mousemove(function(e) {
+		var offsetY = 28;
+		var offsetX = 10;
+		var tipWidth = 0;
+
+		$('.alertIconHelp').css('top', (e.pageY - offsetY) + 'px').css('left', (e.pageX - (tipWidth + offsetX)) + 'px');
+	});
 });
 
 function updateSegmentedField(field) {

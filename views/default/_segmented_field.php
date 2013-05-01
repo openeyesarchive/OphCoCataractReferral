@@ -19,6 +19,7 @@ $fraction = abs($element->$field) - $integer;
 $signs = array('1' => '+', '-1' => '-');
 $signs2 = array('1' => array('data-value'=>'+'), '-1' => array('data-value'=>'-'));
 $sign = ($element->$field >= 0) ? 1 : -1;
+var_dump($sign);
 ?>
 <?php echo CHtml::dropDownList($field_prefix.$field.'_sign', $sign, $signs, array('options'=>$signs2))?>
 <?php echo CHtml::dropDownList($field_prefix.$field.'_integer', $integer, $integers)?>

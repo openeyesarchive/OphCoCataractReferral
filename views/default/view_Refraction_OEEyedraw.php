@@ -15,6 +15,24 @@
  * @copyright Copyright (c) 2011-2012, OpenEyes Foundation
  * @license http://www.gnu.org/licenses/gpl-3.0.html The GNU General Public License V3.0
  */
+
+			$this->widget('application.modules.eyedraw.OEEyeDrawWidget', array(
+					'doodleToolBarArray' => array(),
+					'toolbar' => false,
+					'onReadyCommandArray' => array(
+						array('addDoodle', array('GraphAxes')),
+						array('addDoodle', array('Slider2D')),
+						array('deselectDoodles', array()),
+					),
+					'idSuffix' => $side.'_g'.$element->elementType->id,
+					'side' => strtoupper($side[0]),
+					'mode' => 'view',
+					'width' => 150,
+					'height' => 150,
+					'model' => $element,
+					'attribute' => $side.'_graph_axis_eyedraw',
+			));
+
 			$this->widget('application.modules.eyedraw.OEEyeDrawWidget', array(
 					'doodleToolBarArray' => array(),
 					'toolbar' => false,
@@ -25,9 +43,9 @@
 					),
 					'idSuffix' => $side.'_'.$element->elementType->id,
 					'side' => strtoupper($side[0]),
-					'mode' => 'edit',
-					'width' => 160,
-					'height' => 160,
+					'mode' => 'view',
+					'width' => 150,
+					'height' => 150,
 					'model' => $element,
 					'attribute' => $side.'_axis_eyedraw',
 			))?>

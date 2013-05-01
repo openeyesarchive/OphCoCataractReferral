@@ -59,7 +59,7 @@ class OphCoCataractReferral_Refraction extends BaseEventTypeElement
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('event_id, right_sphere, right_cylinder, right_axis, right_axis_eyedraw, right_type_id, right_type_other, left_sphere, left_cylinder, left_axis, left_axis_eyedraw, left_type_id, left_type_other', 'safe'),
+			array('event_id, right_sphere, right_cylinder, right_axis, right_axis_eyedraw, right_type_id, right_type_other, left_sphere, left_cylinder, left_axis, left_axis_eyedraw, left_type_id, left_type_other, right_graph_axis_eyedraw, left_graph_axis_eyedraw', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, event_id, right_cylinder, right_axis, right_axis_eyedraw, right_type_id, right_type_other, left_sphere, left_cylinder, left_axis, left_axis_eyedraw, left_type_id, left_type_other', 'safe', 'on' => 'search'),
@@ -162,12 +162,19 @@ class OphCoCataractReferral_Refraction extends BaseEventTypeElement
 	
 	protected function beforeSave()
 	{
+		foreach (array('right','left') as $side) {
+			foreach (array('sphere','cylinder') as $field) {
+				$this->{$side.'_'.$field} = $_POST[get_class($this).'_'.$side.'_'.$field.'_integer'] + $_POST[get_class($this).'_'.$side.'_'.$field.'_fraction'];
+				if ($_POST[get_class($this).'_'.$side.'_'.$field.'_sign'] == -1) {
+					$this->{$side.'_'.$field} = 0 - $this->{$side.'_'.$field};
+				}
+			}
+		}
 		return parent::beforeSave();
 	}
 
 	protected function afterSave()
 	{
-		
 		return parent::afterSave();
 	}
 

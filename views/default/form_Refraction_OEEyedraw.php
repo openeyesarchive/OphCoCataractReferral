@@ -15,6 +15,7 @@
  * @copyright Copyright (c) 2011-2012, OpenEyes Foundation
  * @license http://www.gnu.org/licenses/gpl-3.0.html The GNU General Public License V3.0
  */
+
 			$this->widget('application.modules.eyedraw.OEEyeDrawWidget', array(
 					'doodleToolBarArray' => array(),
 					'toolbar' => false,

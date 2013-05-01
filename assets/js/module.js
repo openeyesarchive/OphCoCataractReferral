@@ -165,6 +165,11 @@ $(document).ready(function() {
 
 		$('.alertIconHelp').css('top', (e.pageY - offsetY) + 'px').css('left', (e.pageX - (tipWidth + offsetX)) + 'px');
 	});
+
+	handleButton($('#et_print'),function(e) {
+		e.preventDefault();
+		printIFrameUrl(OE_print_url,null);
+	});
 });
 
 function updateSegmentedField(field) {

@@ -25,7 +25,7 @@
 	<div class="eventDetail">
 		<div class="label"></div>
 		<div class="data">
-			<?php echo $form->checkBox($element, 'risks_discussed', array('nowrapper' => true), array('data-hover' => '95% of cataract patients have improved vision after surgery'))?>
+			<?php echo $form->checkBox($element, 'risks_discussed', array('nowrapper' => true), array('data-hover' => '95% of cataract patients have improved vision after surgery if no other eye problems present, 1 in 1000 risk of blindness'))?>
 			<?php echo $element->getAttributeLabel('risks_discussed')?>
 		</div>
 	</div>

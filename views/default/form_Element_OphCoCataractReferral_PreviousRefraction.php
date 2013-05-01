@@ -27,7 +27,7 @@
 			<div class="label"></div>
 			<input type="hidden" name="Element_OphCoCataractReferral_PreviousRefraction[previous_refraction_different]" value="0" />
 			<?php echo $form->checkBox($element, 'previous_refraction_different', array('nowrapper'=>true))?>
-			Previous refraction different<br/>
+			Previous refraction (if different)<br/>
 		</div>
 		<?php echo $form->datePicker($element, 'previous_refraction_date', array('maxDate' => 'today'), array('hidden' => $element->hidden))?>
 

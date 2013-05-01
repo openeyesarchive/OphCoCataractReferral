@@ -25,28 +25,10 @@
 	<div class="cols2 clearfix">
 		<hr />
 		<div class="left eventDetail">
-			<?php
-			$this->widget('application.modules.eyedraw.OEEyeDrawWidgetRefraction', array(
-					'identifier' => 'right_'.$element->elementType->id,
-					'side' => 'R',
-					'mode' => 'edit',
-					'model' => $element,
-					'attribute' => 'right_axis_eyedraw',
-					'refraction_types' => EtOphcocataractreferralRefractionType::model()->getOptions(),
-			));
-			?>
+			<?php echo $this->renderPartial('form_Refraction_OEEyedraw',array('side'=>'right','element'=>$element))?>
 		</div>
 		<div class="right eventDetail">
-			<?php
-			$this->widget('application.modules.eyedraw.OEEyeDrawWidgetRefraction', array(
-					'identifier' => 'left_'.$element->elementType->id,
-					'side' => 'L',
-					'mode' => 'edit',
-					'model' => $element,
-					'attribute' => 'left_axis_eyedraw',
-					'refraction_types' => EtOphcocataractreferralRefractionType::model()->getOptions(),
-			));
-			?>
+			<?php echo $this->renderPartial('form_Refraction_OEEyedraw',array('side'=>'left','element'=>$element))?>
 		</div>
 	</div>
 </div>

@@ -32,28 +32,10 @@
 		<?php echo $form->datePicker($element, 'previous_refraction_date', array('maxDate' => 'today'), array('hidden' => $element->hidden))?>
 
 		<div class="left eventDetail PreviousRefraction"<?php if ($element->hidden) {?> style="display: none;"<?php }?>>
-			<?php
-			$this->widget('application.modules.eyedraw.OEEyeDrawWidgetRefraction', array(
-					'identifier' => 'right_'.$element->elementType->id,
-					'side' => 'R',
-					'mode' => 'edit',
-					'model' => $element,
-					'attribute' => 'right_axis_eyedraw',
-					'refraction_types' => EtOphcocataractreferralRefractionType::model()->getOptions(),
-			))
-			?>
+			<?php echo $this->renderPartial('form_Refraction_OEEyedraw',array('side'=>'right','element'=>$element))?>
 		</div>
 		<div class="right eventDetail PreviousRefraction"<?php if ($element->hidden) {?> style="display: none;"<?php }?>>
-			<?php
-			$this->widget('application.modules.eyedraw.OEEyeDrawWidgetRefraction', array(
-					'identifier' => 'left_'.$element->elementType->id,
-					'side' => 'L',
-					'mode' => 'edit',
-					'model' => $element,
-					'attribute' => 'left_axis_eyedraw',
-					'refraction_types' => EtOphcocataractreferralRefractionType::model()->getOptions(),
-			))
-			?>
+			<?php echo $this->renderPartial('form_Refraction_OEEyedraw',array('side'=>'left','element'=>$element))?>
 		</div>
 	</div>
 </div>

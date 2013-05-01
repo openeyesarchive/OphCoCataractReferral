@@ -41,6 +41,5 @@ class Element_OphCoCataractReferral_CurrentRefraction extends OphCoCataractRefer
 	{
 		return 'et_ophcocataractreferral_currentrefraction';
 	}
-
 }
 ?>

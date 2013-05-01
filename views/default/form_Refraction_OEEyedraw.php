@@ -19,6 +19,33 @@
 					'doodleToolBarArray' => array(),
 					'toolbar' => false,
 					'onReadyCommandArray' => array(
+						array('addDoodle', array('GraphAxes')),
+						array('addDoodle', array('Slider2D')),
+						array('deselectDoodles', array()),
+					),
+					'idSuffix' => $side.'_g'.$element->elementType->id,
+					'bindingArray' => array(
+						'Slider2D' => array(
+							'sphereSign' => array('id' => get_class($element).'_'.$side.'_sphere_sign', 'attribute' => 'data-value'),
+							'sphereInteger' => array('id' => get_class($element).'_'.$side.'_sphere_integer'),
+							'sphereFractional' => array('id' => get_class($element).'_'.$side.'_sphere_fraction', 'attribute' => 'data-value'),
+							'cylinderSign' => array('id' => get_class($element).'_'.$side.'_cylinder_sign', 'attribute' => 'data-value'),
+							'cylinderInteger' => array('id' => get_class($element).'_'.$side.'_cylinder_integer'),
+							'cylinderFractional' => array('id' => get_class($element).'_'.$side.'_cylinder_fraction', 'attribute' => 'data-value'),
+						),
+					),
+					'side' => strtoupper($side[0]),
+					'mode' => 'edit',
+					'width' => 150,
+					'height' => 150,
+					'model' => $element,
+					'attribute' => $side.'_graph_axis_eyedraw',
+			));
+
+			$this->widget('application.modules.eyedraw.OEEyeDrawWidget', array(
+					'doodleToolBarArray' => array(),
+					'toolbar' => false,
+					'onReadyCommandArray' => array(
 						array('addDoodle', array('TrialFrame')),
 						array('addDoodle', array('TrialLens')),
 						array('deselectDoodles', array()),
@@ -31,8 +58,8 @@
 					),
 					'side' => strtoupper($side[0]),
 					'mode' => 'edit',
-					'width' => 160,
-					'height' => 160,
+					'width' => 150,
+					'height' => 150,
 					'model' => $element,
 					'attribute' => $side.'_axis_eyedraw',
 			))?>

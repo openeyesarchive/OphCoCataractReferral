@@ -1,8 +1,8 @@
 
-<div class="element <?php echo $element->elementType->class_name ?>">
-	<h4 class="elementTypeName">
+<div class="element <?php echo $element->elementType->class_name ?>" style="margin-top: 1em;">
+	<strong>
 		<?php  echo $element->elementType->name ?>
-	</h4>
+	</strong>
 	<div class="cols2 clearfix">
 		<div class="left">
 			<div>

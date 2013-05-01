@@ -1,7 +1,7 @@
 
-<h4 class="elementTypeName"><?php  echo $element->elementType->name ?></h4>
+<strong><?php  echo $element->elementType->name ?></strong>
 
-<div class="cols2 clearfix" style="margin-bottom: 2em;">
+<div class="cols2 clearfix">
 	<div class="left">
 		<div style="margin-left: 10px;">
 			<?php echo $element->getOphthalmicHistoryRight()?>

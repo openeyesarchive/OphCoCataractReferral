@@ -1,3 +1,5 @@
+<strong><?php  echo $element->elementType->name ?></strong>
+
 	<div class="cols2 clearfix">
 		<div class="left eventDetail">
 			<?php if($element->hasRight()) { ?>

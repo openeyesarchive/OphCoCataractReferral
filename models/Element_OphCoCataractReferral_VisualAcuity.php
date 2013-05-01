@@ -59,7 +59,7 @@ class Element_OphCoCataractReferral_VisualAcuity extends SplitEventTypeElement
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('event_id, left_comments, right_comments, eye_id', 'safe'),
+			array('event_id, left_comments, right_comments, eye_id, left_check_method_id, right_check_method_id', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, event_id, left_comments, right_comments, eye_id', 'safe', 'on' => 'search'),
@@ -83,6 +83,8 @@ class Element_OphCoCataractReferral_VisualAcuity extends SplitEventTypeElement
 			'readings' => array(self::HAS_MANY, 'OphCoCataractReferral_VisualAcuity_Reading', 'element_id'),
 			'right_readings' => array(self::HAS_MANY, 'OphCoCataractReferral_VisualAcuity_Reading', 'element_id', 'on' => 'right_readings.side = 0'),
 			'left_readings' => array(self::HAS_MANY, 'OphCoCataractReferral_VisualAcuity_Reading', 'element_id', 'on' => 'left_readings.side = 1'),
+			'left_check_method' => array(self::BELONGS_TO, 'OphCoCataractReferral_VisualAcuity_CheckMethod', 'left_check_method_id'),
+			'right_check_method' => array(self::BELONGS_TO, 'OphCoCataractReferral_VisualAcuity_CheckMethod', 'right_check_method_id'),
 		);
 	}
 
@@ -94,6 +96,8 @@ class Element_OphCoCataractReferral_VisualAcuity extends SplitEventTypeElement
 		return array(
 			'id' => 'ID',
 			'event_id' => 'Event',
+			'left_check_method_id' => 'Check method',
+			'right_check_method_id' => 'Check method',
 		);
 	}
 

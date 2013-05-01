@@ -12,6 +12,9 @@
 				(<?php echo $element->right_comments ?>)
 			</div>
 			<?php } ?>
+			<?php if ($element->right_check_method) {?>
+				(<?php echo $element->right_check_method->name?>)
+			<?php }?>
 			<?php } else { ?>
 			<div class="data">Not recorded</div>
 			<?php } ?>
@@ -29,6 +32,9 @@
 				(<?php echo $element->left_comments ?>)
 			</div>
 			<?php } ?>
+			<?php if ($element->left_check_method) {?>
+				(<?php echo $element->left_check_method->name?>)
+			<?php }?>
 			<?php } else { ?>
 			<div class="data">Not recorded</div>
 			<?php } ?>

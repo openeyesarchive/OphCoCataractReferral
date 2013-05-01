@@ -68,6 +68,7 @@
 					<?php echo $form->textArea($element, 'right_comments', array('class' => 'autosize', 'rows' => 1, 'cols' => 62, 'nowrapper'=>true)) ?>
 				</div>
 				<?php } ?>
+				<?php echo $form->dropDownList($element, 'right_check_method_id', CHtml::listData(OphCoCataractReferral_VisualAcuity_CheckMethod::model()->findAll(array('order'=>'display_order')),'id','name'))?>
 			</div>
 			<div class="inactiveForm">
 				<a href="#">Add right side</a>
@@ -108,6 +109,7 @@
 					<?php echo $form->textArea($element, 'left_comments', array('class' => 'autosize', 'rows' => 1, 'cols' => 62, 'nowrapper'=>true)) ?>
 				</div>
 				<?php } ?>
+				<?php echo $form->dropDownList($element, 'left_check_method_id', CHtml::listData(OphCoCataractReferral_VisualAcuity_CheckMethod::model()->findAll(array('order'=>'display_order')),'id','name'))?>
 			</div>
 			<div class="inactiveForm">
 				<a href="#">Add left side</a>

@@ -24,11 +24,6 @@
 						array('deselectDoodles', array()),
 					),
 					'idSuffix' => $side.'_'.$element->elementType->id,
-					'bindingArray' => array(
-						'TrialLens' => array(
-							'axis' => array('id' => get_class($element).'_'.$side.'_axis'),
-						),
-					),
 					'side' => strtoupper($side[0]),
 					'mode' => 'edit',
 					'width' => 160,
@@ -36,44 +31,10 @@
 					'model' => $element,
 					'attribute' => $side.'_axis_eyedraw',
 			))?>
-			<div class="eyedrawFields">
-				<div class="aligned">
-					<div class="label">
-						<?php echo $element->getAttributeLabel($side.'_sphere'); ?>
-						:
-					</div>
-					<div class="data segmented">
-						<?php Yii::app()->getController()->renderPartial('_segmented_field', array('element' => $element, 'field' => $side.'_sphere'), false, false)?>
-					</div>
-				</div>
-				<div class="aligned">
-					<div class="label">
-						<?php echo $element->getAttributeLabel($side.'_cylinder'); ?>
-						:
-					</div>
-					<div class="data segmented">
-						<?php Yii::app()->getController()->renderPartial('_segmented_field', array('element' => $element, 'field' => $side.'_cylinder'), false, false)?>
-					</div>
-				</div>
-				<div class="aligned">
-					<div class="label">
-						<?php echo $element->getAttributeLabel($side.'_axis'); ?>
-						:
-					</div>
+			<div class="eyedrawFields view">
+				<div>
 					<div class="data">
-						<?php echo CHtml::activeTextField($element, $side.'_axis', array('class' => 'axis')) ?>
-					</div>
-				</div>
-				<div class="aligned">
-					<div class="label">
-						<?php echo $element->getAttributeLabel($side.'_type_id'); ?>
-						:
-					</div>
-					<div class="data">
-						<?php echo CHtml::activeDropDownList($element, $side.'_type_id', EtOphcocataractreferralRefractionType::model()->getOptions(), array('class' => 'refractionType'))?>
-						<?php if ($element->hasProperty($side.'_type_other')) {?>
-							<?php echo CHtml::activeTextField($element, $side.'_type_other')?>
-						<?php }?>
+						<?php echo $element->getCombined($side)?>
 					</div>
 				</div>
 			</div>

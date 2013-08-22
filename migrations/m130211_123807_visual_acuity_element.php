@@ -47,11 +47,11 @@ class m130211_123807_visual_acuity_element extends CDbMigration
 				'CONSTRAINT `ophcocataractreferral_visualacuity_unit_l_m_u_id_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 		), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
 
-		$this->insert('ophcocataractreferral_visualacuity_unit',array('name'=>'ETDRS Letters'));
-		$this->insert('ophcocataractreferral_visualacuity_unit',array('name'=>'Snellen Metre'));
-		$this->insert('ophcocataractreferral_visualacuity_unit',array('name'=>'Snellen Foot'));
-		$this->insert('ophcocataractreferral_visualacuity_unit',array('name'=>'logMAR'));
-		$this->insert('ophcocataractreferral_visualacuity_unit',array('name'=>'Decimal'));
+		$this->insert('ophcocataractreferral_visualacuity_unit',array('id'=>1,'name'=>'ETDRS Letters'));
+		$this->insert('ophcocataractreferral_visualacuity_unit',array('id'=>2,'name'=>'Snellen Metre'));
+		$this->insert('ophcocataractreferral_visualacuity_unit',array('id'=>3,'name'=>'Snellen Foot'));
+		$this->insert('ophcocataractreferral_visualacuity_unit',array('id'=>4,'name'=>'logMAR'));
+		$this->insert('ophcocataractreferral_visualacuity_unit',array('id'=>5,'name'=>'Decimal'));
 
 		$this->createTable('ophcocataractreferral_visualacuity_unit_value', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',

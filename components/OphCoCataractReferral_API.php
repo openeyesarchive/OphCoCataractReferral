@@ -30,35 +30,39 @@ class OphCoCataractReferral_API extends BaseAPI
             $criteria->order = 'created_date desc';
         }
         $event= Event::model()->find($criteria);
+        if($event)
         return $event->id;
     }
 
     public function getRefractionElement($episode_id)
     {
-        return (array)Element_OphCoCataractReferral_CurrentRefraction::model()->find('event_id=?',array($this->getEventID($episode_id)))->attributes;
+        if($event_id=$this->getEventID($episode_id))
+        return (array)Element_OphCoCataractReferral_CurrentRefraction::model()->find('event_id=?',array($event_id))->attributes;
     }
 
     public function getHistory($episode_id)
     {
-        if ($hpc = Element_OphCoCataractReferral_Hpc::model()->find('event_id=?',array($this->getEventID($episode_id)))) {
-            $history = array();
-            $hpc->history && $history[] = $hpc->history;
-            $hpc->impact && $history[] = $hpc->impact;
-            $history[] = $hpc->eye->name.' eye'.($hpc->eye_id == 3 ? 's' : '');
-            $history[] = $hpc->onset->name;
-            $history[] = $hpc->first_second_eye->name;
-            return implode(', ',$history);
+        if($event_id=$this->getEventID($episode_id)){
+            if ($hpc = Element_OphCoCataractReferral_Hpc::model()->find('event_id=?',array($event_id))) {
+                $history = array();
+                $hpc->history && $history[] = $hpc->history;
+                $hpc->impact && $history[] = $hpc->impact;
+                $history[] = $hpc->eye->name.' eye'.($hpc->eye_id == 3 ? 's' : '');
+                $history[] = $hpc->onset->name;
+                $history[] = $hpc->first_second_eye->name;
+                return implode(', ',$history);
+            }
         }
     }
 
     public function getVisualAcuityElement($episode_id)
     {
-        $element = Element_OphCoCataractReferral_VisualAcuity::model()->find('event_id=?',array($this->getEventID($episode_id)));
-        $readings = (array)$element->attributes;
-        $readings['left_readings']=$element->getFormReadings('left');
-        $readings['right_readings']=$element->getFormReadings('right');
-
-        return $readings;
-
+        if($event_id=$this->getEventID($episode_id)){
+            $element = Element_OphCoCataractReferral_VisualAcuity::model()->find('event_id=?',array($event_id));
+            $readings = (array)$element->attributes;
+            $readings['left_readings']=$element->getFormReadings('left');
+            $readings['right_readings']=$element->getFormReadings('right');
+            return $readings;
+        }
     }
 }

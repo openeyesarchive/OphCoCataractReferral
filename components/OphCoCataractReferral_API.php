@@ -58,10 +58,11 @@ class OphCoCataractReferral_API extends BaseAPI
     public function getVisualAcuityElement($episode_id)
     {
         if($event_id=$this->getEventID($episode_id)){
-            $element = Element_OphCoCataractReferral_VisualAcuity::model()->find('event_id=?',array($event_id));
-            $readings = (array)$element->attributes;
-            $readings['left_readings']=$element->getFormReadings('left');
-            $readings['right_readings']=$element->getFormReadings('right');
+            if($element = Element_OphCoCataractReferral_VisualAcuity::model()->find('event_id=?',array($event_id))){
+                $readings = (array)$element->attributes;
+                $readings['left_readings']=$element->getFormReadings('left');
+                $readings['right_readings']=$element->getFormReadings('right');
+            }
             return $readings;
         }
     }

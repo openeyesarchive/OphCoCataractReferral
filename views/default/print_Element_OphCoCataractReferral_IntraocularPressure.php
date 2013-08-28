@@ -3,7 +3,7 @@
 
 <table class="subtleWhite normalText">
   <tbody>
-    <tr>
+	<tr>
 			<td width="470px">
 				<?php if ($element->getSetting('show_instruments')) {?>
 					<?php echo $element->right_instrument ? $element->right_instrument->name : 'None'?>

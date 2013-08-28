@@ -3,9 +3,9 @@
 
 <table class="subtleWhite normalText">
   <tbody>
-    <tr>
-      <td width="400px"></td>
-      <td>
+	<tr>
+	  <td width="400px"></td>
+	  <td>
 				<div class="view_Element_OphCoCataractReferral_CurrentRefraction_iop_right_instrument">
 					<?php if ($element->getSetting('show_instruments')) {?>
 						<?php echo $element->right_instrument ? $element->right_instrument->name : 'None'?>

@@ -26,7 +26,7 @@
  * The followings are the available model relations:
  */
 
-class EtOphcocataractreferralPosteriorsegmentText extends BaseActiveRecord
+class EtOphcocataractreferralPosteriorsegmentText extends BaseActiveRecordVersioned
 {
 	/**
 	 * Returns the static model of the specified AR class.

@@ -26,7 +26,7 @@
  * The followings are the available model relations:
  */
 
-class EtOphcocataractreferralHpcFirstSecondEye extends BaseActiveRecord
+class EtOphcocataractreferralHpcFirstSecondEye extends BaseActiveRecordVersioned
 {
 	/**
 	 * Returns the static model of the specified AR class.

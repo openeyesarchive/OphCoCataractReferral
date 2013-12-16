@@ -26,7 +26,7 @@
  * The followings are the available model relations:
  */
 
-class EtOphcocataractreferralIntraocularpressureInstrument extends BaseActiveRecord
+class EtOphcocataractreferralIntraocularpressureInstrument extends BaseActiveRecordVersioned
 {
 	/**
 	 * Returns the static model of the specified AR class.

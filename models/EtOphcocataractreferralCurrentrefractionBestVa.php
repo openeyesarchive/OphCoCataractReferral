@@ -26,7 +26,7 @@
  * The followings are the available model relations:
  */
 
-class EtOphcocataractreferralCurrentrefractionBestVa extends BaseActiveRecord
+class EtOphcocataractreferralCurrentrefractionBestVa extends BaseActiveRecordVersioned
 {
 	/**
 	 * Returns the static model of the specified AR class.

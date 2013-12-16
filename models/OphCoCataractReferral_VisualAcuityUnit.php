@@ -23,7 +23,7 @@
  * @property integer $id
  * @property string $name
  */
-class OphCoCataractReferral_VisualAcuityUnit extends BaseActiveRecord {
+class OphCoCataractReferral_VisualAcuityUnit extends BaseActiveRecordVersioned {
 
 	/**
 	 * Returns the static model of the specified AR class.

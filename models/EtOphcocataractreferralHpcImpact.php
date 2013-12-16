@@ -26,7 +26,7 @@
  * The followings are the available model relations:
  */
 
-class EtOphcocataractreferralHpcImpact extends BaseActiveRecord
+class EtOphcocataractreferralHpcImpact extends BaseActiveRecordVersioned
 {
 	/**
 	 * Returns the static model of the specified AR class.

@@ -27,7 +27,7 @@
  * @property integer $method_id
 
  */
-class OphCoCataractReferral_VisualAcuity_Reading extends BaseActiveRecord {
+class OphCoCataractReferral_VisualAcuity_Reading extends BaseActiveRecordVersioned {
 
 	/**
 	 * Returns the static model of the specified AR class.

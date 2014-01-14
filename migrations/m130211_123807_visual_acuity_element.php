@@ -4,13 +4,13 @@ class m130211_123807_visual_acuity_element extends CDbMigration
 {
 	public function up()
 	{
-		$event_type = EventType::model()->find('class_name=?',array('OphCoCataractReferral'));
+		$event_type = $this->dbConnection->createCommand()->select("*")->from("event_type")->where("class_name = :class_name",array(":class_name" => "OphCoCataractReferral"))->queryRow();
 
-		$this->insert('element_type',array('name'=>'Visual acuity','class_name'=>'Element_OphCoCataractReferral_VisualAcuity','event_type_id'=>$event_type->id,'display_order'=>75,'default'=>1));
+		$this->insert('element_type',array('name'=>'Visual acuity','class_name'=>'Element_OphCoCataractReferral_VisualAcuity','event_type_id'=>$event_type['id'],'display_order'=>75,'default'=>1));
 
-		$element_type = ElementType::model()->find('event_type_id=? and class_name=?',array($event_type->id,'Element_OphCoCataractReferral_VisualAcuity'));
+		$element_type = $this->dbConnection->createCommand()->select("*")->from("element_type")->where("event_type_id = :event_type_id and class_name = :class_name",array(":event_type_id" => $event_type['id'],":class_name" => "Element_OphCoCataractReferral_VisualAcuity"))->queryRow();
 
-		$this->insert('setting_metadata',array('element_type_id'=>$element_type->id,'field_type_id'=>2,'key'=>'unit_id','name'=>'Units','default_value'=>2));
+		$this->insert('setting_metadata',array('element_type_id'=>$element_type['id'],'field_type_id'=>2,'key'=>'unit_id','name'=>'Units','default_value'=>2));
 
 		$this->createTable('et_ophcocataractreferral_visualacuity', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
@@ -146,10 +146,10 @@ class m130211_123807_visual_acuity_element extends CDbMigration
 		$this->dropTable('ophcocataractreferral_visualacuity_unit');
 		$this->dropTable('et_ophcocataractreferral_visualacuity');
 
-		$event_type = EventType::model()->find('class_name=?',array('OphCoCataractReferral'));
-		$element_type = ElementType::model()->find('event_type_id=? and class_name=?',array($event_type->id,'Element_OphCoCataractReferral_VisualAcuity'));
+		$event_type = $this->dbConnection->createCommand()->select("*")->from("event_type")->where("class_name = :class_name",array(":class_name" => "OphCoCataractReferral"))->queryRow();
+		$element_type = $this->dbConnection->createCommand()->select("*")->from("element_type")->where("event_type_id = :event_type_id and class_name = :class_name",array(":event_type_id" => $event_type['id'],":class_name" => "Element_OphCoCataractReferral_VisualAcuity"))->queryRow();
 
-		$this->delete('setting_metadata',"element_type_id = $element_type->id and `key`='unit_id'");
-		$this->delete('element_type',"event_type_id = $event_type->id and class_name = 'Element_OphCoCataractReferral_VisualAcuity'");
+		$this->delete('setting_metadata',"element_type_id = {$element_type['id']} and `key`='unit_id'");
+		$this->delete('element_type',"event_type_id = {$event_type['id']} and class_name = 'Element_OphCoCataractReferral_VisualAcuity'");
 	}
 }

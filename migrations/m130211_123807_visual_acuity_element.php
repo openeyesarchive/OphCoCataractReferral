@@ -15,8 +15,8 @@ class m130211_123807_visual_acuity_element extends CDbMigration
 		$this->createTable('et_ophcocataractreferral_visualacuity', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
 				'event_id' => 'int(10) unsigned NOT NULL',
-				'left_comments' => 'text COLLATE utf8_bin',
-				'right_comments' => 'text COLLATE utf8_bin',
+				'left_comments' => 'text',
+				'right_comments' => 'text',
 				'eye_id' => 'int(10) unsigned NOT NULL DEFAULT 3',
 				'last_modified_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_date' => 'datetime NOT NULL DEFAULT \'1901-01-01 00:00:00\'',
@@ -31,11 +31,11 @@ class m130211_123807_visual_acuity_element extends CDbMigration
 				'CONSTRAINT `et_ophcocataractreferral_visualacuity_c_u_id_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophcocataractreferral_visualacuity_l_m_u_id_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophcocataractreferral_visualacuity_id_fk` FOREIGN KEY (`eye_id`) REFERENCES `eye` (`id`)',
-		), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+		), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 		$this->createTable('ophcocataractreferral_visualacuity_unit', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
-				'name' => 'varchar(40) COLLATE utf8_bin NOT NULL',
+				'name' => 'varchar(40) NOT NULL',
 				'last_modified_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_date' => 'datetime NOT NULL DEFAULT \'1901-01-01 00:00:00\'',
 				'created_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
@@ -45,7 +45,7 @@ class m130211_123807_visual_acuity_element extends CDbMigration
 				'KEY `ophcocataractreferral_visualacuity_unit_l_m_u_id_fk` (`last_modified_user_id`)',
 				'CONSTRAINT `ophcocataractreferral_visualacuity_unit_c_u_id_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `ophcocataractreferral_visualacuity_unit_l_m_u_id_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
-		), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+		), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 		$this->insert('ophcocataractreferral_visualacuity_unit',array('name'=>'ETDRS Letters'));
 		$this->insert('ophcocataractreferral_visualacuity_unit',array('name'=>'Snellen Metre'));
@@ -56,7 +56,7 @@ class m130211_123807_visual_acuity_element extends CDbMigration
 		$this->createTable('ophcocataractreferral_visualacuity_unit_value', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
 				'unit_id' => 'int(10) unsigned NOT NULL',
-				'value' => 'varchar(255) COLLATE utf8_bin NOT NULL',
+				'value' => 'varchar(255) NOT NULL',
 				'base_value' => 'int(10) unsigned NOT NULL',
 				'last_modified_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_date' => 'datetime NOT NULL DEFAULT \'1901-01-01 00:00:00\'',
@@ -69,7 +69,7 @@ class m130211_123807_visual_acuity_element extends CDbMigration
 				'CONSTRAINT `ophcocataractreferral_visualacuity_unit_value_cuid_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `ophcocataractreferral_visualacuity_unit_value_lmuid_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `ophcocataractreferral_visualacuity_unit_value_unit_id_fk` FOREIGN KEY (`unit_id`) REFERENCES `ophcocataractreferral_visualacuity_unit` (`id`)',
-		), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+		), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 		$this->insert('ophcocataractreferral_visualacuity_unit_value',array('unit_id'=>1,'value'=>'NPL','base_value'=>1));
 		$this->insert('ophcocataractreferral_visualacuity_unit_value',array('unit_id'=>1,'value'=>'PL','base_value'=>2));
@@ -96,7 +96,7 @@ class m130211_123807_visual_acuity_element extends CDbMigration
 
 		$this->createTable('ophcocataractreferral_visualacuity_method', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
-				'name' => 'varchar(32) COLLATE utf8_bin DEFAULT NULL',
+				'name' => 'varchar(32) DEFAULT NULL',
 				'display_order' => 'int(10) unsigned NOT NULL',
 				'last_modified_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_date' => 'datetime NOT NULL DEFAULT \'1901-01-01 00:00:00\'',
@@ -107,7 +107,7 @@ class m130211_123807_visual_acuity_element extends CDbMigration
 				'KEY `ophcocataractreferral_visualacuity_method_lmuid_fk` (`last_modified_user_id`)',
 				'CONSTRAINT `ophcocataractreferral_visualacuity_method_cuid_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `ophcocataractreferral_visualacuity_method_lmuid_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
-		), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+		), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 		$this->insert('ophcocataractreferral_visualacuity_method',array('name'=>'Unaided','display_order'=>1));
 		$this->insert('ophcocataractreferral_visualacuity_method',array('name'=>'Glasses','display_order'=>2));
@@ -135,7 +135,7 @@ class m130211_123807_visual_acuity_element extends CDbMigration
 				'CONSTRAINT `ophcocataractreferral_visualacuity_reading_lmuid_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `ophcocataractreferral_visualacuity_reading_element_id_fk` FOREIGN KEY (`element_id`) REFERENCES `et_ophcocataractreferral_visualacuity` (`id`)',
 				'CONSTRAINT `ophcocataractreferral_visualacuity_reading_method_id_fk` FOREIGN KEY (`method_id`) REFERENCES `ophcocataractreferral_visualacuity_method` (`id`)',
-		), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+		), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 	}
 
 	public function down()

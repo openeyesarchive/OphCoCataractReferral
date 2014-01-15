@@ -44,7 +44,7 @@ class m120814_082430_recreate_previous_ophthalmic_history_element extends CDbMig
 				'CONSTRAINT `et_ophcocataractreferral_poh_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophcocataractreferral_poh_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophcocataractreferral_poh_ev_fk` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`)',
-		), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+		), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 	}
 
 	public function down()
@@ -53,7 +53,7 @@ class m120814_082430_recreate_previous_ophthalmic_history_element extends CDbMig
 
 		$this->createTable('et_ophcocataractreferral_poh_text', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
-				'name' => 'varchar(128) COLLATE utf8_bin NOT NULL',
+				'name' => 'varchar(128) NOT NULL',
 				'display_order' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_date' => 'datetime NOT NULL DEFAULT \'1901-01-01 00:00:00\'',
@@ -64,7 +64,7 @@ class m120814_082430_recreate_previous_ophthalmic_history_element extends CDbMig
 				'KEY `et_ophcocataractreferral_poh_left_eye_cui_fk` (`created_user_id`)',
 				'CONSTRAINT `et_ophcocataractreferral_poh_left_eye_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophcocataractreferral_poh_left_eye_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
-			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 		$this->insert('et_ophcocataractreferral_poh_text',array('name'=>'Amblyopia','display_order'=>1));
 		$this->insert('et_ophcocataractreferral_poh_text',array('name'=>'Corneal graft','display_order'=>2));
@@ -93,7 +93,7 @@ class m120814_082430_recreate_previous_ophthalmic_history_element extends CDbMig
 				'CONSTRAINT `et_ophcocataractreferral_poh_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophcocataractreferral_poh_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophcocataractreferral_poh_ev_fk` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`)',
-		), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+		), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 		$event_type = $this->dbConnection->createCommand()->select('id')->from('event_type')->where('name=:name', array(':name'=>'Cataract Referral'))->queryRow();
 		$this->update('element_type',array('name' => 'POH', 'class_name' => 'Element_OphCoCataractReferral_Poh'), 'event_type_id='.$event_type['id']." and name = 'Previous Ophthalmic History'");

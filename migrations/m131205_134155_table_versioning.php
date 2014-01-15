@@ -21,7 +21,7 @@ CREATE TABLE `et_ophcocataractreferral_confirmation_version` (
 	CONSTRAINT `acv_et_ophcocataractreferral_confirmation_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`),
 	CONSTRAINT `acv_et_ophcocataractreferral_confirmation_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`),
 	CONSTRAINT `acv_et_ophcocataractreferral_confirmation_ev_fk` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 		");
 
 		$this->alterColumn('et_ophcocataractreferral_confirmation_version','id','int(10) unsigned NOT NULL');
@@ -47,17 +47,17 @@ CREATE TABLE `et_ophcocataractreferral_currentrefraction_version` (
 	`left_sphere` decimal(5,2) DEFAULT NULL,
 	`left_cylinder` decimal(5,2) DEFAULT NULL,
 	`left_axis` int(3) DEFAULT '0',
-	`left_axis_eyedraw` text COLLATE utf8_bin,
+	`left_axis_eyedraw` text,
 	`left_type_id` int(10) unsigned DEFAULT NULL,
 	`right_sphere` decimal(5,2) DEFAULT NULL,
 	`right_cylinder` decimal(5,2) DEFAULT NULL,
 	`right_axis` int(3) DEFAULT '0',
-	`right_axis_eyedraw` text COLLATE utf8_bin,
+	`right_axis_eyedraw` text,
 	`right_type_id` int(10) unsigned DEFAULT NULL,
-	`left_type_other` varchar(100) COLLATE utf8_bin DEFAULT NULL,
-	`right_type_other` varchar(100) COLLATE utf8_bin DEFAULT NULL,
-	`right_graph_axis_eyedraw` text COLLATE utf8_bin,
-	`left_graph_axis_eyedraw` text COLLATE utf8_bin,
+	`left_type_other` varchar(100) DEFAULT NULL,
+	`right_type_other` varchar(100) DEFAULT NULL,
+	`right_graph_axis_eyedraw` text,
+	`left_graph_axis_eyedraw` text,
 	PRIMARY KEY (`id`),
 	KEY `acv_et_ophcocataractreferral_cr_e_id_fk` (`event_id`),
 	KEY `acv_et_ophcocataractreferral_cr_c_u_id_fk` (`created_user_id`),
@@ -69,7 +69,7 @@ CREATE TABLE `et_ophcocataractreferral_currentrefraction_version` (
 	CONSTRAINT `acv_et_ophcocataractreferral_cr_l_m_u_id_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`),
 	CONSTRAINT `acv_et_ophcocataractreferral_cr_l_r_t_id_fk` FOREIGN KEY (`left_type_id`) REFERENCES `et_ophcocataractreferral_refraction_type` (`id`),
 	CONSTRAINT `acv_et_ophcocataractreferral_cr_r_r_t_id_fk` FOREIGN KEY (`right_type_id`) REFERENCES `et_ophcocataractreferral_refraction_type` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 		");
 
 		$this->alterColumn('et_ophcocataractreferral_currentrefraction_version','id','int(10) unsigned NOT NULL');
@@ -88,8 +88,8 @@ CREATE TABLE `et_ophcocataractreferral_currentrefraction_version` (
 CREATE TABLE `et_ophcocataractreferral_hpc_version` (
 	`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
 	`event_id` int(10) unsigned NOT NULL,
-	`history` text COLLATE utf8_bin NOT NULL,
-	`impact` text COLLATE utf8_bin NOT NULL,
+	`history` text NOT NULL,
+	`impact` text NOT NULL,
 	`refraction_id` int(10) unsigned NOT NULL,
 	`eye_id` int(10) unsigned NOT NULL,
 	`onset_id` int(10) unsigned NOT NULL,
@@ -113,7 +113,7 @@ CREATE TABLE `et_ophcocataractreferral_hpc_version` (
 	CONSTRAINT `acv_et_ophcocataractreferral_hpc_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`),
 	CONSTRAINT `acv_et_ophcocataractreferral_hpc_onset_fk` FOREIGN KEY (`onset_id`) REFERENCES `et_ophcocataractreferral_hpc_onset` (`id`),
 	CONSTRAINT `acv_et_ophcocataractreferral_hpc_refraction_fk` FOREIGN KEY (`refraction_id`) REFERENCES `et_ophcocataractreferral_hpc_refraction` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 		");
 
 		$this->alterColumn('et_ophcocataractreferral_hpc_version','id','int(10) unsigned NOT NULL');
@@ -131,7 +131,7 @@ CREATE TABLE `et_ophcocataractreferral_hpc_version` (
 		$this->execute("
 CREATE TABLE `et_ophcocataractreferral_hpc_first_second_eye_version` (
 	`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-	`name` varchar(128) COLLATE utf8_bin NOT NULL,
+	`name` varchar(128) NOT NULL,
 	`display_order` int(10) unsigned NOT NULL DEFAULT '1',
 	`last_modified_user_id` int(10) unsigned NOT NULL DEFAULT '1',
 	`last_modified_date` datetime NOT NULL DEFAULT '1901-01-01 00:00:00',
@@ -142,7 +142,7 @@ CREATE TABLE `et_ophcocataractreferral_hpc_first_second_eye_version` (
 	KEY `acv_et_ophcocataractreferral_hpc_first_second_eye_cui_fk` (`created_user_id`),
 	CONSTRAINT `acv_et_ophcocataractreferral_hpc_first_second_eye_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`),
 	CONSTRAINT `acv_et_ophcocataractreferral_hpc_first_second_eye_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 		");
 
 		$this->alterColumn('et_ophcocataractreferral_hpc_first_second_eye_version','id','int(10) unsigned NOT NULL');
@@ -160,7 +160,7 @@ CREATE TABLE `et_ophcocataractreferral_hpc_first_second_eye_version` (
 		$this->execute("
 CREATE TABLE `et_ophcocataractreferral_hpc_history_version` (
 	`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-	`name` varchar(128) COLLATE utf8_bin NOT NULL,
+	`name` varchar(128) NOT NULL,
 	`display_order` int(10) unsigned NOT NULL DEFAULT '1',
 	`last_modified_user_id` int(10) unsigned NOT NULL DEFAULT '1',
 	`last_modified_date` datetime NOT NULL DEFAULT '1901-01-01 00:00:00',
@@ -171,7 +171,7 @@ CREATE TABLE `et_ophcocataractreferral_hpc_history_version` (
 	KEY `acv_et_ophcocataractreferral_hpc_history_cui_fk` (`created_user_id`),
 	CONSTRAINT `acv_et_ophcocataractreferral_hpc_history_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`),
 	CONSTRAINT `acv_et_ophcocataractreferral_hpc_history_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 		");
 
 		$this->alterColumn('et_ophcocataractreferral_hpc_history_version','id','int(10) unsigned NOT NULL');
@@ -189,7 +189,7 @@ CREATE TABLE `et_ophcocataractreferral_hpc_history_version` (
 		$this->execute("
 CREATE TABLE `et_ophcocataractreferral_hpc_impact_version` (
 	`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-	`name` varchar(128) COLLATE utf8_bin NOT NULL,
+	`name` varchar(128) NOT NULL,
 	`display_order` int(10) unsigned NOT NULL DEFAULT '1',
 	`last_modified_user_id` int(10) unsigned NOT NULL DEFAULT '1',
 	`last_modified_date` datetime NOT NULL DEFAULT '1901-01-01 00:00:00',
@@ -200,7 +200,7 @@ CREATE TABLE `et_ophcocataractreferral_hpc_impact_version` (
 	KEY `acv_et_ophcocataractreferral_hpc_impact_cui_fk` (`created_user_id`),
 	CONSTRAINT `acv_et_ophcocataractreferral_hpc_impact_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`),
 	CONSTRAINT `acv_et_ophcocataractreferral_hpc_impact_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 		");
 
 		$this->alterColumn('et_ophcocataractreferral_hpc_impact_version','id','int(10) unsigned NOT NULL');
@@ -218,7 +218,7 @@ CREATE TABLE `et_ophcocataractreferral_hpc_impact_version` (
 		$this->execute("
 CREATE TABLE `et_ophcocataractreferral_hpc_onset_version` (
 	`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-	`name` varchar(128) COLLATE utf8_bin NOT NULL,
+	`name` varchar(128) NOT NULL,
 	`display_order` int(10) unsigned NOT NULL DEFAULT '1',
 	`last_modified_user_id` int(10) unsigned NOT NULL DEFAULT '1',
 	`last_modified_date` datetime NOT NULL DEFAULT '1901-01-01 00:00:00',
@@ -229,7 +229,7 @@ CREATE TABLE `et_ophcocataractreferral_hpc_onset_version` (
 	KEY `acv_et_ophcocataractreferral_hpc_onset_cui_fk` (`created_user_id`),
 	CONSTRAINT `acv_et_ophcocataractreferral_hpc_onset_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`),
 	CONSTRAINT `acv_et_ophcocataractreferral_hpc_onset_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 		");
 
 		$this->alterColumn('et_ophcocataractreferral_hpc_onset_version','id','int(10) unsigned NOT NULL');
@@ -247,7 +247,7 @@ CREATE TABLE `et_ophcocataractreferral_hpc_onset_version` (
 		$this->execute("
 CREATE TABLE `et_ophcocataractreferral_hpc_refraction_version` (
 	`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-	`name` varchar(128) COLLATE utf8_bin NOT NULL,
+	`name` varchar(128) NOT NULL,
 	`display_order` int(10) unsigned NOT NULL DEFAULT '1',
 	`last_modified_user_id` int(10) unsigned NOT NULL DEFAULT '1',
 	`last_modified_date` datetime NOT NULL DEFAULT '1901-01-01 00:00:00',
@@ -258,7 +258,7 @@ CREATE TABLE `et_ophcocataractreferral_hpc_refraction_version` (
 	KEY `acv_et_ophcocataractreferral_hpc_refraction_cui_fk` (`created_user_id`),
 	CONSTRAINT `acv_et_ophcocataractreferral_hpc_refraction_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`),
 	CONSTRAINT `acv_et_ophcocataractreferral_hpc_refraction_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 		");
 
 		$this->alterColumn('et_ophcocataractreferral_hpc_refraction_version','id','int(10) unsigned NOT NULL');
@@ -296,7 +296,7 @@ CREATE TABLE `et_ophcocataractreferral_intraocularpressure_version` (
 	CONSTRAINT `acv_phcocataractreferral_intraocularpressure_left_instrument_fk` FOREIGN KEY (`left_instrument_id`) REFERENCES `et_ophcocataractreferral_intraocularpressure_instrument` (`id`),
 	CONSTRAINT `acv_et_ophcocataractreferral_intraocularpressure_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`),
 	CONSTRAINT `acv_phcocataractreferral_intraocularpressure_right_instrument_fk` FOREIGN KEY (`right_instrument_id`) REFERENCES `et_ophcocataractreferral_intraocularpressure_instrument` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 		");
 
 		$this->alterColumn('et_ophcocataractreferral_intraocularpressure_version','id','int(10) unsigned NOT NULL');
@@ -314,7 +314,7 @@ CREATE TABLE `et_ophcocataractreferral_intraocularpressure_version` (
 		$this->execute("
 CREATE TABLE `et_ophcocataractreferral_intraocularpressure_instrument_version` (
 	`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-	`name` varchar(128) COLLATE utf8_bin NOT NULL,
+	`name` varchar(128) NOT NULL,
 	`display_order` int(10) unsigned NOT NULL DEFAULT '1',
 	`last_modified_user_id` int(10) unsigned NOT NULL DEFAULT '1',
 	`last_modified_date` datetime NOT NULL DEFAULT '1901-01-01 00:00:00',
@@ -325,7 +325,7 @@ CREATE TABLE `et_ophcocataractreferral_intraocularpressure_instrument_version` (
 	KEY `acv_et_oii_cui_fk` (`created_user_id`),
 	CONSTRAINT `acv_et_oii_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`),
 	CONSTRAINT `acv_et_oii_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 		");
 
 		$this->alterColumn('et_ophcocataractreferral_intraocularpressure_instrument_version','id','int(10) unsigned NOT NULL');
@@ -361,7 +361,7 @@ CREATE TABLE `et_ophcocataractreferral_patientdetails_version` (
 	CONSTRAINT `acv_et_ophcocataractreferral_patientdetails_ev_fk` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`),
 	CONSTRAINT `acv_et_ophcocataractreferral_patientdetails_interpreter_id_fk` FOREIGN KEY (`interpreter_id`) REFERENCES `language` (`id`),
 	CONSTRAINT `acv_et_ophcocataractreferral_patientdetails_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 		");
 
 		$this->alterColumn('et_ophcocataractreferral_patientdetails_version','id','int(10) unsigned NOT NULL');
@@ -379,7 +379,7 @@ CREATE TABLE `et_ophcocataractreferral_patientdetails_version` (
 		$this->execute("
 CREATE TABLE `et_ophcocataractreferral_patientdetails_driving_status_version` (
 	`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-	`name` varchar(128) COLLATE utf8_bin NOT NULL,
+	`name` varchar(128) NOT NULL,
 	`display_order` int(10) unsigned NOT NULL DEFAULT '1',
 	`last_modified_user_id` int(10) unsigned NOT NULL DEFAULT '1',
 	`last_modified_date` datetime NOT NULL DEFAULT '1901-01-01 00:00:00',
@@ -390,7 +390,7 @@ CREATE TABLE `et_ophcocataractreferral_patientdetails_driving_status_version` (
 	KEY `acv_phcocataractreferral_patientdetails_driving_status_cui_fk` (`created_user_id`),
 	CONSTRAINT `acv_phcocataractreferral_patientdetails_driving_status_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`),
 	CONSTRAINT `acv_phcocataractreferral_patientdetails_driving_status_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 		");
 
 		$this->alterColumn('et_ophcocataractreferral_patientdetails_driving_status_version','id','int(10) unsigned NOT NULL');
@@ -409,8 +409,8 @@ CREATE TABLE `et_ophcocataractreferral_patientdetails_driving_status_version` (
 CREATE TABLE `et_ophcocataractreferral_posteriorsegment_version` (
 	`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
 	`event_id` int(10) unsigned NOT NULL,
-	`right_eye` text COLLATE utf8_bin NOT NULL,
-	`left_eye` text COLLATE utf8_bin NOT NULL,
+	`right_eye` text NOT NULL,
+	`left_eye` text NOT NULL,
 	`last_modified_user_id` int(10) unsigned NOT NULL DEFAULT '1',
 	`last_modified_date` datetime NOT NULL DEFAULT '1901-01-01 00:00:00',
 	`created_user_id` int(10) unsigned NOT NULL DEFAULT '1',
@@ -422,7 +422,7 @@ CREATE TABLE `et_ophcocataractreferral_posteriorsegment_version` (
 	CONSTRAINT `acv_et_ophcocataractreferral_posteriorsegment_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`),
 	CONSTRAINT `acv_et_ophcocataractreferral_posteriorsegment_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`),
 	CONSTRAINT `acv_et_ophcocataractreferral_posteriorsegment_ev_fk` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 		");
 
 		$this->alterColumn('et_ophcocataractreferral_posteriorsegment_version','id','int(10) unsigned NOT NULL');
@@ -440,7 +440,7 @@ CREATE TABLE `et_ophcocataractreferral_posteriorsegment_version` (
 		$this->execute("
 CREATE TABLE `et_ophcocataractreferral_posteriorsegment_text_version` (
 	`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-	`name` varchar(128) COLLATE utf8_bin NOT NULL,
+	`name` varchar(128) NOT NULL,
 	`display_order` int(10) unsigned NOT NULL DEFAULT '1',
 	`last_modified_user_id` int(10) unsigned NOT NULL DEFAULT '1',
 	`last_modified_date` datetime NOT NULL DEFAULT '1901-01-01 00:00:00',
@@ -451,7 +451,7 @@ CREATE TABLE `et_ophcocataractreferral_posteriorsegment_text_version` (
 	KEY `acv_et_ophcocataractreferral_posteriorsegment_text_cui_fk` (`created_user_id`),
 	CONSTRAINT `acv_et_ophcocataractreferral_posteriorsegment_text_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`),
 	CONSTRAINT `acv_et_ophcocataractreferral_posteriorsegment_text_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 		");
 
 		$this->alterColumn('et_ophcocataractreferral_posteriorsegment_text_version','id','int(10) unsigned NOT NULL');
@@ -501,7 +501,7 @@ CREATE TABLE `et_ophcocataractreferral_previous_ophthalmic_history_version` (
 	CONSTRAINT `acv_et_ophcocataractreferral_poh_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`),
 	CONSTRAINT `acv_et_ophcocataractreferral_poh_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`),
 	CONSTRAINT `acv_et_ophcocataractreferral_poh_ev_fk` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 		");
 
 		$this->alterColumn('et_ophcocataractreferral_previous_ophthalmic_history_version','id','int(10) unsigned NOT NULL');
@@ -529,17 +529,17 @@ CREATE TABLE `et_ophcocataractreferral_previousrefraction_version` (
 	`left_sphere` decimal(5,2) DEFAULT NULL,
 	`left_cylinder` decimal(5,2) DEFAULT NULL,
 	`left_axis` int(3) DEFAULT '0',
-	`left_axis_eyedraw` text COLLATE utf8_bin,
+	`left_axis_eyedraw` text,
 	`left_type_id` int(10) unsigned DEFAULT NULL,
 	`right_sphere` decimal(5,2) DEFAULT NULL,
 	`right_cylinder` decimal(5,2) DEFAULT NULL,
 	`right_axis` int(3) DEFAULT '0',
-	`right_axis_eyedraw` text COLLATE utf8_bin,
+	`right_axis_eyedraw` text,
 	`right_type_id` int(10) unsigned DEFAULT NULL,
-	`left_type_other` varchar(100) COLLATE utf8_bin DEFAULT NULL,
-	`right_type_other` varchar(100) COLLATE utf8_bin DEFAULT NULL,
-	`right_graph_axis_eyedraw` text COLLATE utf8_bin,
-	`left_graph_axis_eyedraw` text COLLATE utf8_bin,
+	`left_type_other` varchar(100) DEFAULT NULL,
+	`right_type_other` varchar(100) DEFAULT NULL,
+	`right_graph_axis_eyedraw` text,
+	`left_graph_axis_eyedraw` text,
 	PRIMARY KEY (`id`),
 	KEY `acv_et_ophcocataractreferral_pr_e_id_fk` (`event_id`),
 	KEY `acv_et_ophcocataractreferral_pr_c_u_id_fk` (`created_user_id`),
@@ -551,7 +551,7 @@ CREATE TABLE `et_ophcocataractreferral_previousrefraction_version` (
 	CONSTRAINT `acv_et_ophcocataractreferral_pr_l_m_u_id_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`),
 	CONSTRAINT `acv_et_ophcocataractreferral_pr_l_r_t_id_fk` FOREIGN KEY (`left_type_id`) REFERENCES `et_ophcocataractreferral_refraction_type` (`id`),
 	CONSTRAINT `acv_et_ophcocataractreferral_pr_r_r_t_id_fk` FOREIGN KEY (`right_type_id`) REFERENCES `et_ophcocataractreferral_refraction_type` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 		");
 
 		$this->alterColumn('et_ophcocataractreferral_previousrefraction_version','id','int(10) unsigned NOT NULL');
@@ -569,7 +569,7 @@ CREATE TABLE `et_ophcocataractreferral_previousrefraction_version` (
 		$this->execute("
 CREATE TABLE `et_ophcocataractreferral_refraction_type_version` (
 	`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-	`name` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+	`name` varchar(255) DEFAULT NULL,
 	`display_order` int(10) unsigned NOT NULL DEFAULT '0',
 	`last_modified_user_id` int(10) unsigned NOT NULL DEFAULT '1',
 	`last_modified_date` datetime NOT NULL DEFAULT '1901-01-01 00:00:00',
@@ -580,7 +580,7 @@ CREATE TABLE `et_ophcocataractreferral_refraction_type_version` (
 	KEY `acv_et_ophcocataractreferral_rt_l_m_u_id_fk` (`last_modified_user_id`),
 	CONSTRAINT `acv_et_ophcocataractreferral_rt_c_u_id_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`),
 	CONSTRAINT `acv_et_ophcocataractreferral_rt_l_m_u_id_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 		");
 
 		$this->alterColumn('et_ophcocataractreferral_refraction_type_version','id','int(10) unsigned NOT NULL');
@@ -608,17 +608,17 @@ CREATE TABLE `et_ophcocataractreferral_surgeryrefraction_version` (
 	`left_sphere` decimal(5,2) DEFAULT NULL,
 	`left_cylinder` decimal(5,2) DEFAULT NULL,
 	`left_axis` int(3) DEFAULT '0',
-	`left_axis_eyedraw` text COLLATE utf8_bin,
+	`left_axis_eyedraw` text,
 	`left_type_id` int(10) unsigned DEFAULT NULL,
 	`right_sphere` decimal(5,2) DEFAULT NULL,
 	`right_cylinder` decimal(5,2) DEFAULT NULL,
 	`right_axis` int(3) DEFAULT '0',
-	`right_axis_eyedraw` text COLLATE utf8_bin,
+	`right_axis_eyedraw` text,
 	`right_type_id` int(10) unsigned DEFAULT NULL,
-	`left_type_other` varchar(100) COLLATE utf8_bin DEFAULT NULL,
-	`right_type_other` varchar(100) COLLATE utf8_bin DEFAULT NULL,
-	`right_graph_axis_eyedraw` text COLLATE utf8_bin,
-	`left_graph_axis_eyedraw` text COLLATE utf8_bin,
+	`left_type_other` varchar(100) DEFAULT NULL,
+	`right_type_other` varchar(100) DEFAULT NULL,
+	`right_graph_axis_eyedraw` text,
+	`left_graph_axis_eyedraw` text,
 	PRIMARY KEY (`id`),
 	KEY `acv_et_ophcocataractreferral_sr_e_id_fk` (`event_id`),
 	KEY `acv_et_ophcocataractreferral_sr_c_u_id_fk` (`created_user_id`),
@@ -630,7 +630,7 @@ CREATE TABLE `et_ophcocataractreferral_surgeryrefraction_version` (
 	CONSTRAINT `acv_et_ophcocataractreferral_sr_l_m_u_id_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`),
 	CONSTRAINT `acv_et_ophcocataractreferral_sr_l_r_t_id_fk` FOREIGN KEY (`left_type_id`) REFERENCES `et_ophcocataractreferral_refraction_type` (`id`),
 	CONSTRAINT `acv_et_ophcocataractreferral_sr_r_r_t_id_fk` FOREIGN KEY (`right_type_id`) REFERENCES `et_ophcocataractreferral_refraction_type` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 		");
 
 		$this->alterColumn('et_ophcocataractreferral_surgeryrefraction_version','id','int(10) unsigned NOT NULL');
@@ -649,8 +649,8 @@ CREATE TABLE `et_ophcocataractreferral_surgeryrefraction_version` (
 CREATE TABLE `et_ophcocataractreferral_visualacuity_version` (
 	`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
 	`event_id` int(10) unsigned NOT NULL,
-	`left_comments` text COLLATE utf8_bin,
-	`right_comments` text COLLATE utf8_bin,
+	`left_comments` text,
+	`right_comments` text,
 	`eye_id` int(10) unsigned NOT NULL DEFAULT '3',
 	`last_modified_user_id` int(10) unsigned NOT NULL DEFAULT '1',
 	`last_modified_date` datetime NOT NULL DEFAULT '1901-01-01 00:00:00',
@@ -671,7 +671,7 @@ CREATE TABLE `et_ophcocataractreferral_visualacuity_version` (
 	CONSTRAINT `acv_et_ophcocataractreferral_visualacuity_id_fk` FOREIGN KEY (`eye_id`) REFERENCES `eye` (`id`),
 	CONSTRAINT `acv_et_ophcocataractreferral_visualacuity_l_m_u_id_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`),
 	CONSTRAINT `acv_et_ophcocataractreferral_visualacuity_rcm_id_fk` FOREIGN KEY (`right_check_method_id`) REFERENCES `ophcocataractreferral_visualacuity_check_method` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 		");
 
 		$this->alterColumn('et_ophcocataractreferral_visualacuity_version','id','int(10) unsigned NOT NULL');
@@ -689,7 +689,7 @@ CREATE TABLE `et_ophcocataractreferral_visualacuity_version` (
 		$this->execute("
 CREATE TABLE `ophcocataractreferral_visualacuity_check_method_version` (
 	`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-	`name` varchar(128) COLLATE utf8_bin NOT NULL,
+	`name` varchar(128) NOT NULL,
 	`display_order` int(10) unsigned NOT NULL DEFAULT '1',
 	`last_modified_user_id` int(10) unsigned NOT NULL DEFAULT '1',
 	`last_modified_date` datetime NOT NULL DEFAULT '1901-01-01 00:00:00',
@@ -700,7 +700,7 @@ CREATE TABLE `ophcocataractreferral_visualacuity_check_method_version` (
 	KEY `acv_ophcocataractreferral_visualacuity_check_method_cui_fk` (`created_user_id`),
 	CONSTRAINT `acv_ophcocataractreferral_visualacuity_check_method_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`),
 	CONSTRAINT `acv_ophcocataractreferral_visualacuity_check_method_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 		");
 
 		$this->alterColumn('ophcocataractreferral_visualacuity_check_method_version','id','int(10) unsigned NOT NULL');
@@ -718,7 +718,7 @@ CREATE TABLE `ophcocataractreferral_visualacuity_check_method_version` (
 		$this->execute("
 CREATE TABLE `ophcocataractreferral_visualacuity_method_version` (
 	`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-	`name` varchar(32) COLLATE utf8_bin DEFAULT NULL,
+	`name` varchar(32) DEFAULT NULL,
 	`display_order` int(10) unsigned NOT NULL,
 	`last_modified_user_id` int(10) unsigned NOT NULL DEFAULT '1',
 	`last_modified_date` datetime NOT NULL DEFAULT '1901-01-01 00:00:00',
@@ -729,7 +729,7 @@ CREATE TABLE `ophcocataractreferral_visualacuity_method_version` (
 	KEY `acv_ophcocataractreferral_visualacuity_method_lmuid_fk` (`last_modified_user_id`),
 	CONSTRAINT `acv_ophcocataractreferral_visualacuity_method_cuid_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`),
 	CONSTRAINT `acv_ophcocataractreferral_visualacuity_method_lmuid_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 		");
 
 		$this->alterColumn('ophcocataractreferral_visualacuity_method_version','id','int(10) unsigned NOT NULL');
@@ -764,7 +764,7 @@ CREATE TABLE `ophcocataractreferral_visualacuity_reading_version` (
 	CONSTRAINT `acv_ophcocataractreferral_visualacuity_reading_lmuid_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`),
 	CONSTRAINT `acv_ophcocataractreferral_visualacuity_reading_element_id_fk` FOREIGN KEY (`element_id`) REFERENCES `et_ophcocataractreferral_visualacuity` (`id`),
 	CONSTRAINT `acv_ophcocataractreferral_visualacuity_reading_method_id_fk` FOREIGN KEY (`method_id`) REFERENCES `ophcocataractreferral_visualacuity_method` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 		");
 
 		$this->alterColumn('ophcocataractreferral_visualacuity_reading_version','id','int(10) unsigned NOT NULL');
@@ -782,7 +782,7 @@ CREATE TABLE `ophcocataractreferral_visualacuity_reading_version` (
 		$this->execute("
 CREATE TABLE `ophcocataractreferral_visualacuity_unit_version` (
 	`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-	`name` varchar(40) COLLATE utf8_bin NOT NULL,
+	`name` varchar(40) NOT NULL,
 	`last_modified_user_id` int(10) unsigned NOT NULL DEFAULT '1',
 	`last_modified_date` datetime NOT NULL DEFAULT '1901-01-01 00:00:00',
 	`created_user_id` int(10) unsigned NOT NULL DEFAULT '1',
@@ -792,7 +792,7 @@ CREATE TABLE `ophcocataractreferral_visualacuity_unit_version` (
 	KEY `acv_ophcocataractreferral_visualacuity_unit_l_m_u_id_fk` (`last_modified_user_id`),
 	CONSTRAINT `acv_ophcocataractreferral_visualacuity_unit_c_u_id_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`),
 	CONSTRAINT `acv_ophcocataractreferral_visualacuity_unit_l_m_u_id_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 		");
 
 		$this->alterColumn('ophcocataractreferral_visualacuity_unit_version','id','int(10) unsigned NOT NULL');
@@ -811,7 +811,7 @@ CREATE TABLE `ophcocataractreferral_visualacuity_unit_version` (
 CREATE TABLE `ophcocataractreferral_visualacuity_unit_value_version` (
 	`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
 	`unit_id` int(10) unsigned NOT NULL,
-	`value` varchar(255) COLLATE utf8_bin NOT NULL,
+	`value` varchar(255) NOT NULL,
 	`base_value` int(10) unsigned NOT NULL,
 	`last_modified_user_id` int(10) unsigned NOT NULL DEFAULT '1',
 	`last_modified_date` datetime NOT NULL DEFAULT '1901-01-01 00:00:00',
@@ -824,7 +824,7 @@ CREATE TABLE `ophcocataractreferral_visualacuity_unit_value_version` (
 	CONSTRAINT `acv_ophcocataractreferral_visualacuity_unit_value_cuid_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`),
 	CONSTRAINT `acv_ophcocataractreferral_visualacuity_unit_value_lmuid_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`),
 	CONSTRAINT `acv_ophcocataractreferral_visualacuity_unit_value_unit_id_fk` FOREIGN KEY (`unit_id`) REFERENCES `ophcocataractreferral_visualacuity_unit` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 		");
 
 		$this->alterColumn('ophcocataractreferral_visualacuity_unit_value_version','id','int(10) unsigned NOT NULL');

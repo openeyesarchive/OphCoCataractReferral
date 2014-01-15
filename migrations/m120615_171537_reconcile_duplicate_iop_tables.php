@@ -6,7 +6,7 @@ class m120615_171537_reconcile_duplicate_iop_tables extends CDbMigration
 	{
 		$this->createTable('et_ophcocataractreferral_intraocularpressure_instrument', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
-				'name' => 'varchar(128) COLLATE utf8_bin NOT NULL',
+				'name' => 'varchar(128) NOT NULL',
 				'display_order' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_date' => 'datetime NOT NULL DEFAULT \'1901-01-01 00:00:00\'',
@@ -17,7 +17,7 @@ class m120615_171537_reconcile_duplicate_iop_tables extends CDbMigration
 				'KEY `et_oii_cui_fk` (`created_user_id`)',
 				'CONSTRAINT `et_oii_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_oii_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
-			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 		$this->insert('et_ophcocataractreferral_intraocularpressure_instrument',array('name'=>'Goldmann','display_order'=>1));
 		$this->insert('et_ophcocataractreferral_intraocularpressure_instrument',array('name'=>'Tonopen','display_order'=>2));
@@ -27,7 +27,7 @@ class m120615_171537_reconcile_duplicate_iop_tables extends CDbMigration
 
 		$this->createTable('et_ophcocataractreferral_intraocularpressure_pressure', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
-				'name' => 'varchar(128) COLLATE utf8_bin NOT NULL',
+				'name' => 'varchar(128) NOT NULL',
 				'display_order' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_date' => 'datetime NOT NULL DEFAULT \'1901-01-01 00:00:00\'',
@@ -38,7 +38,7 @@ class m120615_171537_reconcile_duplicate_iop_tables extends CDbMigration
 				'KEY `et_oip_cui_fk` (`created_user_id`)',
 				'CONSTRAINT `et_oip_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_oip_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
-			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 		$this->insert('et_ophcocataractreferral_intraocularpressure_pressure',array('name'=>'NR','display_order'=>1));
 

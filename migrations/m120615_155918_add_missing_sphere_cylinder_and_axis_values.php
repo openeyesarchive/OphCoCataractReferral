@@ -6,7 +6,7 @@ class m120615_155918_add_missing_sphere_cylinder_and_axis_values extends CDbMigr
 	{
 		$this->createTable('et_ophcocataractreferral_currentrefraction_sphere', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
-				'name' => 'varchar(128) COLLATE utf8_bin NOT NULL',
+				'name' => 'varchar(128) NOT NULL',
 				'display_order' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_date' => 'datetime NOT NULL DEFAULT \'1901-01-01 00:00:00\'',
@@ -17,7 +17,7 @@ class m120615_155918_add_missing_sphere_cylinder_and_axis_values extends CDbMigr
 				'KEY `et_ophcocataractreferral_currentrefraction_sphere_cui_fk` (`created_user_id`)',
 				'CONSTRAINT `et_ophcocataractreferral_currentrefraction_sphere_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophcocataractreferral_currentrefraction_sphere_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
-			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 		$display_order = 1;
 
@@ -38,7 +38,7 @@ class m120615_155918_add_missing_sphere_cylinder_and_axis_values extends CDbMigr
 
 		$this->createTable('et_ophcocataractreferral_currentrefraction_cylinder', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
-				'name' => 'varchar(128) COLLATE utf8_bin NOT NULL',
+				'name' => 'varchar(128) NOT NULL',
 				'display_order' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_date' => 'datetime NOT NULL DEFAULT \'1901-01-01 00:00:00\'',
@@ -49,7 +49,7 @@ class m120615_155918_add_missing_sphere_cylinder_and_axis_values extends CDbMigr
 				'KEY `et_ophcocataractreferral_currentrefraction_cylinder_cui_fk` (`created_user_id`)',
 				'CONSTRAINT `et_ophcocataractreferral_currentrefraction_cylinder_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophcocataractreferral_currentrefraction_cylinder_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
-			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 		$display_order = 1;
 
@@ -70,7 +70,7 @@ class m120615_155918_add_missing_sphere_cylinder_and_axis_values extends CDbMigr
 
 		$this->createTable('et_ophcocataractreferral_currentrefraction_axis', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
-				'name' => 'varchar(128) COLLATE utf8_bin NOT NULL',
+				'name' => 'varchar(128) NOT NULL',
 				'display_order' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_date' => 'datetime NOT NULL DEFAULT \'1901-01-01 00:00:00\'',
@@ -81,7 +81,7 @@ class m120615_155918_add_missing_sphere_cylinder_and_axis_values extends CDbMigr
 				'KEY `et_ophcocataractreferral_currentrefraction_axis_cui_fk` (`created_user_id`)',
 				'CONSTRAINT `et_ophcocataractreferral_currentrefraction_axis_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophcocataractreferral_currentrefraction_axis_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
-			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 		$display_order = 1;
 
@@ -91,7 +91,7 @@ class m120615_155918_add_missing_sphere_cylinder_and_axis_values extends CDbMigr
 
 		$this->createTable('et_ophcocataractreferral_currentrefraction_va1', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
-				'name' => 'varchar(128) COLLATE utf8_bin NOT NULL',
+				'name' => 'varchar(128) NOT NULL',
 				'display_order' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_date' => 'datetime NOT NULL DEFAULT \'1901-01-01 00:00:00\'',
@@ -102,7 +102,7 @@ class m120615_155918_add_missing_sphere_cylinder_and_axis_values extends CDbMigr
 				'KEY `et_ophcocataractreferral_currentrefraction_va1_cui_fk` (`created_user_id`)',
 				'CONSTRAINT `et_ophcocataractreferral_currentrefraction_va1_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophcocataractreferral_currentrefraction_va1_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
-			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 		foreach (array('NR','6/5','6/6','6/9','6/12','6/18','6/24','6/36','6/60','3/60','CF','HM','PL','NPL') as $i => $value) {
 			$this->insert('et_ophcocataractreferral_currentrefraction_va1',array('name'=>$value,'display_order'=>$i+1));
@@ -110,7 +110,7 @@ class m120615_155918_add_missing_sphere_cylinder_and_axis_values extends CDbMigr
 
 		$this->createTable('et_ophcocataractreferral_currentrefraction_va2', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
-				'name' => 'varchar(128) COLLATE utf8_bin NOT NULL',
+				'name' => 'varchar(128) NOT NULL',
 				'display_order' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_date' => 'datetime NOT NULL DEFAULT \'1901-01-01 00:00:00\'',
@@ -121,7 +121,7 @@ class m120615_155918_add_missing_sphere_cylinder_and_axis_values extends CDbMigr
 				'KEY `et_ophcocataractreferral_currentrefraction_va2_cui_fk` (`created_user_id`)',
 				'CONSTRAINT `et_ophcocataractreferral_currentrefraction_va2_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophcocataractreferral_currentrefraction_va2_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
-			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 		foreach (array('NR','N4.5','N5','N8','N9','N10','N12','N14','N18','N24','N36','N48') as $value) {
 			$this->insert('et_ophcocataractreferral_currentrefraction_va2',array('name'=>$value,'display_order'=>$i+1));

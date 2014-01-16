@@ -16,12 +16,12 @@ class m120814_143052_refraction_prior_to_refractive_surgery_element extends CDbM
 				'left_sphere' => 'decimal(5,2) DEFAULT NULL',
 				'left_cylinder' => 'decimal(5,2) DEFAULT NULL',
 				'left_axis' => 'int(3) DEFAULT 0',
-				'left_axis_eyedraw' => 'text COLLATE utf8_bin',
+				'left_axis_eyedraw' => 'text',
 				'left_refraction_type_id' => 'int(10) unsigned NOT NULL',
 				'right_sphere' => 'decimal(5,2) DEFAULT NULL',
 				'right_cylinder' => 'decimal(5,2) DEFAULT NULL',
 				'right_axis' => 'int(3) DEFAULT 0',
-				'right_axis_eyedraw' => 'text COLLATE utf8_bin',
+				'right_axis_eyedraw' => 'text',
 				'right_refraction_type_id' => 'int(10) unsigned NOT NULL',
 				'PRIMARY KEY (`id`)',
 				'KEY `et_ophcocataractreferral_sr_e_id_fk` (`event_id`)',
@@ -34,7 +34,7 @@ class m120814_143052_refraction_prior_to_refractive_surgery_element extends CDbM
 				'CONSTRAINT `et_ophcocataractreferral_sr_l_m_u_id_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophcocataractreferral_sr_l_r_t_id_fk` FOREIGN KEY (`left_refraction_type_id`) REFERENCES `et_ophcocataractreferral_refraction_type` (`id`)',
 				'CONSTRAINT `et_ophcocataractreferral_sr_r_r_t_id_fk` FOREIGN KEY (`right_refraction_type_id`) REFERENCES `et_ophcocataractreferral_refraction_type` (`id`)',
-			), 'ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+			), 'ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 		$event_type = $this->dbConnection->createCommand()->select('id')->from('event_type')->where('name=:name', array(':name'=>'Cataract Referral'))->queryRow();
 		$this->insert('element_type',array('event_type_id'=>$event_type['id'],'name'=>'Refraction Prior To Refractive Surgery','class_name'=>'Element_OphCoCataractReferral_RefractionPriorToRefractiveSurgery','display_order'=>55,'default'=>1));

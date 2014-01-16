@@ -61,7 +61,7 @@ class m120615_140136_event_type_OphCoCataractReferral extends CDbMigration
 				// element lookup table et_ophcocataractreferral_patientdetails_driving_status
 		$this->createTable('et_ophcocataractreferral_patientdetails_driving_status', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
-				'name' => 'varchar(128) COLLATE utf8_bin NOT NULL',
+				'name' => 'varchar(128) NOT NULL',
 				'display_order' => 'int(10) unsigned NOT NULL DEFAULT 1',
 								'last_modified_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_date' => 'datetime NOT NULL DEFAULT \'1901-01-01 00:00:00\'',
@@ -72,7 +72,7 @@ class m120615_140136_event_type_OphCoCataractReferral extends CDbMigration
 				'KEY `et_ophcocataractreferral_patientdetails_driving_status_cui_fk` (`created_user_id`)',
 				'CONSTRAINT `et_ophcocataractreferral_patientdetails_driving_status_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophcocataractreferral_patientdetails_driving_status_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
-			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 						$this->insert('et_ophcocataractreferral_patientdetails_driving_status',array('name'=>'Class 1','display_order'=>1));
 						$this->insert('et_ophcocataractreferral_patientdetails_driving_status',array('name'=>'Class 2 (LGV/PCV)','display_order'=>2));
@@ -104,12 +104,12 @@ class m120615_140136_event_type_OphCoCataractReferral extends CDbMigration
 								'CONSTRAINT `et_ophcocataractreferral_patientdetails_sex_id_fk` FOREIGN KEY (`sex_id`) REFERENCES `gender` (`id`)',
 								'CONSTRAINT `et_ophcocataractreferral_patientdetails_driving_status_fk` FOREIGN KEY (`driving_status_id`) REFERENCES `et_ophcocataractreferral_patientdetails_driving_status` (`id`)',
 								'CONSTRAINT `et_ophcocataractreferral_patientdetails_interpreter_id_fk` FOREIGN KEY (`interpreter_id`) REFERENCES `language` (`id`)',
-							), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+							), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 						// element lookup table et_ophcocataractreferral_hpc_history
 		$this->createTable('et_ophcocataractreferral_hpc_history', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
-				'name' => 'varchar(128) COLLATE utf8_bin NOT NULL',
+				'name' => 'varchar(128) NOT NULL',
 				'display_order' => 'int(10) unsigned NOT NULL DEFAULT 1',
 								'last_modified_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_date' => 'datetime NOT NULL DEFAULT \'1901-01-01 00:00:00\'',
@@ -120,7 +120,7 @@ class m120615_140136_event_type_OphCoCataractReferral extends CDbMigration
 				'KEY `et_ophcocataractreferral_hpc_history_cui_fk` (`created_user_id`)',
 				'CONSTRAINT `et_ophcocataractreferral_hpc_history_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophcocataractreferral_hpc_history_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
-			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 						$this->insert('et_ophcocataractreferral_hpc_history',array('name'=>'Asymptomatic','display_order'=>1));
 						$this->insert('et_ophcocataractreferral_hpc_history',array('name'=>'Distortion of vision','display_order'=>2));
@@ -129,7 +129,7 @@ class m120615_140136_event_type_OphCoCataractReferral extends CDbMigration
 									// element lookup table et_ophcocataractreferral_hpc_impact
 		$this->createTable('et_ophcocataractreferral_hpc_impact', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
-				'name' => 'varchar(128) COLLATE utf8_bin NOT NULL',
+				'name' => 'varchar(128) NOT NULL',
 				'display_order' => 'int(10) unsigned NOT NULL DEFAULT 1',
 								'last_modified_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_date' => 'datetime NOT NULL DEFAULT \'1901-01-01 00:00:00\'',
@@ -140,7 +140,7 @@ class m120615_140136_event_type_OphCoCataractReferral extends CDbMigration
 				'KEY `et_ophcocataractreferral_hpc_impact_cui_fk` (`created_user_id`)',
 				'CONSTRAINT `et_ophcocataractreferral_hpc_impact_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophcocataractreferral_hpc_impact_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
-			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 						$this->insert('et_ophcocataractreferral_hpc_impact',array('name'=>'Fall','display_order'=>1));
 						$this->insert('et_ophcocataractreferral_hpc_impact',array('name'=>'Problems driving','display_order'=>2));
@@ -149,7 +149,7 @@ class m120615_140136_event_type_OphCoCataractReferral extends CDbMigration
 									// element lookup table et_ophcocataractreferral_hpc_refraction
 		$this->createTable('et_ophcocataractreferral_hpc_refraction', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
-				'name' => 'varchar(128) COLLATE utf8_bin NOT NULL',
+				'name' => 'varchar(128) NOT NULL',
 				'display_order' => 'int(10) unsigned NOT NULL DEFAULT 1',
 								'last_modified_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_date' => 'datetime NOT NULL DEFAULT \'1901-01-01 00:00:00\'',
@@ -160,14 +160,14 @@ class m120615_140136_event_type_OphCoCataractReferral extends CDbMigration
 				'KEY `et_ophcocataractreferral_hpc_refraction_cui_fk` (`created_user_id`)',
 				'CONSTRAINT `et_ophcocataractreferral_hpc_refraction_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophcocataractreferral_hpc_refraction_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
-			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 						$this->insert('et_ophcocataractreferral_hpc_refraction',array('name'=>'Always worn','display_order'=>1));
 						$this->insert('et_ophcocataractreferral_hpc_refraction',array('name'=>'Glasses for myopia','display_order'=>2));
 									// element lookup table et_ophcocataractreferral_hpc_site
 		$this->createTable('et_ophcocataractreferral_hpc_site', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
-				'name' => 'varchar(128) COLLATE utf8_bin NOT NULL',
+				'name' => 'varchar(128) NOT NULL',
 				'display_order' => 'int(10) unsigned NOT NULL DEFAULT 1',
 								'last_modified_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_date' => 'datetime NOT NULL DEFAULT \'1901-01-01 00:00:00\'',
@@ -178,7 +178,7 @@ class m120615_140136_event_type_OphCoCataractReferral extends CDbMigration
 				'KEY `et_ophcocataractreferral_hpc_site_cui_fk` (`created_user_id`)',
 				'CONSTRAINT `et_ophcocataractreferral_hpc_site_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophcocataractreferral_hpc_site_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
-			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 						$this->insert('et_ophcocataractreferral_hpc_site',array('name'=>'Right eye','display_order'=>1));
 						$this->insert('et_ophcocataractreferral_hpc_site',array('name'=>'Left eye','display_order'=>2));
@@ -186,7 +186,7 @@ class m120615_140136_event_type_OphCoCataractReferral extends CDbMigration
 									// element lookup table et_ophcocataractreferral_hpc_onset
 		$this->createTable('et_ophcocataractreferral_hpc_onset', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
-				'name' => 'varchar(128) COLLATE utf8_bin NOT NULL',
+				'name' => 'varchar(128) NOT NULL',
 				'display_order' => 'int(10) unsigned NOT NULL DEFAULT 1',
 								'last_modified_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_date' => 'datetime NOT NULL DEFAULT \'1901-01-01 00:00:00\'',
@@ -197,14 +197,14 @@ class m120615_140136_event_type_OphCoCataractReferral extends CDbMigration
 				'KEY `et_ophcocataractreferral_hpc_onset_cui_fk` (`created_user_id`)',
 				'CONSTRAINT `et_ophcocataractreferral_hpc_onset_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophcocataractreferral_hpc_onset_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
-			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 						$this->insert('et_ophcocataractreferral_hpc_onset',array('name'=>'Noticed by optometrist','display_order'=>1));
 						$this->insert('et_ophcocataractreferral_hpc_onset',array('name'=>'Noticed by patient','display_order'=>2));
 									// element lookup table et_ophcocataractreferral_hpc_first_second_eye
 		$this->createTable('et_ophcocataractreferral_hpc_first_second_eye', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
-				'name' => 'varchar(128) COLLATE utf8_bin NOT NULL',
+				'name' => 'varchar(128) NOT NULL',
 				'display_order' => 'int(10) unsigned NOT NULL DEFAULT 1',
 								'last_modified_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_date' => 'datetime NOT NULL DEFAULT \'1901-01-01 00:00:00\'',
@@ -215,7 +215,7 @@ class m120615_140136_event_type_OphCoCataractReferral extends CDbMigration
 				'KEY `et_ophcocataractreferral_hpc_first_second_eye_cui_fk` (`created_user_id`)',
 				'CONSTRAINT `et_ophcocataractreferral_hpc_first_second_eye_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophcocataractreferral_hpc_first_second_eye_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
-			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 						$this->insert('et_ophcocataractreferral_hpc_first_second_eye',array('name'=>'1st cataract referral','display_order'=>1));
 						$this->insert('et_ophcocataractreferral_hpc_first_second_eye',array('name'=>'2nd cataract referral','display_order'=>2));
@@ -250,12 +250,12 @@ class m120615_140136_event_type_OphCoCataractReferral extends CDbMigration
 								'CONSTRAINT `et_ophcocataractreferral_hpc_site_fk` FOREIGN KEY (`site_id`) REFERENCES `et_ophcocataractreferral_hpc_site` (`id`)',
 								'CONSTRAINT `et_ophcocataractreferral_hpc_onset_fk` FOREIGN KEY (`onset_id`) REFERENCES `et_ophcocataractreferral_hpc_onset` (`id`)',
 								'CONSTRAINT `et_ophcocataractreferral_hpc_first_second_eye_fk` FOREIGN KEY (`first_second_eye_id`) REFERENCES `et_ophcocataractreferral_hpc_first_second_eye` (`id`)',
-							), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+							), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 						// element lookup table et_ophcocataractreferral_poh_right_eye
 		$this->createTable('et_ophcocataractreferral_poh_right_eye', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
-				'name' => 'varchar(128) COLLATE utf8_bin NOT NULL',
+				'name' => 'varchar(128) NOT NULL',
 				'display_order' => 'int(10) unsigned NOT NULL DEFAULT 1',
 								'last_modified_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_date' => 'datetime NOT NULL DEFAULT \'1901-01-01 00:00:00\'',
@@ -266,7 +266,7 @@ class m120615_140136_event_type_OphCoCataractReferral extends CDbMigration
 				'KEY `et_ophcocataractreferral_poh_right_eye_cui_fk` (`created_user_id`)',
 				'CONSTRAINT `et_ophcocataractreferral_poh_right_eye_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophcocataractreferral_poh_right_eye_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
-			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 						$this->insert('et_ophcocataractreferral_poh_right_eye',array('name'=>'Amblyopia','display_order'=>1));
 						$this->insert('et_ophcocataractreferral_poh_right_eye',array('name'=>'Corneal graft','display_order'=>2));
@@ -281,7 +281,7 @@ class m120615_140136_event_type_OphCoCataractReferral extends CDbMigration
 									// element lookup table et_ophcocataractreferral_poh_left_eye
 		$this->createTable('et_ophcocataractreferral_poh_left_eye', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
-				'name' => 'varchar(128) COLLATE utf8_bin NOT NULL',
+				'name' => 'varchar(128) NOT NULL',
 				'display_order' => 'int(10) unsigned NOT NULL DEFAULT 1',
 								'last_modified_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_date' => 'datetime NOT NULL DEFAULT \'1901-01-01 00:00:00\'',
@@ -292,7 +292,7 @@ class m120615_140136_event_type_OphCoCataractReferral extends CDbMigration
 				'KEY `et_ophcocataractreferral_poh_left_eye_cui_fk` (`created_user_id`)',
 				'CONSTRAINT `et_ophcocataractreferral_poh_left_eye_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophcocataractreferral_poh_left_eye_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
-			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 						$this->insert('et_ophcocataractreferral_poh_left_eye',array('name'=>'Amblyopia','display_order'=>1));
 						$this->insert('et_ophcocataractreferral_poh_left_eye',array('name'=>'Corneal graft','display_order'=>2));
@@ -323,12 +323,12 @@ class m120615_140136_event_type_OphCoCataractReferral extends CDbMigration
 								'CONSTRAINT `et_ophcocataractreferral_poh_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophcocataractreferral_poh_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophcocataractreferral_poh_ev_fk` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`)',
-							), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+							), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 						// element lookup table et_ophcocataractreferral_currentrefraction_right_sphere
 		$this->createTable('et_ophcocataractreferral_currentrefraction_right_sphere', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
-				'name' => 'varchar(128) COLLATE utf8_bin NOT NULL',
+				'name' => 'varchar(128) NOT NULL',
 				'display_order' => 'int(10) unsigned NOT NULL DEFAULT 1',
 								'last_modified_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_date' => 'datetime NOT NULL DEFAULT \'1901-01-01 00:00:00\'',
@@ -339,7 +339,7 @@ class m120615_140136_event_type_OphCoCataractReferral extends CDbMigration
 				'KEY `et_ophcocataractreferral_currentrefraction_right_sphere_cui_fk` (`created_user_id`)',
 				'CONSTRAINT `et_ophcocataractreferral_currentrefraction_right_sphere_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophcocataractreferral_currentrefraction_right_sphere_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
-			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 						$this->insert('et_ophcocataractreferral_currentrefraction_right_sphere',array('name'=>'-0.25','display_order'=>1));
 						$this->insert('et_ophcocataractreferral_currentrefraction_right_sphere',array('name'=>'0.00','display_order'=>2));
@@ -347,7 +347,7 @@ class m120615_140136_event_type_OphCoCataractReferral extends CDbMigration
 									// element lookup table et_ophcocataractreferral_currentrefraction_right_cylinder
 		$this->createTable('et_ophcocataractreferral_currentrefraction_right_cylinder', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
-				'name' => 'varchar(128) COLLATE utf8_bin NOT NULL',
+				'name' => 'varchar(128) NOT NULL',
 				'display_order' => 'int(10) unsigned NOT NULL DEFAULT 1',
 								'last_modified_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_date' => 'datetime NOT NULL DEFAULT \'1901-01-01 00:00:00\'',
@@ -358,7 +358,7 @@ class m120615_140136_event_type_OphCoCataractReferral extends CDbMigration
 				'KEY `et_ophcocataractreferral_currentrefraction_right_cylinder_cui_fk` (`created_user_id`)',
 				'CONSTRAINT `et_ocrc_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophcocataractreferral_currentrefraction_right_cylinder_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
-			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 						$this->insert('et_ophcocataractreferral_currentrefraction_right_cylinder',array('name'=>'-0.25','display_order'=>1));
 						$this->insert('et_ophcocataractreferral_currentrefraction_right_cylinder',array('name'=>'0.00','display_order'=>2));
@@ -366,7 +366,7 @@ class m120615_140136_event_type_OphCoCataractReferral extends CDbMigration
 									// element lookup table et_ophcocataractreferral_currentrefraction_right_axis
 		$this->createTable('et_ophcocataractreferral_currentrefraction_right_axis', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
-				'name' => 'varchar(128) COLLATE utf8_bin NOT NULL',
+				'name' => 'varchar(128) NOT NULL',
 				'display_order' => 'int(10) unsigned NOT NULL DEFAULT 1',
 								'last_modified_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_date' => 'datetime NOT NULL DEFAULT \'1901-01-01 00:00:00\'',
@@ -377,7 +377,7 @@ class m120615_140136_event_type_OphCoCataractReferral extends CDbMigration
 				'KEY `et_ophcocataractreferral_currentrefraction_right_axis_cui_fk` (`created_user_id`)',
 				'CONSTRAINT `et_ophcocataractreferral_currentrefraction_right_axis_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophcocataractreferral_currentrefraction_right_axis_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
-			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 						$this->insert('et_ophcocataractreferral_currentrefraction_right_axis',array('name'=>'-10','display_order'=>1));
 						$this->insert('et_ophcocataractreferral_currentrefraction_right_axis',array('name'=>'0','display_order'=>2));
@@ -385,7 +385,7 @@ class m120615_140136_event_type_OphCoCataractReferral extends CDbMigration
 									// element lookup table et_ophcocataractreferral_currentrefraction_right_corr_va
 		$this->createTable('et_ophcocataractreferral_currentrefraction_right_corr_va', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
-				'name' => 'varchar(128) COLLATE utf8_bin NOT NULL',
+				'name' => 'varchar(128) NOT NULL',
 				'display_order' => 'int(10) unsigned NOT NULL DEFAULT 1',
 								'last_modified_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_date' => 'datetime NOT NULL DEFAULT \'1901-01-01 00:00:00\'',
@@ -396,7 +396,7 @@ class m120615_140136_event_type_OphCoCataractReferral extends CDbMigration
 				'KEY `et_ophcocataractreferral_currentrefraction_right_corr_va_cui_fk` (`created_user_id`)',
 				'CONSTRAINT `et_ophcocataractreferral_currentrefraction_right_corr_va_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophcocataractreferral_currentrefraction_right_corr_va_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
-			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 						$this->insert('et_ophcocataractreferral_currentrefraction_right_corr_va',array('name'=>'NR','display_order'=>1));
 						$this->insert('et_ophcocataractreferral_currentrefraction_right_corr_va',array('name'=>'6/5','display_order'=>2));
@@ -415,7 +415,7 @@ class m120615_140136_event_type_OphCoCataractReferral extends CDbMigration
 									// element lookup table et_ophcocataractreferral_currentrefraction_right_near_va
 		$this->createTable('et_ophcocataractreferral_currentrefraction_right_near_va', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
-				'name' => 'varchar(128) COLLATE utf8_bin NOT NULL',
+				'name' => 'varchar(128) NOT NULL',
 				'display_order' => 'int(10) unsigned NOT NULL DEFAULT 1',
 								'last_modified_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_date' => 'datetime NOT NULL DEFAULT \'1901-01-01 00:00:00\'',
@@ -426,7 +426,7 @@ class m120615_140136_event_type_OphCoCataractReferral extends CDbMigration
 				'KEY `et_ophcocataractreferral_currentrefraction_right_near_va_cui_fk` (`created_user_id`)',
 				'CONSTRAINT `et_ophcocataractreferral_currentrefraction_right_near_va_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophcocataractreferral_currentrefraction_right_near_va_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
-			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 						$this->insert('et_ophcocataractreferral_currentrefraction_right_near_va',array('name'=>'NR','display_order'=>1));
 						$this->insert('et_ophcocataractreferral_currentrefraction_right_near_va',array('name'=>'N4.5','display_order'=>2));
@@ -443,7 +443,7 @@ class m120615_140136_event_type_OphCoCataractReferral extends CDbMigration
 									// element lookup table et_ophcocataractreferral_currentrefraction_right_best_va
 		$this->createTable('et_ophcocataractreferral_currentrefraction_right_best_va', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
-				'name' => 'varchar(128) COLLATE utf8_bin NOT NULL',
+				'name' => 'varchar(128) NOT NULL',
 				'display_order' => 'int(10) unsigned NOT NULL DEFAULT 1',
 								'last_modified_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_date' => 'datetime NOT NULL DEFAULT \'1901-01-01 00:00:00\'',
@@ -454,7 +454,7 @@ class m120615_140136_event_type_OphCoCataractReferral extends CDbMigration
 				'KEY `et_ophcocataractreferral_currentrefraction_right_best_va_cui_fk` (`created_user_id`)',
 				'CONSTRAINT `et_ophcocataractreferral_currentrefraction_right_best_va_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophcocataractreferral_currentrefraction_right_best_va_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
-			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 						$this->insert('et_ophcocataractreferral_currentrefraction_right_best_va',array('name'=>'NR','display_order'=>1));
 						$this->insert('et_ophcocataractreferral_currentrefraction_right_best_va',array('name'=>'6/5','display_order'=>2));
@@ -473,7 +473,7 @@ class m120615_140136_event_type_OphCoCataractReferral extends CDbMigration
 									// element lookup table et_ophcocataractreferral_currentrefraction_left_sphere
 		$this->createTable('et_ophcocataractreferral_currentrefraction_left_sphere', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
-				'name' => 'varchar(128) COLLATE utf8_bin NOT NULL',
+				'name' => 'varchar(128) NOT NULL',
 				'display_order' => 'int(10) unsigned NOT NULL DEFAULT 1',
 								'last_modified_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_date' => 'datetime NOT NULL DEFAULT \'1901-01-01 00:00:00\'',
@@ -484,7 +484,7 @@ class m120615_140136_event_type_OphCoCataractReferral extends CDbMigration
 				'KEY `et_ophcocataractreferral_currentrefraction_left_sphere_cui_fk` (`created_user_id`)',
 				'CONSTRAINT `et_ophcocataractreferral_currentrefraction_left_sphere_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophcocataractreferral_currentrefraction_left_sphere_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
-			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 						$this->insert('et_ophcocataractreferral_currentrefraction_left_sphere',array('name'=>'-0.25','display_order'=>1));
 						$this->insert('et_ophcocataractreferral_currentrefraction_left_sphere',array('name'=>'0.00','display_order'=>2));
@@ -492,7 +492,7 @@ class m120615_140136_event_type_OphCoCataractReferral extends CDbMigration
 									// element lookup table et_ophcocataractreferral_currentrefraction_left_cylinder
 		$this->createTable('et_ophcocataractreferral_currentrefraction_left_cylinder', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
-				'name' => 'varchar(128) COLLATE utf8_bin NOT NULL',
+				'name' => 'varchar(128) NOT NULL',
 				'display_order' => 'int(10) unsigned NOT NULL DEFAULT 1',
 								'last_modified_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_date' => 'datetime NOT NULL DEFAULT \'1901-01-01 00:00:00\'',
@@ -503,7 +503,7 @@ class m120615_140136_event_type_OphCoCataractReferral extends CDbMigration
 				'KEY `et_ophcocataractreferral_currentrefraction_left_cylinder_cui_fk` (`created_user_id`)',
 				'CONSTRAINT `et_ophcocataractreferral_currentrefraction_left_cylinder_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophcocataractreferral_currentrefraction_left_cylinder_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
-			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 						$this->insert('et_ophcocataractreferral_currentrefraction_left_cylinder',array('name'=>'-0.25','display_order'=>1));
 						$this->insert('et_ophcocataractreferral_currentrefraction_left_cylinder',array('name'=>'0.00','display_order'=>2));
@@ -511,7 +511,7 @@ class m120615_140136_event_type_OphCoCataractReferral extends CDbMigration
 									// element lookup table et_ophcocataractreferral_currentrefraction_left_axis
 		$this->createTable('et_ophcocataractreferral_currentrefraction_left_axis', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
-				'name' => 'varchar(128) COLLATE utf8_bin NOT NULL',
+				'name' => 'varchar(128) NOT NULL',
 				'display_order' => 'int(10) unsigned NOT NULL DEFAULT 1',
 								'last_modified_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_date' => 'datetime NOT NULL DEFAULT \'1901-01-01 00:00:00\'',
@@ -522,7 +522,7 @@ class m120615_140136_event_type_OphCoCataractReferral extends CDbMigration
 				'KEY `et_ophcocataractreferral_currentrefraction_left_axis_cui_fk` (`created_user_id`)',
 				'CONSTRAINT `et_ophcocataractreferral_currentrefraction_left_axis_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophcocataractreferral_currentrefraction_left_axis_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
-			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 						$this->insert('et_ophcocataractreferral_currentrefraction_left_axis',array('name'=>'-10','display_order'=>1));
 						$this->insert('et_ophcocataractreferral_currentrefraction_left_axis',array('name'=>'0','display_order'=>2));
@@ -530,7 +530,7 @@ class m120615_140136_event_type_OphCoCataractReferral extends CDbMigration
 									// element lookup table et_ophcocataractreferral_currentrefraction_left_corr_va
 		$this->createTable('et_ophcocataractreferral_currentrefraction_left_corr_va', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
-				'name' => 'varchar(128) COLLATE utf8_bin NOT NULL',
+				'name' => 'varchar(128) NOT NULL',
 				'display_order' => 'int(10) unsigned NOT NULL DEFAULT 1',
 								'last_modified_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_date' => 'datetime NOT NULL DEFAULT \'1901-01-01 00:00:00\'',
@@ -541,7 +541,7 @@ class m120615_140136_event_type_OphCoCataractReferral extends CDbMigration
 				'KEY `et_ophcocataractreferral_currentrefraction_left_corr_va_cui_fk` (`created_user_id`)',
 				'CONSTRAINT `et_ophcocataractreferral_currentrefraction_left_corr_va_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophcocataractreferral_currentrefraction_left_corr_va_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
-			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 						$this->insert('et_ophcocataractreferral_currentrefraction_left_corr_va',array('name'=>'NR','display_order'=>1));
 						$this->insert('et_ophcocataractreferral_currentrefraction_left_corr_va',array('name'=>'6/5','display_order'=>2));
@@ -560,7 +560,7 @@ class m120615_140136_event_type_OphCoCataractReferral extends CDbMigration
 									// element lookup table et_ophcocataractreferral_currentrefraction_left_near_va
 		$this->createTable('et_ophcocataractreferral_currentrefraction_left_near_va', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
-				'name' => 'varchar(128) COLLATE utf8_bin NOT NULL',
+				'name' => 'varchar(128) NOT NULL',
 				'display_order' => 'int(10) unsigned NOT NULL DEFAULT 1',
 								'last_modified_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_date' => 'datetime NOT NULL DEFAULT \'1901-01-01 00:00:00\'',
@@ -571,7 +571,7 @@ class m120615_140136_event_type_OphCoCataractReferral extends CDbMigration
 				'KEY `et_ophcocataractreferral_currentrefraction_left_near_va_cui_fk` (`created_user_id`)',
 				'CONSTRAINT `et_ophcocataractreferral_currentrefraction_left_near_va_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophcocataractreferral_currentrefraction_left_near_va_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
-			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 						$this->insert('et_ophcocataractreferral_currentrefraction_left_near_va',array('name'=>'NR','display_order'=>1));
 						$this->insert('et_ophcocataractreferral_currentrefraction_left_near_va',array('name'=>'N4.5','display_order'=>2));
@@ -588,7 +588,7 @@ class m120615_140136_event_type_OphCoCataractReferral extends CDbMigration
 									// element lookup table et_ophcocataractreferral_currentrefraction_left_best_va
 		$this->createTable('et_ophcocataractreferral_currentrefraction_left_best_va', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
-				'name' => 'varchar(128) COLLATE utf8_bin NOT NULL',
+				'name' => 'varchar(128) NOT NULL',
 				'display_order' => 'int(10) unsigned NOT NULL DEFAULT 1',
 								'last_modified_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_date' => 'datetime NOT NULL DEFAULT \'1901-01-01 00:00:00\'',
@@ -599,7 +599,7 @@ class m120615_140136_event_type_OphCoCataractReferral extends CDbMigration
 				'KEY `et_ophcocataractreferral_currentrefraction_left_best_va_cui_fk` (`created_user_id`)',
 				'CONSTRAINT `et_ophcocataractreferral_currentrefraction_left_best_va_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophcocataractreferral_currentrefraction_left_best_va_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
-			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 						$this->insert('et_ophcocataractreferral_currentrefraction_left_best_va',array('name'=>'NR','display_order'=>1));
 						$this->insert('et_ophcocataractreferral_currentrefraction_left_best_va',array('name'=>'6/5','display_order'=>2));
@@ -668,12 +668,12 @@ class m120615_140136_event_type_OphCoCataractReferral extends CDbMigration
 								'CONSTRAINT `et_ophcocataractreferral_currentrefraction_left_corr_va_fk` FOREIGN KEY (`left_corr_va_id`) REFERENCES `et_ophcocataractreferral_currentrefraction_left_corr_va` (`id`)',
 								'CONSTRAINT `et_ophcocataractreferral_currentrefraction_left_near_va_fk` FOREIGN KEY (`left_near_va_id`) REFERENCES `et_ophcocataractreferral_currentrefraction_left_near_va` (`id`)',
 								'CONSTRAINT `et_ophcocataractreferral_currentrefraction_left_best_va_fk` FOREIGN KEY (`left_best_va_id`) REFERENCES `et_ophcocataractreferral_currentrefraction_left_best_va` (`id`)',
-							), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+							), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 						// element lookup table et_ophcocataractreferral_intraocularpressure_left_instrument
 		$this->createTable('et_ophcocataractreferral_intraocularpressure_left_instrument', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
-				'name' => 'varchar(128) COLLATE utf8_bin NOT NULL',
+				'name' => 'varchar(128) NOT NULL',
 				'display_order' => 'int(10) unsigned NOT NULL DEFAULT 1',
 								'last_modified_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_date' => 'datetime NOT NULL DEFAULT \'1901-01-01 00:00:00\'',
@@ -684,7 +684,7 @@ class m120615_140136_event_type_OphCoCataractReferral extends CDbMigration
 				'KEY `et_oili_cui_fk` (`created_user_id`)',
 				'CONSTRAINT `et_oili_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_oili_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
-			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 						$this->insert('et_ophcocataractreferral_intraocularpressure_left_instrument',array('name'=>'Goldmann','display_order'=>1));
 						$this->insert('et_ophcocataractreferral_intraocularpressure_left_instrument',array('name'=>'Tonopen','display_order'=>2));
@@ -694,7 +694,7 @@ class m120615_140136_event_type_OphCoCataractReferral extends CDbMigration
 									// element lookup table et_ophcocataractreferral_intraocularpressure_left_pressure
 		$this->createTable('et_ophcocataractreferral_intraocularpressure_left_pressure', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
-				'name' => 'varchar(128) COLLATE utf8_bin NOT NULL',
+				'name' => 'varchar(128) NOT NULL',
 				'display_order' => 'int(10) unsigned NOT NULL DEFAULT 1',
 								'last_modified_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_date' => 'datetime NOT NULL DEFAULT \'1901-01-01 00:00:00\'',
@@ -705,7 +705,7 @@ class m120615_140136_event_type_OphCoCataractReferral extends CDbMigration
 				'KEY `et_oilp_cui_fk` (`created_user_id`)',
 				'CONSTRAINT `et_oilp_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_oilp_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
-			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 						$this->insert('et_ophcocataractreferral_intraocularpressure_left_pressure',array('name'=>'NR','display_order'=>1));
 						$this->insert('et_ophcocataractreferral_intraocularpressure_left_pressure',array('name'=>'1','display_order'=>2));
@@ -791,7 +791,7 @@ class m120615_140136_event_type_OphCoCataractReferral extends CDbMigration
 									// element lookup table et_ophcocataractreferral_intraocularpressure_right_instrument
 		$this->createTable('et_ophcocataractreferral_intraocularpressure_right_instrument', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
-				'name' => 'varchar(128) COLLATE utf8_bin NOT NULL',
+				'name' => 'varchar(128) NOT NULL',
 				'display_order' => 'int(10) unsigned NOT NULL DEFAULT 1',
 								'last_modified_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_date' => 'datetime NOT NULL DEFAULT \'1901-01-01 00:00:00\'',
@@ -802,7 +802,7 @@ class m120615_140136_event_type_OphCoCataractReferral extends CDbMigration
 				'KEY `et_oiri_cui_fk` (`created_user_id`)',
 				'CONSTRAINT `et_oiri_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_oiri_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
-			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 						$this->insert('et_ophcocataractreferral_intraocularpressure_right_instrument',array('name'=>'Goldmann','display_order'=>1));
 						$this->insert('et_ophcocataractreferral_intraocularpressure_right_instrument',array('name'=>'Tonopen','display_order'=>2));
@@ -812,7 +812,7 @@ class m120615_140136_event_type_OphCoCataractReferral extends CDbMigration
 									// element lookup table et_ophcocataractreferral_intraocularpressure_right_pressure
 		$this->createTable('et_ophcocataractreferral_intraocularpressure_right_pressure', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
-				'name' => 'varchar(128) COLLATE utf8_bin NOT NULL',
+				'name' => 'varchar(128) NOT NULL',
 				'display_order' => 'int(10) unsigned NOT NULL DEFAULT 1',
 								'last_modified_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_date' => 'datetime NOT NULL DEFAULT \'1901-01-01 00:00:00\'',
@@ -823,7 +823,7 @@ class m120615_140136_event_type_OphCoCataractReferral extends CDbMigration
 				'KEY `et_oirp_cui_fk` (`created_user_id`)',
 				'CONSTRAINT `et_oirp_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_oirp_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
-			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 						$this->insert('et_ophcocataractreferral_intraocularpressure_right_pressure',array('name'=>'NR','display_order'=>1));
 						$this->insert('et_ophcocataractreferral_intraocularpressure_right_pressure',array('name'=>'1','display_order'=>2));
@@ -935,12 +935,12 @@ class m120615_140136_event_type_OphCoCataractReferral extends CDbMigration
 								'CONSTRAINT `et_ophcocataractreferral_intraocularpressure_left_pressure_fk` FOREIGN KEY (`left_pressure_id`) REFERENCES `et_ophcocataractreferral_intraocularpressure_left_pressure` (`id`)',
 								'CONSTRAINT `et_ophcocataractreferral_intraocularpressure_right_instrument_fk` FOREIGN KEY (`right_instrument_id`) REFERENCES `et_ophcocataractreferral_intraocularpressure_right_instrument` (`id`)',
 								'CONSTRAINT `et_ophcocataractreferral_intraocularpressure_right_pressure_fk` FOREIGN KEY (`right_pressure_id`) REFERENCES `et_ophcocataractreferral_intraocularpressure_right_pressure` (`id`)',
-							), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+							), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 						// element lookup table et_ophcocataractreferral_posteriorsegment_right_eye
 		$this->createTable('et_ophcocataractreferral_posteriorsegment_right_eye', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
-				'name' => 'varchar(128) COLLATE utf8_bin NOT NULL',
+				'name' => 'varchar(128) NOT NULL',
 				'display_order' => 'int(10) unsigned NOT NULL DEFAULT 1',
 								'last_modified_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_date' => 'datetime NOT NULL DEFAULT \'1901-01-01 00:00:00\'',
@@ -951,7 +951,7 @@ class m120615_140136_event_type_OphCoCataractReferral extends CDbMigration
 				'KEY `et_ophcocataractreferral_posteriorsegment_right_eye_cui_fk` (`created_user_id`)',
 				'CONSTRAINT `et_ophcocataractreferral_posteriorsegment_right_eye_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophcocataractreferral_posteriorsegment_right_eye_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
-			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 						$this->insert('et_ophcocataractreferral_posteriorsegment_right_eye',array('name'=>'Normal','display_order'=>1));
 						$this->insert('et_ophcocataractreferral_posteriorsegment_right_eye',array('name'=>'ARMD','display_order'=>2));
@@ -963,7 +963,7 @@ class m120615_140136_event_type_OphCoCataractReferral extends CDbMigration
 									// element lookup table et_ophcocataractreferral_posteriorsegment_left_eye
 		$this->createTable('et_ophcocataractreferral_posteriorsegment_left_eye', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
-				'name' => 'varchar(128) COLLATE utf8_bin NOT NULL',
+				'name' => 'varchar(128) NOT NULL',
 				'display_order' => 'int(10) unsigned NOT NULL DEFAULT 1',
 								'last_modified_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_date' => 'datetime NOT NULL DEFAULT \'1901-01-01 00:00:00\'',
@@ -974,7 +974,7 @@ class m120615_140136_event_type_OphCoCataractReferral extends CDbMigration
 				'KEY `et_ophcocataractreferral_posteriorsegment_left_eye_cui_fk` (`created_user_id`)',
 				'CONSTRAINT `et_ophcocataractreferral_posteriorsegment_left_eye_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophcocataractreferral_posteriorsegment_left_eye_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
-			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 						$this->insert('et_ophcocataractreferral_posteriorsegment_left_eye',array('name'=>'Normal','display_order'=>1));
 						$this->insert('et_ophcocataractreferral_posteriorsegment_left_eye',array('name'=>'ARMD','display_order'=>2));
@@ -1002,7 +1002,7 @@ class m120615_140136_event_type_OphCoCataractReferral extends CDbMigration
 								'CONSTRAINT `et_ophcocataractreferral_posteriorsegment_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophcocataractreferral_posteriorsegment_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophcocataractreferral_posteriorsegment_ev_fk` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`)',
-							), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+							), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 				
 				
@@ -1023,7 +1023,7 @@ class m120615_140136_event_type_OphCoCataractReferral extends CDbMigration
 								'CONSTRAINT `et_ophcocataractreferral_confirmation_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophcocataractreferral_confirmation_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophcocataractreferral_confirmation_ev_fk` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`)',
-							), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+							), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 						}
 

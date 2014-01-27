@@ -16,15 +16,15 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.html The GNU General Public License V3.0
  */
  ?>
-<div class="element <?php echo $element->elementType->class_name ?>"
-	data-element-type-id="<?php echo $element->elementType->id ?>"
-	data-element-type-class="<?php echo $element->elementType->class_name ?>"
-	data-element-type-name="<?php echo $element->elementType->name ?>"
-	data-element-display-order="<?php echo $element->elementType->display_order ?>">
-	<h4 class="elementTypeName"><?php  echo $element->elementType->name; ?></h4>
-	<div class="cols2 clearfix">
-		<div class="eventDetail">
-			<div class="label"></div>
+<section class="element <?php echo $element->elementType->class_name?>"
+		 data-element-type-id="<?php echo $element->elementType->id?>"
+		 data-element-type-class="<?php echo $element->elementType->class_name?>"
+		 data-element-type-name="<?php echo $element->elementType->name?>"
+		 data-element-display-order="<?php echo $element->elementType->display_order?>">
+	<element-header>
+		<h3 class="element-title"><?php  echo $element->elementType->name; ?></h3>
+	</element-header>
+	<div class="element-fields">
 			<input type="hidden" name="Element_OphCoCataractReferral_RefractionPriorToRefractiveSurgery[refractive_surgery]" value="0" />
 			<?php echo $form->checkBox($element, 'refractive_surgery', array('nowrapper'=>true))?>
 			Refractive surgery<br/>
@@ -38,7 +38,7 @@
 			<?php echo $this->renderPartial('form_Refraction_OEEyedraw',array('side'=>'left','element'=>$element))?>
 		</div>
 	</div>
-</div>
+</section>
 <script type="text/javascript">
 	$(document).ready(function() {
 		OphCoCataractReferral_Refraction_init('<?php echo $element->elementType->class_name ?>');

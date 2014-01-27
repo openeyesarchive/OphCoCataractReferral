@@ -16,20 +16,27 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.html The GNU General Public License V3.0
  */
  ?>
-<div class="element <?php echo $element->elementType->class_name?>"
-	data-element-type-id="<?php echo $element->elementType->id ?>"
-	data-element-type-class="<?php echo $element->elementType->class_name ?>"
-	data-element-type-name="<?php echo $element->elementType->name ?>"
-	data-element-display-order="<?php echo $element->elementType->display_order ?>">
-	<h4 class="elementTypeName"><?php  echo $element->elementType->name; ?></h4>
-	<div class="cols2 colsX clearfix" id="left_right_textareas">
-		<div class="left eventDetail">
+<section class="element <?php echo $element->elementType->class_name?>"
+		 data-element-type-id="<?php echo $element->elementType->id?>"
+		 data-element-type-class="<?php echo $element->elementType->class_name?>"
+		 data-element-type-name="<?php echo $element->elementType->name?>"
+		 data-element-display-order="<?php echo $element->elementType->display_order?>">
+	<element-header>
+		<h3 class="element-title"><?php  echo $element->elementType->name; ?></h3>
+	</element-header>
+
+	<div class="element-data element-eyes row">
+		<div class="element-eye right-eye column">
+			<div class="data-row">
 			<?php echo $form->dropDownListNoPost('right_eye', CHtml::listData(EtOphcocataractreferralPosteriorsegmentText::model()->findAll(),'id','name'),'',array('empty'=>'- Right eye -','class'=>'populate_textarea','nowrapper'=>true)); ?>
 			<?php echo $form->textArea($element, 'right_eye', array('rows' => 6, 'cols' => 40)); ?>
+			</div>
 		</div>
-		<div class="right eventDetail">
+		<div class="element-eye left-eye column">
+			<div class="data-row">
 			<?php echo $form->dropDownListNoPost('left_eye', CHtml::listData(EtOphcocataractreferralPosteriorsegmentText::model()->findAll(),'id','name'),'',array('empty'=>'- Left eye -','class'=>'populate_textarea','nowrapper'=>true)); ?>
 			<?php echo $form->textArea($element, 'left_eye', array('rows' => 6, 'cols' => 40)); ?>
+			</div>
 		</div>
 	</div>
-</div>
+</section>

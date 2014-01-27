@@ -43,7 +43,7 @@
 					<table <?php if(!$right_readings) { ?> style="display: none;"
 	<?php } ?>>
 						<tbody>
-							<?php foreach($right_readings as $reading) { 
+							<?php foreach($right_readings as $reading) {
 								// Adjust currently element readings to match unit steps
 								$reading->loadClosest();
 								$this->renderPartial('form_Element_OphCoCataractReferral_VisualAcuity_Reading', array(
@@ -84,7 +84,7 @@
 					<table <?php if(!$left_readings) { ?> style="display: none;"
 							<?php } ?>>
 						<tbody>
-							<?php foreach($left_readings as $reading) { 
+							<?php foreach($left_readings as $reading) {
 								// Adjust currently element readings to match unit steps
 								$reading->loadClosest();
 								$this->renderPartial('form_Element_OphCoCataractReferral_VisualAcuity_Reading', array(

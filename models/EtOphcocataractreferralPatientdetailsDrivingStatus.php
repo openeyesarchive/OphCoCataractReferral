@@ -26,7 +26,7 @@
  * The followings are the available model relations:
  */
 
-class EtOphcocataractreferralPatientdetailsDrivingStatus extends BaseActiveRecordVersioned
+class EtOphcocataractreferralPatientdetailsDrivingStatus extends BaseActiveRecordVersionedSoftDelete
 {
 	/**
 	 * Returns the static model of the specified AR class.

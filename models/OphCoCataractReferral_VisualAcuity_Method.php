@@ -25,7 +25,7 @@
  * @property integer $display_order
 
  */
-class OphCoCataractReferral_VisualAcuity_Method extends BaseActiveRecordVersioned {
+class OphCoCataractReferral_VisualAcuity_Method extends BaseActiveRecordVersionedSoftDelete {
 
 	/**
 	 * Returns the static model of the specified AR class.

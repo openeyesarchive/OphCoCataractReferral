@@ -24,10 +24,10 @@
 	<element-header>
 		<h3 class="element-title"><?php  echo $element->elementType->name; ?></h3>
 	</element-header>
+	<div class="element-fields element-eyes row">
 	<?php //echo $form->hiddenInput($element, 'eye_id', false, array('class' => 'sideField')); ?>
 	<div class="element-eye right-eye column side left" data-side="right">
 		<div class="active-form">
-			<a href="#" class="icon-remove-side remove-side">Remove side</a>
 			<div class="eyedraw-row row refraction">
 				<div class="fixed column">
 					<?php echo $this->renderPartial('form_Refraction_OEEyedraw',array('side'=>'right','element'=>$element))?>
@@ -37,17 +37,9 @@
 				</div>
 			</div>
 		</div>
-		<div class="inactive-form">
-			<div class="add-side">
-				<a href="#">
-					Add right side <span class="icon-add-side"></span>
-				</a>
-			</div>
-		</div>
 	</div>
 	<div class="element-eye right-eye column side right" data-side="left">
 		<div class="active-form">
-			<a href="#" class="icon-remove-side remove-side">Remove side</a>
 			<div class="eyedraw-row row refraction">
 				<div class="fixed column">
 					<?php echo $this->renderPartial('form_Refraction_OEEyedraw',array('side'=>'left','element'=>$element))?>
@@ -57,14 +49,8 @@
 				</div>
 			</div>
 		</div>
-		<div class="inactive-form">
-			<div class="add-side">
-				<a href="#">
-					Add left side <span class="icon-add-side"></span>
-				</a>
-			</div>
-		</div>
 	</div>
+		</div>
 
 </section>
 <script type="text/javascript">

@@ -16,24 +16,17 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.html The GNU General Public License V3.0
  */
  ?>
-<div class="element <?php echo $element->elementType->class_name?>"
-	data-element-type-id="<?php echo $element->elementType->id ?>"
-	data-element-type-class="<?php echo $element->elementType->class_name ?>"
-	data-element-type-name="<?php echo $element->elementType->name ?>"
-	data-element-display-order="<?php echo $element->elementType->display_order ?>">
-	<h4 class="elementTypeName"><?php  echo $element->elementType->name; ?></h4>
-	<div class="eventDetail">
-		<div class="label"></div>
-		<div class="data">
-			<?php echo $form->checkBox($element, 'risks_discussed', array('nowrapper' => true), array('data-hover' => '95% of cataract patients have improved vision after surgery if no other eye problems present, 1 in 1000 risk of blindness'))?>
-			<?php echo $element->getAttributeLabel('risks_discussed')?>
-		</div>
+<section class="element <?php echo $element->elementType->class_name?>"
+		 data-element-type-id="<?php echo $element->elementType->id?>"
+		 data-element-type-class="<?php echo $element->elementType->class_name?>"
+		 data-element-type-name="<?php echo $element->elementType->name?>"
+		 data-element-display-order="<?php echo $element->elementType->display_order?>">
+	<element-header>
+		<h3 class="element-title"><?php  echo $element->elementType->name; ?></h3>
+	</element-header>
+	<div class="element-fields">
+		<?php echo $form->checkBox($element, 'risks_discussed', array(), array('data-hover' => '95% of cataract patients have improved vision after surgery if no other eye problems present, 1 in 1000 risk of blindness'))?>
+		<?php echo $form->checkBox($element, 'consider_surgery', array())?>
 	</div>
-	<div class="eventDetail">
-		<div class="label"></div>
-		<div class="data">
-			<?php echo $form->checkBox($element, 'consider_surgery', array('nowrapper' => true))?>
-			<?php echo $element->getAttributeLabel('consider_surgery')?>
-		</div>
-	</div>
-</div>
+</section>
+

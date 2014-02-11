@@ -1,8 +1,9 @@
-<?php /**
+<?php
+/**
  * OpenEyes
  *
  * (C) Moorfields Eye Hospital NHS Foundation Trust, 2008-2011
- * (C) OpenEyes Foundation, 2011-2012
+ * (C) OpenEyes Foundation, 2011-2013
  * This file is part of OpenEyes.
  * OpenEyes is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
  * OpenEyes is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
@@ -12,7 +13,7 @@
  * @link http://www.openeyes.org.uk
  * @author OpenEyes <info@openeyes.org.uk>
  * @copyright Copyright (c) 2008-2011, Moorfields Eye Hospital NHS Foundation Trust
- * @copyright Copyright (c) 2011-2012, OpenEyes Foundation
+ * @copyright Copyright (c) 2011-2013, OpenEyes Foundation
  * @license http://www.gnu.org/licenses/gpl-3.0.html The GNU General Public License V3.0
  */
 
@@ -22,12 +23,24 @@
  * The followings are the available columns in table:
  * @property string $id
  * @property integer $event_id
- * @property integer $refraction_id
  * @property integer $eye_id
- * @property integer $onset_id
- * @property integer $first_second_eye_id
+ * @property string $left_comments
+ * @property string $right_comments
+ * @property boolean $left_unable_to_assess
+ * @property boolean $right_unable_to_assess
+ * @property boolean $left_eye_missing
+ * @property boolean $right_eye_missing
  *
  * The followings are the available model relations:
+ * @property OphCoCataractReferral_VisualAcuityUnit $unit
+ * @property OphCoCataractReferral_VisualAcuity_Reading[] $readings
+ * @property OphCoCataractReferral_VisualAcuity_Reading[] $left_readings
+ * @property OphCoCataractReferral_VisualAcuity_Reading[] $right_readings
+ * @property User $user
+ * @property User $usermodified
+ * @property Eye eye
+ * @property EventType $eventType
+ * @property Event $event
  */
 
 class Element_OphCoCataractReferral_VisualAcuity extends SplitEventTypeElement
@@ -59,13 +72,18 @@ class Element_OphCoCataractReferral_VisualAcuity extends SplitEventTypeElement
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('event_id, left_comments, right_comments, eye_id, left_check_method_id, right_check_method_id', 'safe'),
+				array('event_id, left_comments, right_comments, eye_id, unit_id, left_unable_to_assess, right_unable_to_assess, left_eye_missing, right_eye_missing', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, event_id, left_comments, right_comments, eye_id', 'safe', 'on' => 'search'),
+				array('id, event_id, left_comments, right_comments, eye_id', 'safe', 'on' => 'search'),
 		);
 	}
-	
+
+	public function sidedFields()
+	{
+		return array('comments');
+	}
+
 	/**
 	 * @return array relational rules.
 	 */
@@ -74,17 +92,15 @@ class Element_OphCoCataractReferral_VisualAcuity extends SplitEventTypeElement
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'element_type' => array(self::HAS_ONE, 'ElementType', 'id','on' => "element_type.class_name='".get_class($this)."'"),
-			'eventType' => array(self::BELONGS_TO, 'EventType', 'event_type_id'),
-			'event' => array(self::BELONGS_TO, 'Event', 'event_id'),
-			'user' => array(self::BELONGS_TO, 'User', 'created_user_id'),
-			'usermodified' => array(self::BELONGS_TO, 'User', 'last_modified_user_id'),
-			'eye' => array(self::BELONGS_TO, 'Eye', 'eye_id'),
-			'readings' => array(self::HAS_MANY, 'OphCoCataractReferral_VisualAcuity_Reading', 'element_id'),
-			'right_readings' => array(self::HAS_MANY, 'OphCoCataractReferral_VisualAcuity_Reading', 'element_id', 'on' => 'right_readings.side = 0'),
-			'left_readings' => array(self::HAS_MANY, 'OphCoCataractReferral_VisualAcuity_Reading', 'element_id', 'on' => 'left_readings.side = 1'),
-			'left_check_method' => array(self::BELONGS_TO, 'OphCoCataractReferral_VisualAcuity_CheckMethod', 'left_check_method_id'),
-			'right_check_method' => array(self::BELONGS_TO, 'OphCoCataractReferral_VisualAcuity_CheckMethod', 'right_check_method_id'),
+				'eventType' => array(self::BELONGS_TO, 'EventType', 'event_type_id'),
+				'event' => array(self::BELONGS_TO, 'Event', 'event_id'),
+				'eye' => array(self::BELONGS_TO, 'Eye', 'eye_id'),
+				'user' => array(self::BELONGS_TO, 'User', 'created_user_id'),
+				'usermodified' => array(self::BELONGS_TO, 'User', 'last_modified_user_id'),
+				'unit' => array(self::BELONGS_TO, 'OphCoCataractReferral_VisualAcuityUnit', 'unit_id'),
+				'readings' => array(self::HAS_MANY, 'OphCoCataractReferral_VisualAcuity_Reading', 'element_id'),
+				'right_readings' => array(self::HAS_MANY, 'OphCoCataractReferral_VisualAcuity_Reading', 'element_id', 'on' => 'right_readings.side = 0'),
+				'left_readings' => array(self::HAS_MANY, 'OphCoCataractReferral_VisualAcuity_Reading', 'element_id', 'on' => 'left_readings.side = 1'),
 		);
 	}
 
@@ -94,11 +110,172 @@ class Element_OphCoCataractReferral_VisualAcuity extends SplitEventTypeElement
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
-			'event_id' => 'Event',
-			'left_check_method_id' => 'Check method',
-			'right_check_method_id' => 'Check method',
+				'id' => 'ID',
+				'event_id' => 'Event',
+				'left_comments' => 'Comments',
+				'right_comments' => 'Comments',
+				'left_unable_to_assess' => 'Unable to assess',
+				'right_unable_to_assess' => 'Unable to assess',
+				'left_eye_missing' => 'Eye missing',
+				'right_eye_missing' => 'Eye missing',
 		);
+	}
+
+	public function getFormReadings($side)
+	{
+		if ($this->id) {
+			return $this->{$side.'_readings'};
+		} else {
+			return array();
+		}
+	}
+
+	/**
+	 * Get the measurement unit
+	 */
+	/*
+	public function getUnit()
+	{
+		$unit_id = $this->getSetting('unit_id');
+		return OphCoCataractReferral_VisualAcuityUnit::model()->findByPk($unit_id);
+	}
+	*/
+
+	public function setDefaultOptions()
+	{
+		$this->unit_id = $this->getSetting('unit_id');
+	}
+
+	/**
+	 * list of units that are usable for setting visual acuity
+	 *
+	 * @return OphCoCataractReferral_VisualAcuityUnit[]
+	 */
+	public function getUsableUnits()
+	{
+		$criteria = new CDbCriteria();
+		$criteria->condition = 'tooltip = :tt';
+		$criteria->params = array(':tt' => true);
+		$criteria->order = 'name';
+		return OphCoCataractReferral_VisualAcuityUnit::model()->findAll($criteria);
+	}
+
+	/**
+	 * Array of unit values for dropdown
+	 * @param integer $unit_id
+	 * @param boolean $selectable - whether want selectable values or all unit values
+	 * @return array
+	 */
+	public function getUnitValues($unit_id = null, $selectable=true)
+	{
+		if ($unit_id) {
+			$unit = OphCoCataractReferral_VisualAcuityUnit::model()->findByPk($unit_id);
+		} else {
+			$unit = $this->unit;
+		}
+		if ($selectable) {
+			return CHtml::listData($unit->selectableValues, 'base_value', 'value');
+		} else {
+			return CHtml::listData($unit->values, 'base_value', 'value');
+		}
+	}
+
+	public function getUnitValuesForForm($unit_id = null)
+	{
+		if ($unit_id) {
+			$unit = OphCoCataractReferral_VisualAcuityUnit::model()->findByPk($unit_id);
+		} else {
+			$unit = $this->unit;
+		}
+
+		$unit_values = $unit->selectableValues;
+
+		$criteria = new CDbCriteria();
+		$criteria->condition = 'id <> :unit_id AND tooltip = :tt';
+		$criteria->params = array(':unit_id' => $unit->id, ':tt' => true);
+		$criteria->order = 'name';
+		$tooltip_units = OphCoCataractReferral_VisualAcuityUnit::model()->findAll($criteria);
+
+		$options = array();
+
+		// getting the conversion values
+		foreach ($unit_values as $uv) {
+			$idx = (string) $uv->base_value;
+			$options[$idx] = array('data-tooltip' => array());
+			foreach ($tooltip_units as $tt) {
+				$last = null;
+				foreach ($tt->values as $tt_val) {
+
+					if ($tt_val->base_value <= $uv->base_value) {
+						$val = $tt_val->value;
+
+						if ($last != null && (abs($uv->base_value - $tt_val->base_value) > abs($uv->base_value - $last->base_value))) {
+							$val = $last->value;
+						}
+						$map = array('name' => $tt->name, 'value' => $val, 'approx' => false);
+						if ($tt_val->base_value < $uv->base_value) {
+							$map['approx'] = true;
+						}
+						$options[$idx]['data-tooltip'][] = $map;
+						break;
+					}
+
+					$last = $tt_val;
+
+				}
+			}
+			// need to JSONify the options data
+			$options[$idx]['data-tooltip'] = CJSON::encode($options[$idx]['data-tooltip']);
+		}
+
+		return array(CHtml::listData($unit_values, 'base_value', 'value'), $options);
+
+	}
+
+	/**
+	 * Get a combined string of the different readings. If a unit_id is given, the readings will
+	 * be converted to unit type of that id.
+	 *
+	 * @param string $side
+	 * @return string
+	 */
+	public function getCombined($side, $unit_id = null)
+	{
+		$combined = array();
+		foreach ($this->{$side.'_readings'} as $reading) {
+			$combined[] = $reading->convertTo($reading->value, $unit_id) . ' ' . $reading->method->name;
+		}
+		return implode(', ',$combined);
+	}
+
+	/**
+	 * Get the best reading for the given side
+	 *
+	 * @param string $side
+	 * @return OphCoCataractReferral_VisualAcuity_Reading|null
+	 */
+	public function getBestReading($side)
+	{
+		$best = null;
+		foreach ($this->{$side.'_readings'} as $reading) {
+			if (!$best || $reading->value >= $best->value) {
+				$best = $reading;
+			}
+		}
+		return $best;
+	}
+
+	/**
+	 * Get the best reading for the specified side in current units
+	 * @param string $side
+	 * @return string
+	 */
+	public function getBest($side)
+	{
+		$best = $this->getBestReading($side);
+		if ($best) {
+			return $best->convertTo($best->value);
+		}
 	}
 
 	/**
@@ -114,15 +291,11 @@ class Element_OphCoCataractReferral_VisualAcuity extends SplitEventTypeElement
 
 		$criteria->compare('id', $this->id, true);
 		$criteria->compare('event_id', $this->event_id, true);
-		$criteria->compare('history', $this->history);
-		$criteria->compare('impact', $this->impact);
-		$criteria->compare('refraction_id', $this->refraction_id);
-		$criteria->compare('eye_id', $this->eye_id);
-		$criteria->compare('onset_id', $this->onset_id);
-		$criteria->compare('first_second_eye_id', $this->first_second_eye_id);
-		
+		$criteria->compare('left_comments', $this->left_comments);
+		$criteria->compare('right_comments', $this->right_comments);
+
 		return new CActiveDataProvider(get_class($this), array(
-			'criteria' => $criteria,
+				'criteria' => $criteria,
 		));
 	}
 
@@ -132,12 +305,13 @@ class Element_OphCoCataractReferral_VisualAcuity extends SplitEventTypeElement
 	 * @param array $readings array POSTed array of readings
 	 * @param string $side
 	 */
-	public function convertReadings($readings, $side) {
+	public function convertReadings($readings, $side)
+	{
 		$return = array();
 		$side_id = ($side == 'right') ? 0 : 1;
 		if (is_array($readings)) {
-			foreach($readings as $reading) {
-				if($reading['side'] == $side_id) {
+			foreach ($readings as $reading) {
+				if ($reading['side'] == $side_id) {
 					$reading_model = new OphCoCataractReferral_VisualAcuity_Reading();
 					$reading_model->attributes = $reading;
 					$return[] = $reading_model;
@@ -147,87 +321,13 @@ class Element_OphCoCataractReferral_VisualAcuity extends SplitEventTypeElement
 		return $return;
 	}
 
-	public function getFormReadings($side) {
-		if($this->id) {
-			return $this->{$side.'_readings'};
-		} else {
-			$readings = array();
-			$methods = OphCoCataractReferral_VisualAcuity_Method::model()->findAll(array(
-					'order' => 'id',
-					'limit' => 2,
-			));
-			foreach($methods as $method) {
-				$reading = new OphCoCataractReferral_VisualAcuity_Reading();
-				$reading->side = ($side == 'right') ? 0 : 1;
-				$reading->method_id = $method->id;
-				$readings[] = $reading;
-			}
-			return $readings;
-		}
-	}
- 
-	/**
-	 * Get the measurement unit
-	 */
-	public function getUnit() {
-		$unit_id = $this->getSetting('unit_id');
-		return OphCoCataractReferral_VisualAcuityUnit::model()->findByPk($unit_id);
+	protected function beforeSave()
+	{
+		return parent::beforeSave();
 	}
 
-	/**
-	 * Array of unit values for dropdown
-	 * @param integer $unit_id
-	 * @return array
-	 */
-	public function getUnitValues($unit_id = null) {
-		if($unit_id) {
-			$unit = OphCoCataractReferral_VisualAcuityUnit::model()->findByPk($unit_id);
-		} else {
-			$unit = $this->getUnit();
-		}
-		return CHtml::listData($unit->values, 'base_value', 'value');
-	}
-
-	/**
-	 * Get a combined string of the different readings
-	 * @param string $side
-	 * @return string
-	 */
-	public function getCombined($side) {
-		$combined = array();
-		foreach($this->{$side.'_readings'} as $reading) {
-			$combined[] = $reading->convertTo($reading->value) . ' ' . $reading->method->name;
-		}
-		return implode(', ',$combined);
-	}
-
-	/**
-	 * Get the best reading for the specified side
-	 * @param string $side
-	 * @return string
-	 */
-	public function getBest($side) {
-		$best = false;
-		foreach ($this->{$side.'_readings'} as $reading) {
-			if (!$best || $reading->value >= $best->value) {
-				$best = $reading;
-			}
-		}
-
-		if ($best) {
-			return $best->convertTo($best->value);
-		}
-	}
-
-	protected function beforeValidate() {
-		if (!isset($_POST['visualacuity_reading'])) {
-			$this->addError('visualacuity_reading','Please enter at least one reading, or remove the element');
-		}
-
-		return parent::beforeValidate();
-	}
-
-	protected function beforeDelete() {
+	protected function beforeDelete()
+	{
 		foreach ($this->readings as $reading) {
 			if (!$reading->delete()) {
 				throw new Exception('Delete reading failed: '.print_r($reading->getErrors(),true));
@@ -241,27 +341,28 @@ class Element_OphCoCataractReferral_VisualAcuity extends SplitEventTypeElement
 	 * @todo This probably doesn't belong here, but there doesn't seem to be an easy way
 	 * of doing it through the controller at the moment
 	 */
-	protected function afterSave() {
+	protected function afterSave()
+	{
 		// Check to see if readings have been posted
-		if(isset($_POST['visualacuity_readings_valid']) && $_POST['visualacuity_readings_valid']) {
+		if (isset($_POST['visualacuity_readings_valid']) && $_POST['visualacuity_readings_valid']) {
 
 			// Get a list of ids so we can keep track of what's been removed
 			$existing_reading_ids = array();
-			foreach($this->readings as $reading) {
+			foreach ($this->readings as $reading) {
 				$existing_reading_ids[$reading->id] = $reading->id;
 			}
 
 			// Process (any) posted readings
 			$new_readings = (isset($_POST['visualacuity_reading'])) ? $_POST['visualacuity_reading'] : array();
-			foreach($new_readings as $reading) {
- 
+			foreach ($new_readings as $reading) {
+
 				// Check to see if side is inactive
-				if($reading['side'] == 0 && $this->eye_id == 1
+				if ($reading['side'] == 0 && $this->eye_id == 1
 						|| $reading['side'] == 1 && $this->eye_id == 2) {
 					continue;
 				}
- 
-				if(isset($reading['id']) && isset($existing_reading_ids[$reading['id']])) {
+
+				if (isset($reading['id']) && isset($existing_reading_ids[$reading['id']])) {
 
 					// Reading is being updated
 					$reading_model = OphCoCataractReferral_VisualAcuity_Reading::model()->findByPk($reading['id']);
@@ -285,9 +386,57 @@ class Element_OphCoCataractReferral_VisualAcuity extends SplitEventTypeElement
 
 			// Delete remaining (removed) ids
 			OphCoCataractReferral_VisualAcuity_Reading::model()->deleteByPk(array_values($existing_reading_ids));
+
 		}
 
-		return parent::afterSave();
+		parent::afterSave();
+	}
+
+	/**
+	 * returns the default letter string for the va readings. Converts all readings to Snellen Metre
+	 * as this is assumed to be the standard for correspondence.
+	 *
+	 * @TODO: The units for correspondence should become a configuration variable
+	 *
+	 * @return string
+	 */
+	public function getLetter_string()
+	{
+		if (!$unit = OphCoCataractReferral_VisualAcuityUnit::model()->find('name = ?', array(Yii::app()->params['ophcocataractreferral_visualacuity_correspondence_unit']))) {
+			throw new Exception("Configured visual acuity correspondence unit was not found: ".Yii::app()->params['ophcocataractreferral_visualacuity_correspondence_unit']);
+		}
+
+		$text = "Visual acuity:\n";
+
+		if ($this->hasRight()) {
+			if ($this->getCombined('right')) {
+				$text .= "Right Eye: ".$this->getCombined('right', $unit->id);
+			} else {
+				$text .= "Right Eye: not recorded";
+			}
+			if (trim($this->right_comments)) {
+				$text .= ", ".$this->right_comments;
+			}
+		}
+		else {
+			$text .= "Right Eye: not recorded";
+		}
+		$text .= "\n";
+
+		if ($this->hasLeft()) {
+			if ($this->getCombined('left')) {
+				$text .= "Left Eye: ".$this->getCombined('left', $unit->id);
+			} else {
+				$text .= "Left Eye: not recorded";
+			}
+			if (trim($this->left_comments)) {
+				$text .= ", ".$this->left_comments;
+			}
+		}
+		else {
+			$text .= "Left Eye: not recorded";
+		}
+
+		return $text."\n";
 	}
 }
-?>

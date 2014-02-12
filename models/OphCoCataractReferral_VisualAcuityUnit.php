@@ -39,7 +39,7 @@ class OphCoCataractReferral_VisualAcuityUnit extends BaseActiveRecordVersionedSo
 	 */
 	public function tableName()
 	{
-		return 'ophcocataractreferral_visual_acuity_unit';
+		return 'ophcocataractreferral_visualacuity_unit';
 	}
 
 	/**

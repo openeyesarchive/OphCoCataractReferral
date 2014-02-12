@@ -28,13 +28,13 @@
 		<div class="element-eye right-eye column">
 			<div class="data-row">
 				<?php echo $form->dropDownListNoPost('right_eye', CHtml::listData(EtOphcocataractreferralPosteriorsegmentText::model()->findAll(),'id','name'),'',array('empty'=>'- Right eye -','class'=>'populate_textarea','nowrapper'=>true)); ?>
-				<?php echo $form->textArea($element, 'right_eye', array('rows' => 6, 'cols' => 40)); ?>
+				<?php echo $form->textArea($element, 'right_eye', array('rows' => 6, 'cols' => 40, 'nowrapper'=>true)); ?>
 			</div>
 		</div>
 		<div class="element-eye left-eye column">
 			<div class="data-row">
 				<?php echo $form->dropDownListNoPost('left_eye', CHtml::listData(EtOphcocataractreferralPosteriorsegmentText::model()->findAll(),'id','name'),'',array('empty'=>'- Left eye -','class'=>'populate_textarea','nowrapper'=>true)); ?>
-				<?php echo $form->textArea($element, 'left_eye', array('rows' => 6, 'cols' => 40)); ?>
+				<?php echo $form->textArea($element, 'left_eye', array('rows' => 6, 'cols' => 40, 'nowrapper'=>true)); ?>
 			</div>
 		</div>
 	</div>

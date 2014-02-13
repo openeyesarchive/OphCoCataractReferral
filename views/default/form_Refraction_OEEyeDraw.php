@@ -28,7 +28,7 @@ $this->widget('application.modules.eyedraw.OEEyeDrawWidget', array(
 	),
 	'bindingArray' => array(
 		'TrialLens' => array(
-			'axis' => array('id' => 'Element_OphCiExamination_Refraction_'.$side.'_axis'),
+			'axis' => array('id' => 'Element_OphCoCataractReferral_CurrentRefraction_'.$side.'_axis'),
 		),
 	),
 	'idSuffix' => $side.'_'.$element->elementType->id,

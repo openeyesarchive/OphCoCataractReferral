@@ -79,8 +79,8 @@ class OphCoCataractReferral_Refraction extends BaseEventTypeElement
 			'event' => array(self::BELONGS_TO, 'Event', 'event_id'),
 			'user' => array(self::BELONGS_TO, 'User', 'created_user_id'),
 			'usermodified' => array(self::BELONGS_TO, 'User', 'last_modified_user_id'),
-			'left_type' => array(self::BELONGS_TO, 'EtOphcocataractreferralRefractionType', 'left_type_id'),
-			'right_type' => array(self::BELONGS_TO, 'EtOphcocataractreferralRefractionType', 'right_type_id'),
+			'left_type' => array(self::BELONGS_TO, 'OphCoCataractReferral_Refraction_Type', 'left_type_id'),
+			'right_type' => array(self::BELONGS_TO, 'OphCoCataractReferral_Refraction_Type', 'right_type_id'),
 		);
 	}
 

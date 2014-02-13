@@ -1,6 +1,6 @@
 <?php
 
-class m140211_132229_updated_models extends OEMigration
+class m140211_132229_update_visual_acuity_models extends OEMigration
 {
 	public function up()
 	{
@@ -27,10 +27,17 @@ class m140211_132229_updated_models extends OEMigration
 
 		$this->addColumn(	'et_ophcocataractreferral_visualacuity','unit_id', 'INT(10) UNSIGNED NOT NULL');
 		$this->addForeignKey('et_ophcocataractreferral_visualacuity_unit_fk','et_ophcocataractreferral_visualacuity','unit_id', 'ophcocataractreferral_visualacuity_unit' ,'id');
-		$this->createIndex('et_ophcocataractreferral_visualacuity_unit_id_fk','et_ophcocataractreferral_visualacuity','unit_id',true);
+		$this->createIndex('et_ophcocataractreferral_visualacuity_unit_id_fk','et_ophcocataractreferral_visualacuity','unit_id');
 
-		$this->addColumn('ophcocataractreferral_visualacuity_unit','selectable',"TINYINT(1) NOT NULL DEFAULT '1'");
+		$this->addColumn(	'et_ophcocataractreferral_visualacuity','left_unable_to_assess', 'TINYINT(1) UNSIGNED NOT NULL');
+		$this->addColumn(	'et_ophcocataractreferral_visualacuity','right_unable_to_assess', 'TINYINT(1) UNSIGNED NOT NULL');
+		$this->addColumn(	'et_ophcocataractreferral_visualacuity','left_eye_missing', 'TINYINT(1) UNSIGNED NOT NULL');
+		$this->addColumn(	'et_ophcocataractreferral_visualacuity','right_eye_missing', ' TINYINT(1) UNSIGNED NOT NULL');
 
+		$this->addColumn('ophcocataractreferral_visualacuity_unit_value','selectable',"TINYINT(1) NOT NULL DEFAULT '1'");
+
+		$this->addColumn('ophcocataractreferral_visualacuity_unit','tooltip', "TINYINT(1) NOT NULL DEFAULT '0'");
+		$this->addColumn('ophcocataractreferral_visualacuity_unit','information', "TEXT NULL COLLATE 'utf8_unicode_ci'");
 
 	}
 
@@ -41,8 +48,15 @@ class m140211_132229_updated_models extends OEMigration
 		$this->dropIndex('et_ophcocataractreferral_visualacuity_unit_id_fk','et_ophcocataractreferral_visualacuity');
 		$this->dropColumn('et_ophcocataractreferral_visualacuity','unit_id');
 
-		$this->dropColumn('ophcocataractreferral_visualacuity_unit','selectable');
-	}
+		$this->dropColumn('et_ophcocataractreferral_visualacuity','left_unable_to_assess');
+		$this->dropColumn('et_ophcocataractreferral_visualacuity','right_unable_to_assess');
+		$this->dropColumn('et_ophcocataractreferral_visualacuity','left_eye_missing');
+		$this->dropColumn('et_ophcocataractreferral_visualacuity','right_eye_missing');
 
+		$this->dropColumn('ophcocataractreferral_visualacuity_unit_value','selectable');
+
+		$this->dropColumn('ophcocataractreferral_visualacuity_unit','tooltip');
+		$this->dropColumn('ophcocataractreferral_visualacuity_unit','information');
+	}
 
 }

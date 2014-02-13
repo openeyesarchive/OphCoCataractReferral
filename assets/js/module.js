@@ -22,19 +22,12 @@ $(document).ready(function() {
 		}
 	});
 
-	$('select.populate_textarea').unbind('change').change(function() {
-		if ($(this).val() != '') {
-			var cLass = $(this).parent().parent().parent().attr('class').match(/Element.*/);
-			var el = $('#'+cLass+'_'+$(this).attr('id'));
-			var currentText = el.text();
-			var newText = $(this).children('option:selected').text();
+	$('#impact').unbind('change').change(function() {
+		updateInputByDropDown(this,'#Element_OphCoCataractReferral_Hpc_impact');
+	});
 
-			if (currentText.length == 0) {
-				el.text(ucfirst(newText));
-			} else {
-				el.text(currentText+', '+newText);
-			}
-		}
+	$('#history').unbind('change').change(function() {
+		updateInputByDropDown(this,'#Element_OphCoCataractReferral_Hpc_history');
 	});
 
 	if (window.Element_OphCoCataractReferral_IntraocularPressure_link_instrument_selects !== undefined) {
@@ -170,7 +163,27 @@ $(document).ready(function() {
 		e.preventDefault();
 		printIFrameUrl(OE_print_url,null);
 	});
+
+	$(this).delegate('.addReading', 'click', function(e) {
+		var side = $(this).closest('.side').attr('data-side');
+		OphCoCataractReferral_VisualAcuity_addReading(side);
+		e.preventDefault();
+	});
 });
+
+function updateInputByDropDown(dropdown,input) {
+	if ($(dropdown).val() != '') {
+		var el = $(dropdown).parent().find(input);
+		var currentText = el.text();
+		var newText = $(dropdown).children('option:selected').text();
+
+		if (currentText.length == 0) {
+			el.text(ucfirst(newText));
+		} else {
+			el.text(currentText+', '+newText);
+		}
+	}
+}
 
 function updateSegmentedField(field) {
 	var parts = $(field).parent().children('select');
@@ -236,11 +249,58 @@ function eDparameterListener(_drawing) {
 	}
 }
 
-function OphCoCataractReferral_VisualAcuity_init() {
+/**
+ * Visual Acuity
+ */
+
+function OphCoCataractReferral_VisualAcuity_ReadingTooltip(row) {
+	var iconHover = row.find('.va-info-icon:last');
+
+	iconHover.hover(function(e) {
+		var sel = $(this).parent().parent().find('select.va-selector');
+		var val = sel.val();
+		var conversions = [];
+
+		sel.find('option').each(function() {
+			if ($(this).val() == val) {
+				conversions = $(this).data('tooltip');
+				return true;
+			}
+		});
+
+		var tooltip_text = '';
+		var approx = false;
+		for (var i = 0; i < conversions.length; i++) {
+			tooltip_text += conversions[i].name + ": " + conversions[i].value;
+			if (conversions[i].approx) {
+				approx = true;
+				tooltip_text += '*';
+			}
+			tooltip_text += "<br />";
+		}
+		if (approx) {
+			tooltip_text += "<i>* Approximate</i>";
+		}
+
+		var infoWrap = $('<div class="quicklook">' + tooltip_text + '</div>');
+		infoWrap.appendTo('body');
+		var offsetPos = $(this).offset();
+		var top = offsetPos.top;
+		var left = offsetPos.left + 25;
+
+		top = top - (infoWrap.height()/2) + 8;
+
+		if (left + infoWrap.width() > 1150) left = left - infoWrap.width() - 40;
+		infoWrap.css({'position': 'absolute', 'top': top + "px", 'left': left + "px"});
+		infoWrap.fadeIn('fast');
+
+	}, function(e) {
+		$('body > div:last').remove();
+	});
 }
 
 function OphCoCataractReferral_VisualAcuity_getNextKey() {
-	var keys = $('#event_content .Element_OphCoCataractReferral_VisualAcuity .visualAcuityReading').map(function(index, el) {
+	var keys = $('.visualAcuityReading').map(function(index, el) {
 		return parseInt($(el).attr('data-key'));
 	}).get();
 	if(keys.length) {
@@ -254,15 +314,18 @@ function OphCoCataractReferral_VisualAcuity_addReading(side) {
 	var template = $('#visualacuity_reading_template').html();
 	var data = {
 		"key" : OphCoCataractReferral_VisualAcuity_getNextKey(),
-		"side" : (side == 'right' ? 0 : 1),
+		"side" : (side == 'right' ? 0 : 1)
 	};
 	var form = Mustache.render(template, data);
-	$('#event_content .Element_OphCoCataractReferral_VisualAcuity .[data-side="' + side + '"] .noReadings').hide();
-	var table = $('#event_content .Element_OphCoCataractReferral_VisualAcuity .[data-side="' + side + '"] table');
+	$('.element[data-element-type-class="Element_OphCoCataractReferral_VisualAcuity"] .element-eye.'+side+'-eye .noReadings').hide();
+	var table = $('.element[data-element-type-class="Element_OphCoCataractReferral_VisualAcuity"] .element-eye[data-side="'+side+'"] table');
 	table.show();
 	var nextMethodId = OphCoCataractReferral_VisualAcuity_getNextMethodId(side);
 	$('tbody', table).append(form);
 	$('.method_id', table).last().val(nextMethodId);
+
+	OphCoCataractReferral_VisualAcuity_ReadingTooltip(table.find('tr').last());
+
 }
 
 /**
@@ -273,11 +336,34 @@ function OphCoCataractReferral_VisualAcuity_addReading(side) {
  */
 function OphCoCataractReferral_VisualAcuity_getNextMethodId(side) {
 	var method_ids = OphCoCataractReferral_VisualAcuity_method_ids;
-	$('#event_content .Element_OphCoCataractReferral_VisualAcuity .[data-side="' + side + '"] .method_id').each(function() {
+	$('#event-content .Element_OphCoCataractReferral_VisualAcuity [data-side="' + side + '"] .method_id').each(function() {
 		var method_id = $(this).val();
 		method_ids = $.grep(method_ids, function(value) {
 			return value != method_id;
 		});
 	});
-	return method_ids.shift();
+	return method_ids[0];
+}
+
+function OphCoCataractReferral_VisualAcuity_bestForSide(side) {
+	var table = $('#event-content .Element_OphCoCataractReferral_VisualAcuity [data-side="' + side + '"] table');
+	if (table.is(':visible')) {
+		var best = 0;
+		table.find('tr .va-selector').each(function() {
+			if (parseInt($(this).val()) > best) {
+				best = parseInt($(this).val());
+			}
+		});
+		return best;
+	}
+	return null;
+}
+
+function OphCoCataractReferral_VisualAcuity_init() {
+	// ensure tooltip works when loading for an edit
+	$('#event-content .Element_OphCoCataractReferral_VisualAcuity .side').each(function() {
+		$(this).find('tr.visualAcuityReading').each(function() {
+			OphCoCataractReferral_VisualAcuity_ReadingTooltip($(this));
+		});
+	});
 }

@@ -27,7 +27,7 @@ class m140211_132229_update_visual_acuity_models extends OEMigration
 
 		$this->addColumn(	'et_ophcocataractreferral_visualacuity','unit_id', 'INT(10) UNSIGNED NOT NULL');
 		$this->addForeignKey('et_ophcocataractreferral_visualacuity_unit_fk','et_ophcocataractreferral_visualacuity','unit_id', 'ophcocataractreferral_visualacuity_unit' ,'id');
-		$this->createIndex('et_ophcocataractreferral_visualacuity_unit_id_fk','et_ophcocataractreferral_visualacuity','unit_id',true);
+		$this->createIndex('et_ophcocataractreferral_visualacuity_unit_id_fk','et_ophcocataractreferral_visualacuity','unit_id');
 
 		$this->addColumn(	'et_ophcocataractreferral_visualacuity','left_unable_to_assess', 'TINYINT(1) UNSIGNED NOT NULL');
 		$this->addColumn(	'et_ophcocataractreferral_visualacuity','right_unable_to_assess', 'TINYINT(1) UNSIGNED NOT NULL');

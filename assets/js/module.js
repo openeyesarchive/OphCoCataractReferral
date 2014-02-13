@@ -23,31 +23,11 @@ $(document).ready(function() {
 	});
 
 	$('#impact').unbind('change').change(function() {
-		if ($(this).val() != '') {
-			var el = $(this).parent().find('#Element_OphCoCataractReferral_Hpc_impact');
-			var currentText = el.text();
-			var newText = $(this).children('option:selected').text();
-
-			if (currentText.length == 0) {
-				el.text(ucfirst(newText));
-			} else {
-				el.text(currentText+', '+newText);
-			}
-		}
+		updateInputByDropDown(this,'#Element_OphCoCataractReferral_Hpc_impact');
 	});
 
 	$('#history').unbind('change').change(function() {
-		if ($(this).val() != '') {
-			var el = $(this).parent().find('#Element_OphCoCataractReferral_Hpc_history');
-			var currentText = el.text();
-			var newText = $(this).children('option:selected').text();
-
-			if (currentText.length == 0) {
-				el.text(ucfirst(newText));
-			} else {
-				el.text(currentText+', '+newText);
-			}
-		}
+		updateInputByDropDown(this,'#Element_OphCoCataractReferral_Hpc_history');
 	});
 
 	if (window.Element_OphCoCataractReferral_IntraocularPressure_link_instrument_selects !== undefined) {
@@ -190,6 +170,20 @@ $(document).ready(function() {
 		e.preventDefault();
 	});
 });
+
+function updateInputByDropDown(dropdown,input) {
+	if ($(dropdown).val() != '') {
+		var el = $(dropdown).parent().find(input);
+		var currentText = el.text();
+		var newText = $(dropdown).children('option:selected').text();
+
+		if (currentText.length == 0) {
+			el.text(ucfirst(newText));
+		} else {
+			el.text(currentText+', '+newText);
+		}
+	}
+}
 
 function updateSegmentedField(field) {
 	var parts = $(field).parent().children('select');

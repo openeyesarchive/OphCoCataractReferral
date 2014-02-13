@@ -22,10 +22,23 @@ $(document).ready(function() {
 		}
 	});
 
-	$('select.populate_textarea').unbind('change').change(function() {
+	$('#impact').unbind('change').change(function() {
 		if ($(this).val() != '') {
-			var cLass = $(this).parent().parent().parent().attr('class').match(/Element.*/);
-			var el = $('#'+cLass+'_'+$(this).attr('id'));
+			var el = $(this).parent().find('#Element_OphCoCataractReferral_Hpc_impact');
+			var currentText = el.text();
+			var newText = $(this).children('option:selected').text();
+
+			if (currentText.length == 0) {
+				el.text(ucfirst(newText));
+			} else {
+				el.text(currentText+', '+newText);
+			}
+		}
+	});
+
+	$('#history').unbind('change').change(function() {
+		if ($(this).val() != '') {
+			var el = $(this).parent().find('#Element_OphCoCataractReferral_Hpc_history');
 			var currentText = el.text();
 			var newText = $(this).children('option:selected').text();
 

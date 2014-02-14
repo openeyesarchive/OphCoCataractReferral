@@ -1,29 +1,54 @@
-
-<h4 class="elementTypeName"><?php  echo $element->elementType->name ?></h4>
-
-<table class="subtleWhite normalText">
-  <tbody>
-    <tr>
-      <td width="400px"></td>
-      <td>
-				<div class="view_Element_OphCoCataractReferral_CurrentRefraction_iop_right_instrument">
-					<?php if ($element->getSetting('show_instruments')) {?>
-						<?php echo $element->right_instrument ? $element->right_instrument->name : 'None'?>
+<?php
+/**
+ * OpenEyes
+ *
+ * (C) Moorfields Eye Hospital NHS Foundation Trust, 2008-2011
+ * (C) OpenEyes Foundation, 2011-2013
+ * This file is part of OpenEyes.
+ * OpenEyes is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+ * OpenEyes is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License along with OpenEyes in a file titled COPYING. If not, see <http://www.gnu.org/licenses/>.
+ *
+ * @package OpenEyes
+ * @link http://www.openeyes.org.uk
+ * @author OpenEyes <info@openeyes.org.uk>
+ * @copyright Copyright (c) 2008-2011, Moorfields Eye Hospital NHS Foundation Trust
+ * @copyright Copyright (c) 2011-2013, OpenEyes Foundation
+ * @license http://www.gnu.org/licenses/gpl-3.0.html The GNU General Public License V3.0
+ */
+?>
+<section class="element">
+	<header class="element-header">
+		<h3 class="element-title"><?php echo $element->elementType->name?></h3>
+	</header>
+	<div class="element-data element-eyes row">
+		<div class="element-eye right-eye column">
+			<div class="data-row">
+				<div class="data-value">
+					<?php if ($element->right_reading->name != 'NR') { ?>
+						<?php echo $element->right_reading->name ?> mmHg
+						<?php if ($element->right_instrument) {
+							echo '('.$element->right_instrument->name.')';
+						} ?>
+					<?php } else { ?>
+						Not Recorded
 					<?php }?>
 				</div>
-				<div class="view_Element_OphCoCataractReferral_CurrentRefraction_iop_right_pressure"<?php if (!$element->getSetting('show_instruments')) {?> style="margin-left: 185px;"<?php }?>>
-					<?php echo $element->right_pressure != 0 ? $element->right_pressure : 'NR'?>
-				</div>
-				<img src="<?php echo $this->assetPath?>/img/iop_divider.png" style="float: left; margin-left: -52px; margin-top: 2px" />
-				<div class="view_Element_OphCoCataractReferral_CurrentRefraction_iop_left_pressure">
-					<?php echo $element->left_pressure != 0 ? $element->left_pressure : 'NR'?>
-				</div>
-				<div class="view_Element_OphCoCataractReferral_CurrentRefraction_iop_left_instrument">
-					<?php if ($element->getSetting('show_instruments')) {?>
-						<?php echo $element->left_instrument ? $element->left_instrument->name : 'None'?>
+			</div>
+		</div>
+		<div class="element-eye left-eye column">
+			<div class="data-row">
+				<div class="data-value">
+					<?php if ($element->left_reading->name != 'NR') { ?>
+						<?php echo $element->left_reading->name ?> mmHg
+						<?php if ($element->left_instrument) {
+							echo '('.$element->left_instrument->name.')';
+						} ?>
+					<?php } else { ?>
+						Not Recorded
 					<?php }?>
 				</div>
-			</td>
-		</tr>
-	</tbody>
-</table>
+			</div>
+		</div>
+	</div>
+</section>

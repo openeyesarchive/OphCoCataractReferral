@@ -40,7 +40,7 @@
 	</div>
 	<div class="element-fields">
 		<?php echo $form->radioButtons($element, 'refraction_id', CHtml::listData(EtOphcocataractreferralHpcRefraction::model()->findAll(array('order'=>'display_order asc')),'id','name'))?>
-		<?php echo $form->radioButtons($element, 'eye_id', CHtml::listData(Eye::model()->findAll(array('order'=>'id asc')),'id','name'))?>
+		<?php echo $form->radioButtons($element, 'eye_id', CHtml::listData(Eye::model()->findAll(array('order'=>'display_order asc')),'id','name'))?>
 		<?php echo $form->radioButtons($element, 'onset_id', CHtml::listData(EtOphcocataractreferralHpcOnset::model()->findAll(array('order'=>'display_order asc')),'id','name'))?>
 		<?php echo $form->radioButtons($element, 'first_second_eye_id', CHtml::listData(EtOphcocataractreferralHpcFirstSecondEye::model()->findAll(array('order'=>'display_order asc')),'id','name'))?>
 	</div>

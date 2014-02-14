@@ -1,13 +1,19 @@
-
-<h4 class="elementTypeName"><?php  echo $element->elementType->name ?></h4>
-
-<div class="cols2 clearfix" style="margin-bottom: 2em;">
-	<div class="left">
-		<div style="margin-left: 10px;">
-			<?php echo $element->right_eye?>
+<section class="element">
+	<header class="element-header">
+		<h3 class="element-title"><?php echo $element->elementType->name?></h3>
+	</header>
+	<div class="element-data element-eyes row">
+		<div class="element-eye right-eye column">
+			<div class="data-row">
+				<div class="data-value">
+				<?php echo $element->right_eye?>
+				</div>
+			</div>
+		</div>
+		<div class="element-eye left-eye column">
+			<div class="data-row">
+				<div class="data-value">
+			<?php echo $element->left_eye?>
 		</div>
 	</div>
-	<div class="right">
-		<?php echo $element->left_eye?>
-	</div>
-</div>
+</section>

@@ -1,4 +1,3 @@
-
 <?php
 /**
  * OpenEyes
@@ -18,32 +17,20 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.html The GNU General Public License V3.0
  */
 ?>
-<section class="element">
-	<header class="element-header">
-		<h3 class="element-title"><?php echo $element->elementType->name?></h3>
-	</header>
-	<div class="element-data element-eyes row">
-		<div class="element-eye right-eye column">
-			<div class="data-row">
-				<?php if ($element->hasRight()) {?>
-					<div class="row refraction">
-						<?php $this->renderPartial('view_' . get_class($element) . '_OEEyeDraw', array('side' => 'right', 'element' => $element));?>
-					</div>
-				<?php } else {?>
-					<div class="data-value">Not recorded</div>
-				<?php }?>
-			</div>
-		</div>
-		<div class="element-eye left-eye column">
-			<div class="data-row">
-				<?php if ($element->hasLeft()) {?>
-					<div class="row refraction">
-						<?php $this->renderPartial('view_' . get_class($element) . '_OEEyeDraw', array('side' => 'left', 'element' => $element));?>
-					</div>
-				<?php } else {?>
-					<div class="data-value">Not recorded</div>
-				<?php }?>
-			</div>
-		</div>
+<div class="column fixed">
+	<?php $this->widget('application.modules.eyedraw.OEEyeDrawWidget', array(
+			'idSuffix' => $side.'_'.$element->elementType->id.'_'.$element->id,
+			'side' => ($side == 'right') ? 'R' : 'L',
+			'mode' => 'view',
+			'width' => 100,
+			'height' => 100,
+			'model' => $element,
+			'attribute' => $side.'_axis_eyedraw',
+	))?>
+</div>
+<div class="column fluid">
+	<div class="data-value">
+		<?= Yii::app()->format->text($element->getCombined($side)) ?><br/>
+		Spherical equivalent: <?php echo number_format($element->{$side.'_sphere'} + 0.5 * $element->{$side.'_cylinder'},2)?>
 	</div>
-</section>
+</div>

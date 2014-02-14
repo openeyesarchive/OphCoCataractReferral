@@ -17,37 +17,36 @@
  */
 ?>
 <section class="element <?php echo $element->elementType->class_name?>"
-		 data-element-type-id="<?php echo $element->elementType->id?>"
-		 data-element-type-class="<?php echo $element->elementType->class_name?>"
-		 data-element-type-name="<?php echo $element->elementType->name?>"
-		 data-element-display-order="<?php echo $element->elementType->display_order?>">
+				 data-element-type-id="<?php echo $element->elementType->id?>"
+				 data-element-type-class="<?php echo $element->elementType->class_name?>"
+				 data-element-type-name="<?php echo $element->elementType->name?>"
+				 data-element-display-order="<?php echo $element->elementType->display_order?>">
 	<element-header>
 		<h3 class="element-title"><?php  echo $element->elementType->name; ?></h3>
 	</element-header>
 
-	<div class="element-data element-eyes row">
+	<div class="element-fields element-eyes row">
 		<div class="element-eye right-eye column">
-			<div class="data-row">
-				<?php if($element->getSetting('show_instruments')) {
-					echo CHtml::activeDropDownList($element, 'right_instrument_id', $element->getInstrumentValues(), array('class' => 'iopInstrument'));
+			<div class="field-row">
+				<?php echo $form->dropDownList($element, 'right_reading_id', CHtml::listData(OphCiExamination_IntraocularPressure_Reading::model()->findAll(array('order'=>'display_order')),'id','name'), array('class' => 'inline iopReading', 'nowrapper'=>true))?>
+				<span class="unit">mmHg,</span>
+				<?php if ($element->getSetting('show_instruments')) {
+					echo $form->dropDownList($element, 'right_instrument_id', $element->getInstrumentValues(), array('class' => 'inline iopInstrument', 'nowrapper'=>true));
 				} else {
-					echo CHtml::activeHiddenField($element, 'right_instrument_id');
-				} ?>
-				<?php echo CHtml::activeDropDownList($element, 'right_pressure', $element->getReadingValues(), array('class' => 'iopReading')); ?>
+					echo $form->hiddenField($element, 'right_instrument_id');
+				}?>
 			</div>
 		</div>
 		<div class="element-eye left-eye column">
-			<div class="data-row">
-				<?php echo CHtml::activeDropDownList($element, 'left_pressure', $element->getReadingValues(), array('class' => 'iopReading')); ?>
-				<?php if($element->getSetting('show_instruments')) {
-					echo CHtml::activeDropDownList($element, 'left_instrument_id', $element->getInstrumentValues(), array('class' => 'iopInstrument'));
+			<div class="field-row">
+				<?php echo $form->dropDownList($element, 'left_reading_id', CHtml::listData(OphCiExamination_IntraocularPressure_Reading::model()->findAll(array('order'=>'display_order')),'id','name'), array('class' => 'inline iopReading', 'nowrapper'=>true))?>
+				<span class="unit">mmHg,</span>
+				<?php if ($element->getSetting('show_instruments')) {
+					echo $form->dropDownList($element, 'left_instrument_id', $element->getInstrumentValues(), array('class' => 'inline iopInstrument', 'nowrapper'=>true));
 				} else {
-					echo CHtml::activeHiddenField($element, 'left_instrument_id');
-				} ?>
+					echo $form->hiddenField($element, 'left_instrument_id');
+				}?>
 			</div>
 		</div>
 	</div>
 </section>
-<script type="text/javascript">
-	var <?php echo get_class($element)?>_link_instrument_selects = <?php echo $element->getSetting('link_selects') ? 'true' : 'false'?>;
-</script>

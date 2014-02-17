@@ -30,6 +30,14 @@ $(document).ready(function() {
 		updateInputByDropDown(this,'#Element_OphCoCataractReferral_Hpc_history');
 	});
 
+	$('#right_eye').unbind('change').change(function() {
+		updateInputByDropDown(this,'#Element_OphCoCataractReferral_PosteriorSegment_right_eye');
+	});
+
+	$('#left_eye').unbind('change').change(function() {
+		updateInputByDropDown(this,'#Element_OphCoCataractReferral_PosteriorSegment_left_eye');
+	});
+
 	if (window.Element_OphCoCataractReferral_IntraocularPressure_link_instrument_selects !== undefined) {
 		if (Element_OphCoCataractReferral_IntraocularPressure_link_instrument_selects) {
 			$('#Element_OphCoCataractReferral_IntraocularPressure_left_instrument_id').change(function() {

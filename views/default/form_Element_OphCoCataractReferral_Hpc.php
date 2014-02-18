@@ -27,21 +27,21 @@
 	<div class="element-data element-eyes row">
 		<div class="element-eye right-eye column">
 			<div class="data-row">
-				<?php echo $form->dropDownListNoPost('history', CHtml::listData(EtOphcocataractreferralHpcHistory::model()->findAll(),'id','name'),'',array('empty'=>'- History -','class'=>'populate_textarea','nowrapper'=>true))?>
+				<?php echo $form->dropDownListNoPost('history', CHtml::listData(EtOphcocataractreferralHpcHistory::model()->notDeleted()->findAll(),'id','name'),'',array('empty'=>'- History -','class'=>'populate_textarea','nowrapper'=>true))?>
 				<?php echo $form->textArea($element, 'history', array('rows' => 6, 'cols' => 40,'nowrapper'=>true)); ?>
 			</div>
 		</div>
 		<div class="element-eye left-eye column">
 			<div class="data-row">
-				<?php echo $form->dropDownListNoPost('impact', CHtml::listData(EtOphcocataractreferralHpcImpact::model()->findAll(),'id','name'),'',array('empty'=>'- Impact -','class'=>'populate_textarea','nowrapper'=>true))?>
+				<?php echo $form->dropDownListNoPost('impact', CHtml::listData(EtOphcocataractreferralHpcImpact::model()->notDeleted()->findAll(),'id','name'),'',array('empty'=>'- Impact -','class'=>'populate_textarea','nowrapper'=>true))?>
 				<?php echo $form->textArea($element, 'impact', array('rows' => 6, 'cols' => 40,'nowrapper'=>true)); ?>
 			</div>
 		</div>
 	</div>
 	<div class="element-fields">
-		<?php echo $form->radioButtons($element, 'refraction_id', CHtml::listData(EtOphcocataractreferralHpcRefraction::model()->findAll(array('order'=>'display_order asc')),'id','name'))?>
+		<?php echo $form->radioButtons($element, 'refraction_id', CHtml::listData(EtOphcocataractreferralHpcRefraction::model()->notDeletedOrPk($element->refraction_id)->findAll(array('order'=>'display_order asc')),'id','name'))?>
 		<?php echo $form->radioButtons($element, 'eye_id', CHtml::listData(Eye::model()->findAll(array('order'=>'display_order asc')),'id','name'))?>
-		<?php echo $form->radioButtons($element, 'onset_id', CHtml::listData(EtOphcocataractreferralHpcOnset::model()->findAll(array('order'=>'display_order asc')),'id','name'))?>
-		<?php echo $form->radioButtons($element, 'first_second_eye_id', CHtml::listData(EtOphcocataractreferralHpcFirstSecondEye::model()->findAll(array('order'=>'display_order asc')),'id','name'))?>
+		<?php echo $form->radioButtons($element, 'onset_id', CHtml::listData(EtOphcocataractreferralHpcOnset::model()->notDeletedOrPk($element->onset_id)->findAll(array('order'=>'display_order asc')),'id','name'))?>
+		<?php echo $form->radioButtons($element, 'first_second_eye_id', CHtml::listData(EtOphcocataractreferralHpcFirstSecondEye::model()->notDeletedOrPk($element->first_second_eye_id)->findAll(array('order'=>'display_order asc')),'id','name'))?>
 	</div>
 </section>

@@ -147,20 +147,6 @@ class Element_OphCoCataractReferral_VisualAcuity extends SplitEventTypeElement
 	}
 
 	/**
-	 * list of units that are usable for setting visual acuity
-	 *
-	 * @return OphCoCataractReferral_VisualAcuityUnit[]
-	 */
-	public function getUsableUnits()
-	{
-		$criteria = new CDbCriteria();
-		$criteria->condition = 'tooltip = :tt';
-		$criteria->params = array(':tt' => true);
-		$criteria->order = 'name';
-		return OphCoCataractReferral_VisualAcuityUnit::model()->findAll($criteria);
-	}
-
-	/**
 	 * Array of unit values for dropdown
 	 * @param integer $unit_id
 	 * @param boolean $selectable - whether want selectable values or all unit values
@@ -194,7 +180,7 @@ class Element_OphCoCataractReferral_VisualAcuity extends SplitEventTypeElement
 		$criteria->condition = 'id <> :unit_id AND tooltip = :tt';
 		$criteria->params = array(':unit_id' => $unit->id, ':tt' => true);
 		$criteria->order = 'name';
-		$tooltip_units = OphCoCataractReferral_VisualAcuityUnit::model()->findAll($criteria);
+		$tooltip_units = OphCoCataractReferral_VisualAcuityUnit::model()->notDeleted()->findAll($criteria);
 
 		$options = array();
 

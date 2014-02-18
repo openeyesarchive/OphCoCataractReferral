@@ -19,7 +19,6 @@
 ?>
 <?php
 list($values, $val_options) = $element->getUnitValuesForForm();
-$methods = CHtml::listData(OphCoCataractReferral_VisualAcuity_Method::model()->findAll(array('order'=>'display_order')),'id','name');
 $key = 0;
 $right_readings = (isset($_POST['visualacuity_readings_valid']) ? $element->convertReadings(@$_POST['visualacuity_reading'], 'right') : $element->getFormReadings('right'));
 $left_readings = (isset($_POST['visualacuity_readings_valid']) ? $element->convertReadings(@$_POST['visualacuity_reading'], 'left') : $element->getFormReadings('left'));
@@ -50,7 +49,7 @@ $left_readings = (isset($_POST['visualacuity_readings_valid']) ? $element->conve
 								'side' => $reading->side,
 								'values' => $values,
 								'val_options' => $val_options,
-								'methods' => $methods,
+								'methods' => CHtml::listData(OphCoCataractReferral_VisualAcuity_Method::model()->notDeletedOrPk($reading->method_id)->findAll(array('order'=>'display_order')),'id','name'),
 						));
 						$key++;
 					}?>
@@ -98,7 +97,7 @@ $left_readings = (isset($_POST['visualacuity_readings_valid']) ? $element->conve
 								'side' => $reading->side,
 								'values' => $values,
 								'val_options' => $val_options,
-								'methods' => $methods,
+								'methods' => CHtml::listData(OphCoCataractReferral_VisualAcuity_Method::model()->notDeletedOrPk($reading->method_id)->findAll(array('order'=>'display_order')),'id','name'),
 						));
 						$key++;
 					}?>
@@ -141,7 +140,7 @@ $left_readings = (isset($_POST['visualacuity_readings_valid']) ? $element->conve
 			'side' => '{{side}}',
 			'values' => $values,
 			'val_options' => $val_options,
-			'methods' => $methods,
+			'methods' => CHtml::listData(OphCoCataractReferral_VisualAcuity_Method::model()->notDeleted()->findAll(array('order'=>'display_order')),'id','name'),
 	));
 	?>
 </script>
@@ -149,7 +148,7 @@ $left_readings = (isset($_POST['visualacuity_readings_valid']) ? $element->conve
 	$(document).ready(function() {
 		OphCoCataractReferral_VisualAcuity_method_ids = [ <?php
 		$first = true;
-		foreach ($methods as $index => $method) {
+		foreach (CHtml::listData(OphCoCataractReferral_VisualAcuity_Method::model()->notDeleted()->findAll(array('order'=>'display_order')),'id','name') as $index => $method) {
 			if (!$first) {
 				echo ', ';
 			}

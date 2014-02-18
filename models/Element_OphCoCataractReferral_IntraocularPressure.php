@@ -100,11 +100,6 @@ class Element_OphCoCataractReferral_IntraocularPressure extends BaseEventTypeEle
 		);
 	}
 
-	public function getInstrumentValues()
-	{
-		return CHtml::listData(OphCoCataractReferral_Instrument::model()->findAll(array('order' => 'display_order')), 'id', 'name') ;
-	}
-
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.

@@ -25,7 +25,7 @@
 		<h3 class="element-title"><?php  echo $element->elementType->name; ?></h3>
 	</element-header>
 	<div class="element-fields">
-		<?php echo $form->radioButtons($element, 'driving_status_id', CHtml::listData(EtOphcocataractreferralPatientdetailsDrivingStatus::model()->findAll(array('order'=>'display_order')),'id','name'))?>
+		<?php echo $form->radioButtons($element, 'driving_status_id', CHtml::listData(EtOphcocataractreferralPatientdetailsDrivingStatus::model()->notDeletedOrPk($element->driving_status_id)->findAll(array('order'=>'display_order')),'id','name'))?>
 		<?php echo $form->dropDownList($element, 'interpreter_id', CHtml::listData(Language::model()->findAll(),'id','name'),array('empty'=>'- None needed -')); ?>
 	</div>
 </section>

@@ -23,11 +23,11 @@
  * @property integer $id
  * @property string $name
  */
-class OphCiExamination_Refraction_Sign extends BaseActiveRecordVersionedSoftDelete
+class OphCoCataractReferral_Refraction_Sign extends BaseActiveRecordVersionedSoftDelete
 {
 	/**
 	 * Returns the static model of the specified AR class.
-	 * @return OphCiExamination_Instrument the static model class
+	 * @return OphCoCataractReferral_Instrument the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

@@ -1,15 +1,15 @@
 {
   "name": "openeyes",
   "version": "1.4.0",
-  "description": "OpenEyes Examination event module.",
+  "description": "OpenEyes Cataract Referral event module.",
   "repository": {
     "type": "git",
-    "url": "git://github.com/openeyes/OphCiExamination.git"
+    "url": "git://github.com/openeyes/OphCoCataractReferral.git"
   },
   "author": "OpenEyes",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/openeyes/OphCiExamination/issues"
+    "url": "https://github.com/openeyes/OphCoCataractReferral/issues"
   },
   "devDependencies": {
     "grunt": "~0.4.2",

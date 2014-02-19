@@ -30,7 +30,7 @@
 		<div class="active-form">
 			<div class="eyedraw-row row refraction">
 				<div class="fixed column">
-					<?php echo $this->renderPartial('form_Refraction_OEEyedraw',array('side'=>'right','element'=>$element))?>
+					<?php echo $this->renderPartial('form_Refraction_OEEyeDraw',array('side'=>'right','element'=>$element))?>
 				</div>
 				<div class="fluid column">
 					<?php echo $this->renderPartial('form_Refraction_OEEyeDraw_fields', array('side' => 'right', 'element' => $element))?>
@@ -42,7 +42,7 @@
 		<div class="active-form">
 			<div class="eyedraw-row row refraction">
 				<div class="fixed column">
-					<?php echo $this->renderPartial('form_Refraction_OEEyedraw',array('side'=>'left','element'=>$element))?>
+					<?php echo $this->renderPartial('form_Refraction_OEEyeDraw',array('side'=>'left','element'=>$element))?>
 				</div>
 				<div class="fluid column">
 					<?php echo $this->renderPartial('form_Refraction_OEEyeDraw_fields', array('side' => 'left', 'element' => $element))?>

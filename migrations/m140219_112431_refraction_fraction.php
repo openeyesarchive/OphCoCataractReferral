@@ -13,6 +13,7 @@ class m140219_112431_refraction_fraction extends CDbMigration
 				`last_modified_date` datetime NOT NULL DEFAULT '1900-01-01 00:00:00',
 				`created_user_id` int(10) unsigned NOT NULL DEFAULT '1',
 				`created_date` datetime NOT NULL DEFAULT '1900-01-01 00:00:00',
+				`deleted` TINYINT(1) UNSIGNED NOT NULL,
 				PRIMARY KEY (`id`),
 				KEY `ophcocataractreferral_refraction_fraction_lmui_fk` (`last_modified_user_id`),
 				KEY `ophcocataractreferral_refraction_fraction_cui_fk` (`created_user_id`),

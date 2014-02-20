@@ -23,7 +23,7 @@
  * @property integer $id
  * @property string $name
  */
-class OphCoCataractReferral_Refraction_Fraction extends BaseActiveRecordVersioned
+class OphCoCataractReferral_Refraction_Fraction extends BaseActiveRecordVersionedSoftDelete
 {
 	/**
 	 * Returns the static model of the specified AR class.

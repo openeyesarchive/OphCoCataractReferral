@@ -25,7 +25,7 @@
  * @property integer $display_order
 
  */
-class OphCoCataractReferral_IntraocularPressure_Reading extends BaseActiveRecordVersioned
+class OphCoCataractReferral_IntraocularPressure_Reading extends BaseActiveRecordVersionedSoftDelete
 {
 	/**
 	 * Returns the static model of the specified AR class.

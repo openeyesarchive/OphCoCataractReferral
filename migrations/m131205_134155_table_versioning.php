@@ -517,56 +517,6 @@ CREATE TABLE `et_ophcocataractreferral_previous_ophthalmic_history_version` (
 		$this->alterColumn('et_ophcocataractreferral_previous_ophthalmic_history_version','version_id','int(10) unsigned NOT NULL AUTO_INCREMENT');
 
 		$this->execute("
-CREATE TABLE `et_ophcocataractreferral_previousrefraction_version` (
-	`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-	`event_id` int(10) unsigned NOT NULL,
-	`previous_refraction_different` tinyint(1) unsigned NOT NULL DEFAULT '0',
-	`previous_refraction_date` datetime NOT NULL DEFAULT '1901-01-01 00:00:00',
-	`last_modified_user_id` int(10) unsigned NOT NULL DEFAULT '1',
-	`last_modified_date` datetime NOT NULL DEFAULT '1901-01-01 00:00:00',
-	`created_user_id` int(10) unsigned NOT NULL DEFAULT '1',
-	`created_date` datetime NOT NULL DEFAULT '1901-01-01 00:00:00',
-	`left_sphere` decimal(5,2) DEFAULT NULL,
-	`left_cylinder` decimal(5,2) DEFAULT NULL,
-	`left_axis` int(3) DEFAULT '0',
-	`left_axis_eyedraw` text,
-	`left_type_id` int(10) unsigned DEFAULT NULL,
-	`right_sphere` decimal(5,2) DEFAULT NULL,
-	`right_cylinder` decimal(5,2) DEFAULT NULL,
-	`right_axis` int(3) DEFAULT '0',
-	`right_axis_eyedraw` text,
-	`right_type_id` int(10) unsigned DEFAULT NULL,
-	`left_type_other` varchar(100) DEFAULT NULL,
-	`right_type_other` varchar(100) DEFAULT NULL,
-	`right_graph_axis_eyedraw` text,
-	`left_graph_axis_eyedraw` text,
-	PRIMARY KEY (`id`),
-	KEY `acv_et_ophcocataractreferral_pr_e_id_fk` (`event_id`),
-	KEY `acv_et_ophcocataractreferral_pr_c_u_id_fk` (`created_user_id`),
-	KEY `acv_et_ophcocataractreferral_pr_l_m_u_id_fk` (`last_modified_user_id`),
-	KEY `acv_et_ophcocataractreferral_pr_l_r_t_id_fk` (`left_type_id`),
-	KEY `acv_et_ophcocataractreferral_pr_r_r_t_id_fk` (`right_type_id`),
-	CONSTRAINT `acv_et_ophcocataractreferral_pr_c_u_id_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`),
-	CONSTRAINT `acv_et_ophcocataractreferral_pr_e_id_fk` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`),
-	CONSTRAINT `acv_et_ophcocataractreferral_pr_l_m_u_id_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`),
-	CONSTRAINT `acv_et_ophcocataractreferral_pr_l_r_t_id_fk` FOREIGN KEY (`left_type_id`) REFERENCES `et_ophcocataractreferral_refraction_type` (`id`),
-	CONSTRAINT `acv_et_ophcocataractreferral_pr_r_r_t_id_fk` FOREIGN KEY (`right_type_id`) REFERENCES `et_ophcocataractreferral_refraction_type` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
-		");
-
-		$this->alterColumn('et_ophcocataractreferral_previousrefraction_version','id','int(10) unsigned NOT NULL');
-		$this->dropPrimaryKey('id','et_ophcocataractreferral_previousrefraction_version');
-
-		$this->createIndex('et_ophcocataractreferral_previousrefraction_aid_fk','et_ophcocataractreferral_previousrefraction_version','id');
-		$this->addForeignKey('et_ophcocataractreferral_previousrefraction_aid_fk','et_ophcocataractreferral_previousrefraction_version','id','et_ophcocataractreferral_previousrefraction','id');
-
-		$this->addColumn('et_ophcocataractreferral_previousrefraction_version','version_date',"datetime not null default '1900-01-01 00:00:00'");
-
-		$this->addColumn('et_ophcocataractreferral_previousrefraction_version','version_id','int(10) unsigned NOT NULL');
-		$this->addPrimaryKey('version_id','et_ophcocataractreferral_previousrefraction_version','version_id');
-		$this->alterColumn('et_ophcocataractreferral_previousrefraction_version','version_id','int(10) unsigned NOT NULL AUTO_INCREMENT');
-
-		$this->execute("
 CREATE TABLE `et_ophcocataractreferral_refraction_type_version` (
 	`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
 	`name` varchar(255) DEFAULT NULL,
@@ -595,55 +545,7 @@ CREATE TABLE `et_ophcocataractreferral_refraction_type_version` (
 		$this->addPrimaryKey('version_id','et_ophcocataractreferral_refraction_type_version','version_id');
 		$this->alterColumn('et_ophcocataractreferral_refraction_type_version','version_id','int(10) unsigned NOT NULL AUTO_INCREMENT');
 
-		$this->execute("
-CREATE TABLE `et_ophcocataractreferral_surgeryrefraction_version` (
-	`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-	`event_id` int(10) unsigned NOT NULL,
-	`refractive_surgery` tinyint(1) unsigned NOT NULL DEFAULT '0',
-	`refractive_surgery_date` datetime NOT NULL DEFAULT '1901-01-01 00:00:00',
-	`last_modified_user_id` int(10) unsigned NOT NULL DEFAULT '1',
-	`last_modified_date` datetime NOT NULL DEFAULT '1901-01-01 00:00:00',
-	`created_user_id` int(10) unsigned NOT NULL DEFAULT '1',
-	`created_date` datetime NOT NULL DEFAULT '1901-01-01 00:00:00',
-	`left_sphere` decimal(5,2) DEFAULT NULL,
-	`left_cylinder` decimal(5,2) DEFAULT NULL,
-	`left_axis` int(3) DEFAULT '0',
-	`left_axis_eyedraw` text,
-	`left_type_id` int(10) unsigned DEFAULT NULL,
-	`right_sphere` decimal(5,2) DEFAULT NULL,
-	`right_cylinder` decimal(5,2) DEFAULT NULL,
-	`right_axis` int(3) DEFAULT '0',
-	`right_axis_eyedraw` text,
-	`right_type_id` int(10) unsigned DEFAULT NULL,
-	`left_type_other` varchar(100) DEFAULT NULL,
-	`right_type_other` varchar(100) DEFAULT NULL,
-	`right_graph_axis_eyedraw` text,
-	`left_graph_axis_eyedraw` text,
-	PRIMARY KEY (`id`),
-	KEY `acv_et_ophcocataractreferral_sr_e_id_fk` (`event_id`),
-	KEY `acv_et_ophcocataractreferral_sr_c_u_id_fk` (`created_user_id`),
-	KEY `acv_et_ophcocataractreferral_sr_l_m_u_id_fk` (`last_modified_user_id`),
-	KEY `acv_et_ophcocataractreferral_sr_l_r_t_id_fk` (`left_type_id`),
-	KEY `acv_et_ophcocataractreferral_sr_r_r_t_id_fk` (`right_type_id`),
-	CONSTRAINT `acv_et_ophcocataractreferral_sr_c_u_id_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`),
-	CONSTRAINT `acv_et_ophcocataractreferral_sr_e_id_fk` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`),
-	CONSTRAINT `acv_et_ophcocataractreferral_sr_l_m_u_id_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`),
-	CONSTRAINT `acv_et_ophcocataractreferral_sr_l_r_t_id_fk` FOREIGN KEY (`left_type_id`) REFERENCES `et_ophcocataractreferral_refraction_type` (`id`),
-	CONSTRAINT `acv_et_ophcocataractreferral_sr_r_r_t_id_fk` FOREIGN KEY (`right_type_id`) REFERENCES `et_ophcocataractreferral_refraction_type` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
-		");
 
-		$this->alterColumn('et_ophcocataractreferral_surgeryrefraction_version','id','int(10) unsigned NOT NULL');
-		$this->dropPrimaryKey('id','et_ophcocataractreferral_surgeryrefraction_version');
-
-		$this->createIndex('et_ophcocataractreferral_surgeryrefraction_aid_fk','et_ophcocataractreferral_surgeryrefraction_version','id');
-		$this->addForeignKey('et_ophcocataractreferral_surgeryrefraction_aid_fk','et_ophcocataractreferral_surgeryrefraction_version','id','et_ophcocataractreferral_surgeryrefraction','id');
-
-		$this->addColumn('et_ophcocataractreferral_surgeryrefraction_version','version_date',"datetime not null default '1900-01-01 00:00:00'");
-
-		$this->addColumn('et_ophcocataractreferral_surgeryrefraction_version','version_id','int(10) unsigned NOT NULL');
-		$this->addPrimaryKey('version_id','et_ophcocataractreferral_surgeryrefraction_version','version_id');
-		$this->alterColumn('et_ophcocataractreferral_surgeryrefraction_version','version_id','int(10) unsigned NOT NULL AUTO_INCREMENT');
 
 		$this->execute("
 CREATE TABLE `et_ophcocataractreferral_visualacuity_version` (
@@ -869,12 +771,8 @@ CREATE TABLE `ophcocataractreferral_visualacuity_unit_value_version` (
 		$this->addColumn('et_ophcocataractreferral_posteriorsegment_text_version','deleted','tinyint(1) unsigned not null');
 		$this->addColumn('et_ophcocataractreferral_previous_ophthalmic_history','deleted','tinyint(1) unsigned not null');
 		$this->addColumn('et_ophcocataractreferral_previous_ophthalmic_history_version','deleted','tinyint(1) unsigned not null');
-		$this->addColumn('et_ophcocataractreferral_previousrefraction','deleted','tinyint(1) unsigned not null');
-		$this->addColumn('et_ophcocataractreferral_previousrefraction_version','deleted','tinyint(1) unsigned not null');
 		$this->addColumn('et_ophcocataractreferral_refraction_type','deleted','tinyint(1) unsigned not null');
 		$this->addColumn('et_ophcocataractreferral_refraction_type_version','deleted','tinyint(1) unsigned not null');
-		$this->addColumn('et_ophcocataractreferral_surgeryrefraction','deleted','tinyint(1) unsigned not null');
-		$this->addColumn('et_ophcocataractreferral_surgeryrefraction_version','deleted','tinyint(1) unsigned not null');
 		$this->addColumn('et_ophcocataractreferral_visualacuity','deleted','tinyint(1) unsigned not null');
 		$this->addColumn('et_ophcocataractreferral_visualacuity_version','deleted','tinyint(1) unsigned not null');
 
@@ -913,9 +811,7 @@ CREATE TABLE `ophcocataractreferral_visualacuity_unit_value_version` (
 		$this->dropColumn('et_ophcocataractreferral_posteriorsegment','deleted');
 		$this->dropColumn('et_ophcocataractreferral_posteriorsegment_text','deleted');
 		$this->dropColumn('et_ophcocataractreferral_previous_ophthalmic_history','deleted');
-		$this->dropColumn('et_ophcocataractreferral_previousrefraction','deleted');
 		$this->dropColumn('et_ophcocataractreferral_refraction_type','deleted');
-		$this->dropColumn('et_ophcocataractreferral_surgeryrefraction','deleted');
 		$this->dropColumn('et_ophcocataractreferral_visualacuity','deleted');
 
 		$this->dropTable('et_ophcocataractreferral_confirmation_version');
@@ -933,9 +829,7 @@ CREATE TABLE `ophcocataractreferral_visualacuity_unit_value_version` (
 		$this->dropTable('et_ophcocataractreferral_posteriorsegment_version');
 		$this->dropTable('et_ophcocataractreferral_posteriorsegment_text_version');
 		$this->dropTable('et_ophcocataractreferral_previous_ophthalmic_history_version');
-		$this->dropTable('et_ophcocataractreferral_previousrefraction_version');
 		$this->dropTable('et_ophcocataractreferral_refraction_type_version');
-		$this->dropTable('et_ophcocataractreferral_surgeryrefraction_version');
 		$this->dropTable('et_ophcocataractreferral_visualacuity_version');
 		$this->dropTable('ophcocataractreferral_visualacuity_check_method_version');
 		$this->dropTable('ophcocataractreferral_visualacuity_method_version');

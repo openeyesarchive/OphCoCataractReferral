@@ -15,41 +15,33 @@
  * @copyright Copyright (c) 2011-2012, OpenEyes Foundation
  * @license http://www.gnu.org/licenses/gpl-3.0.html The GNU General Public License V3.0
  */
- ?>
-<section class="element <?php echo $element->elementType->class_name ?>"
-	data-element-type-id="<?php echo $element->elementType->id ?>"
-	data-element-type-class="<?php echo $element->elementType->class_name ?>"
-	data-element-type-name="<?php echo $element->elementType->name ?>"
-	data-element-display-order="<?php echo $element->elementType->display_order ?>">
-	<div class="element-fields element-eyes row">
-	<?php //echo $form->hiddenInput($element, 'eye_id', false, array('class' => 'sideField')); ?>
-	<div class="element-eye right-eye column side left" data-side="right">
-		<div class="active-form">
-			<div class="eyedraw-row row refraction">
-				<div class="fixed column">
-					<?php echo $this->renderPartial('form_Refraction_OEEyeDraw',array('side'=>'right','element'=>$element))?>
-				</div>
-				<div class="fluid column">
-					<?php echo $this->renderPartial('form_Refraction_OEEyeDraw_fields', array('side' => 'right', 'element' => $element))?>
-				</div>
+?>
+<?php //echo $form->hiddenInput($element, 'eye_id', false, array('class' => 'sideField')); ?>
+<div class="element-eye right-eye column side left" data-side="right">
+	<div class="active-form">
+		<div class="eyedraw-row row refraction">
+			<div class="fixed column">
+				<?php echo $this->renderPartial('form_Refraction_OEEyeDraw',array('side'=>'right','element'=>$element))?>
+			</div>
+			<div class="fluid column">
+				<?php echo $this->renderPartial('form_Refraction_OEEyeDraw_fields', array('side' => 'right', 'element' => $element))?>
 			</div>
 		</div>
 	</div>
-	<div class="element-eye right-eye column side right" data-side="left">
-		<div class="active-form">
-			<div class="eyedraw-row row refraction">
-				<div class="fixed column">
-					<?php echo $this->renderPartial('form_Refraction_OEEyeDraw',array('side'=>'left','element'=>$element))?>
-				</div>
-				<div class="fluid column">
-					<?php echo $this->renderPartial('form_Refraction_OEEyeDraw_fields', array('side' => 'left', 'element' => $element))?>
-				</div>
+</div>
+<div class="element-eye right-eye column side right" data-side="left">
+	<div class="active-form">
+		<div class="eyedraw-row row refraction">
+			<div class="fixed column">
+				<?php echo $this->renderPartial('form_Refraction_OEEyeDraw',array('side'=>'left','element'=>$element))?>
+			</div>
+			<div class="fluid column">
+				<?php echo $this->renderPartial('form_Refraction_OEEyeDraw_fields', array('side' => 'left', 'element' => $element))?>
 			</div>
 		</div>
 	</div>
-		</div>
-
-</section>
+</div>
+</div>
 <script type="text/javascript">
 	$(document).ready(function() {
 		OphCoCataractReferral_Refraction_init('<?php echo $element->elementType->class_name ?>');

@@ -16,33 +16,27 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.html The GNU General Public License V3.0
  */
 ?>
-<section class="element <?php echo $element->elementType->class_name?>"
-				 data-element-type-id="<?php echo $element->elementType->id?>"
-				 data-element-type-class="<?php echo $element->elementType->class_name?>"
-				 data-element-type-name="<?php echo $element->elementType->name?>"
-				 data-element-display-order="<?php echo $element->elementType->display_order?>">
-	<div class="element-fields element-eyes row">
-		<div class="element-eye right-eye column">
-			<div class="field-row">
-				<?php echo $form->dropDownList($element, 'right_reading_id', CHtml::listData(OphCoCataractReferral_IntraocularPressure_Reading::model()->notDeletedOrPk($element->right_reading_id)->findAll(array('order'=>'display_order')),'id','name'), array('class' => 'inline iopReading', 'nowrapper'=>true))?>
-				<span class="unit">mmHg,</span>
-				<?php if ($element->getSetting('show_instruments')) {
-					echo $form->dropDownList($element, 'right_instrument_id', CHtml::listData(OphCoCataractReferral_Instrument::model()->notDeletedOrPk($element->right_instrument_id)->findAll(array('order' => 'display_order')), 'id', 'name'), array('class' => 'inline iopInstrument', 'nowrapper'=>true));
-				} else {
-					echo $form->hiddenField($element, 'right_instrument_id');
-				}?>
-			</div>
-		</div>
-		<div class="element-eye left-eye column">
-			<div class="field-row">
-				<?php echo $form->dropDownList($element, 'left_reading_id', CHtml::listData(OphCoCataractReferral_IntraocularPressure_Reading::model()->notDeletedOrPk($element->left_reading_id)->findAll(array('order'=>'display_order')),'id','name'), array('class' => 'inline iopReading', 'nowrapper'=>true))?>
-				<span class="unit">mmHg,</span>
-				<?php if ($element->getSetting('show_instruments')) {
-					echo $form->dropDownList($element, 'left_instrument_id', CHtml::listData(OphCoCataractReferral_Instrument::model()->notDeletedOrPk($element->left_instrument_id)->findAll(array('order' => 'display_order')), 'id', 'name'), array('class' => 'inline iopInstrument', 'nowrapper'=>true));
-				} else {
-					echo $form->hiddenField($element, 'left_instrument_id');
-				}?>
-			</div>
+<div class="element-fields element-eyes row">
+	<div class="element-eye right-eye column">
+		<div class="field-row">
+			<?php echo $form->dropDownList($element, 'right_reading_id', CHtml::listData(OphCoCataractReferral_IntraocularPressure_Reading::model()->notDeletedOrPk($element->right_reading_id)->findAll(array('order'=>'display_order')),'id','name'), array('class' => 'inline iopReading', 'nowrapper'=>true))?>
+			<span class="unit">mmHg,</span>
+			<?php if ($element->getSetting('show_instruments')) {
+				echo $form->dropDownList($element, 'right_instrument_id', CHtml::listData(OphCoCataractReferral_Instrument::model()->notDeletedOrPk($element->right_instrument_id)->findAll(array('order' => 'display_order')), 'id', 'name'), array('class' => 'inline iopInstrument', 'nowrapper'=>true));
+			} else {
+				echo $form->hiddenField($element, 'right_instrument_id');
+			}?>
 		</div>
 	</div>
-</section>
+	<div class="element-eye left-eye column">
+		<div class="field-row">
+			<?php echo $form->dropDownList($element, 'left_reading_id', CHtml::listData(OphCoCataractReferral_IntraocularPressure_Reading::model()->notDeletedOrPk($element->left_reading_id)->findAll(array('order'=>'display_order')),'id','name'), array('class' => 'inline iopReading', 'nowrapper'=>true))?>
+			<span class="unit">mmHg,</span>
+			<?php if ($element->getSetting('show_instruments')) {
+				echo $form->dropDownList($element, 'left_instrument_id', CHtml::listData(OphCoCataractReferral_Instrument::model()->notDeletedOrPk($element->left_instrument_id)->findAll(array('order' => 'display_order')), 'id', 'name'), array('class' => 'inline iopInstrument', 'nowrapper'=>true));
+			} else {
+				echo $form->hiddenField($element, 'left_instrument_id');
+			}?>
+		</div>
+	</div>
+</div>

@@ -39,7 +39,7 @@ class OphCoCataractReferral_VisualAcuityUnit extends BaseActiveRecordVersionedSo
 	 */
 	public function tableName()
 	{
-		return 'ophcocataractreferral_visualacuity_unit';
+		return 'ophciexamination_visual_acuity_unit';
 	}
 
 	/**
@@ -59,8 +59,8 @@ class OphCoCataractReferral_VisualAcuityUnit extends BaseActiveRecordVersionedSo
 	public function relations()
 	{
 		return array(
-				'values' => array(self::HAS_MANY, 'OphCoCataractReferral_VisualAcuityUnitValue', 'unit_id', 'order' => 'base_value DESC'),
-				'selectableValues' => array(self::HAS_MANY, 'OphCoCataractReferral_VisualAcuityUnitValue', 'unit_id', 'on' => 'selectableValues.selectable = true', 'order' => 'base_value DESC'),
+				'values' => array(self::HAS_MANY, 'OphCiExamination_VisualAcuityUnitValue', 'unit_id', 'order' => 'base_value DESC'),
+				'selectableValues' => array(self::HAS_MANY, 'OphCiExamination_VisualAcuityUnitValue', 'unit_id', 'on' => 'selectableValues.selectable = true', 'order' => 'base_value DESC'),
 		);
 	}
 

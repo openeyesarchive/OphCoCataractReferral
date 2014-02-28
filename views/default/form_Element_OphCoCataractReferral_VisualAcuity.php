@@ -28,9 +28,6 @@ $left_readings = (isset($_POST['visualacuity_readings_valid']) ? $element->conve
 				 data-element-type-class="<?php echo $element->elementType->class_name ?>"
 				 data-element-type-name="<?php echo $element->elementType->name ?>"
 				 data-element-display-order="<?php echo $element->elementType->display_order ?>">
-	<element-header>
-		<h3 class="element-title"><?php  echo $element->elementType->name; ?></h3>
-	</element-header>
 	<div class="element-fields element-eyes row">
 		<input type="hidden" name="visualacuity_readings_valid" value="1" />
 		<?php echo $form->hiddenInput($element, 'unit_id', false); ?>

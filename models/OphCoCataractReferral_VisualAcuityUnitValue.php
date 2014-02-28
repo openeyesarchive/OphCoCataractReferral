@@ -41,7 +41,7 @@ class OphCoCataractReferral_VisualAcuityUnitValue extends BaseActiveRecordVersio
 	 */
 	public function tableName()
 	{
-		return 'ophcocataractreferral_visualacuity_unit_value';
+		return 'ophciexamination_visual_acuity_unit_value';
 	}
 
 	/**

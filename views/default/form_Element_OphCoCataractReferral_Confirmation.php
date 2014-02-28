@@ -21,9 +21,6 @@
 		 data-element-type-class="<?php echo $element->elementType->class_name?>"
 		 data-element-type-name="<?php echo $element->elementType->name?>"
 		 data-element-display-order="<?php echo $element->elementType->display_order?>">
-	<element-header>
-		<h3 class="element-title"><?php  echo $element->elementType->name; ?></h3>
-	</element-header>
 	<div class="element-fields">
 		<?php echo $form->checkBox($element, 'risks_discussed', array(), array('data-hover' => '95% of cataract patients have improved vision after surgery if no other eye problems present, 1 in 1000 risk of blindness'))?>
 		<?php echo $form->checkBox($element, 'consider_surgery', array())?>

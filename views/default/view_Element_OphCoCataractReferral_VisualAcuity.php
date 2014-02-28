@@ -1,7 +1,4 @@
 <section class="element">
-	<header class="element-header">
-		<h3 class="element-title"><?php echo $element->elementType->name?></h3>
-	</header>
 	<div class="element-data element-eyes row">
 		<div class="element-eye right-eye column">
 			<?php if ($element->hasRight()) {?>

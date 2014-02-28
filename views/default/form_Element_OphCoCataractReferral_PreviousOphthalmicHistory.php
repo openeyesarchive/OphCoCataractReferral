@@ -39,9 +39,6 @@
 		 data-element-type-class="<?php echo $element->elementType->class_name?>"
 		 data-element-type-name="<?php echo $element->elementType->name?>"
 		 data-element-display-order="<?php echo $element->elementType->display_order?>">
-	<element-header>
-		<h3 class="element-title"><?php  echo $element->elementType->name; ?></h3>
-	</element-header>
 	<div class="element-data element-eyes row">
 		<div class="element-eye right-eye column">
 			<div class="data-row">

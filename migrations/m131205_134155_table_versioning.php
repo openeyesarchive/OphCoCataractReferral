@@ -664,7 +664,6 @@ CREATE TABLE `ophcocataractreferral_visualacuity_reading_version` (
 	KEY `acv_ophcocataractreferral_visualacuity_reading_method_id_fk` (`method_id`),
 	CONSTRAINT `acv_ophcocataractreferral_visualacuity_reading_cuid_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`),
 	CONSTRAINT `acv_ophcocataractreferral_visualacuity_reading_lmuid_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`),
-	CONSTRAINT `acv_ophcocataractreferral_visualacuity_reading_element_id_fk` FOREIGN KEY (`element_id`) REFERENCES `et_ophcocataractreferral_visualacuity` (`id`),
 	CONSTRAINT `acv_ophcocataractreferral_visualacuity_reading_method_id_fk` FOREIGN KEY (`method_id`) REFERENCES `ophcocataractreferral_visualacuity_method` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 		");

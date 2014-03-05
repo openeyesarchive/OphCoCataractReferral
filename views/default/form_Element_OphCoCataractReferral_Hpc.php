@@ -16,32 +16,23 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.html The GNU General Public License V3.0
  */
 ?>
-<section class="element <?php echo $element->elementType->class_name?>"
-		 data-element-type-id="<?php echo $element->elementType->id?>"
-		 data-element-type-class="<?php echo $element->elementType->class_name?>"
-		 data-element-type-name="<?php echo $element->elementType->name?>"
-		 data-element-display-order="<?php echo $element->elementType->display_order?>">
-	<element-header>
-		<h3 class="element-title"><?php  echo $element->elementType->name; ?></h3>
-	</element-header>
-	<div class="element-data element-eyes row">
-		<div class="element-eye right-eye column">
-			<div class="data-row">
-				<?php echo $form->dropDownListNoPost('history', CHtml::listData(EtOphcocataractreferralHpcHistory::model()->notDeleted()->findAll(),'id','name'),'',array('empty'=>'- History -','class'=>'populate_textarea','nowrapper'=>true))?>
-				<?php echo $form->textArea($element, 'history', array('rows' => 6, 'cols' => 40,'nowrapper'=>true)); ?>
-			</div>
-		</div>
-		<div class="element-eye left-eye column">
-			<div class="data-row">
-				<?php echo $form->dropDownListNoPost('impact', CHtml::listData(EtOphcocataractreferralHpcImpact::model()->notDeleted()->findAll(),'id','name'),'',array('empty'=>'- Impact -','class'=>'populate_textarea','nowrapper'=>true))?>
-				<?php echo $form->textArea($element, 'impact', array('rows' => 6, 'cols' => 40,'nowrapper'=>true)); ?>
-			</div>
+<div class="element-data element-eyes row">
+	<div class="element-eye right-eye column">
+		<div class="data-row">
+			<?php echo $form->dropDownListNoPost('history', CHtml::listData(EtOphcocataractreferralHpcHistory::model()->notDeleted()->findAll(),'id','name'),'',array('empty'=>'- History -','class'=>'populate_textarea','nowrapper'=>true))?>
+			<?php echo $form->textArea($element, 'history', array('rows' => 6, 'cols' => 40,'nowrapper'=>true)); ?>
 		</div>
 	</div>
-	<div class="element-fields">
-		<?php echo $form->radioButtons($element, 'refraction_id', CHtml::listData(EtOphcocataractreferralHpcRefraction::model()->notDeletedOrPk($element->refraction_id)->findAll(array('order'=>'display_order asc')),'id','name'))?>
-		<?php echo $form->radioButtons($element, 'eye_id', CHtml::listData(Eye::model()->findAll(array('order'=>'display_order asc')),'id','name'))?>
-		<?php echo $form->radioButtons($element, 'onset_id', CHtml::listData(EtOphcocataractreferralHpcOnset::model()->notDeletedOrPk($element->onset_id)->findAll(array('order'=>'display_order asc')),'id','name'))?>
-		<?php echo $form->radioButtons($element, 'first_second_eye_id', CHtml::listData(EtOphcocataractreferralHpcFirstSecondEye::model()->notDeletedOrPk($element->first_second_eye_id)->findAll(array('order'=>'display_order asc')),'id','name'))?>
+	<div class="element-eye left-eye column">
+		<div class="data-row">
+			<?php echo $form->dropDownListNoPost('impact', CHtml::listData(EtOphcocataractreferralHpcImpact::model()->notDeleted()->findAll(),'id','name'),'',array('empty'=>'- Impact -','class'=>'populate_textarea','nowrapper'=>true))?>
+			<?php echo $form->textArea($element, 'impact', array('rows' => 6, 'cols' => 40,'nowrapper'=>true)); ?>
+		</div>
 	</div>
-</section>
+</div>
+<div class="element-fields">
+	<?php echo $form->radioButtons($element, 'refraction_id', CHtml::listData(EtOphcocataractreferralHpcRefraction::model()->notDeletedOrPk($element->refraction_id)->findAll(array('order'=>'display_order asc')),'id','name'))?>
+	<?php echo $form->radioButtons($element, 'eye_id', CHtml::listData(Eye::model()->findAll(array('order'=>'display_order asc')),'id','name'))?>
+	<?php echo $form->radioButtons($element, 'onset_id', CHtml::listData(EtOphcocataractreferralHpcOnset::model()->notDeletedOrPk($element->onset_id)->findAll(array('order'=>'display_order asc')),'id','name'))?>
+	<?php echo $form->radioButtons($element, 'first_second_eye_id', CHtml::listData(EtOphcocataractreferralHpcFirstSecondEye::model()->notDeletedOrPk($element->first_second_eye_id)->findAll(array('order'=>'display_order asc')),'id','name'))?>
+</div>

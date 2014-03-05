@@ -34,32 +34,23 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.html The GNU General Public License V3.0
  */
 ?>
-<section class="element <?php echo $element->elementType->class_name?>"
-		 data-element-type-id="<?php echo $element->elementType->id?>"
-		 data-element-type-class="<?php echo $element->elementType->class_name?>"
-		 data-element-type-name="<?php echo $element->elementType->name?>"
-		 data-element-display-order="<?php echo $element->elementType->display_order?>">
-	<element-header>
-		<h3 class="element-title"><?php  echo $element->elementType->name; ?></h3>
-	</element-header>
-	<div class="element-data element-eyes row">
-		<div class="element-eye right-eye column">
-			<div class="data-row">
-				<?php foreach (array('right_amblyopia','right_corneal_graft','right_glaucoma','right_dry_eye','right_scleritis','right_squint_surgery','right_trabeculectomy','right_traumatic_cataract','right_uveitis','right_vitrectomy') as $field) {?>
-					<input type="hidden" name="<?php echo get_class($element)?>[<?php echo $field?>]" value="0" />
-				<?php }?>
-				<?php echo $form->checkBoxArray($element, '', array('right_amblyopia','right_corneal_graft','right_glaucoma','right_dry_eye','right_scleritis','right_squint_surgery','right_trabeculectomy','right_traumatic_cataract','right_uveitis','right_vitrectomy'), array('header'=>'Right eye'))?>
-			</div>
-		</div>
-		<div class="element-eye left-eye column">
-			<div class="data-row">
-				<?php foreach (array('left_amblyopia','left_corneal_graft','left_glaucoma','left_dry_eye','left_scleritis','left_squint_surgery','left_trabeculectomy','left_traumatic_cataract','left_uveitis','left_vitrectomy') as $field) {?>
-					<input type="hidden" name="<?php echo get_class($element)?>[<?php echo $field?>]" value="0" />
-				<?php }?>
-				<?php echo $form->checkBoxArray($element, '', array('left_amblyopia','left_corneal_graft','left_glaucoma','left_dry_eye','left_scleritis','left_squint_surgery','left_trabeculectomy','left_traumatic_cataract','left_uveitis','left_vitrectomy'), array('header'=>'Left eye', 'nolabel' => true))?>
-			</div>
+<div class="element-data element-eyes row">
+	<div class="element-eye right-eye column">
+		<div class="data-row">
+			<?php foreach (array('right_amblyopia','right_corneal_graft','right_glaucoma','right_dry_eye','right_scleritis','right_squint_surgery','right_trabeculectomy','right_traumatic_cataract','right_uveitis','right_vitrectomy') as $field) {?>
+				<input type="hidden" name="<?php echo get_class($element)?>[<?php echo $field?>]" value="0" />
+			<?php }?>
+			<?php echo $form->checkBoxArray($element, '', array('right_amblyopia','right_corneal_graft','right_glaucoma','right_dry_eye','right_scleritis','right_squint_surgery','right_trabeculectomy','right_traumatic_cataract','right_uveitis','right_vitrectomy'), array('header'=>'Right eye'))?>
 		</div>
 	</div>
-</section>
+	<div class="element-eye left-eye column">
+		<div class="data-row">
+			<?php foreach (array('left_amblyopia','left_corneal_graft','left_glaucoma','left_dry_eye','left_scleritis','left_squint_surgery','left_trabeculectomy','left_traumatic_cataract','left_uveitis','left_vitrectomy') as $field) {?>
+				<input type="hidden" name="<?php echo get_class($element)?>[<?php echo $field?>]" value="0" />
+			<?php }?>
+			<?php echo $form->checkBoxArray($element, '', array('left_amblyopia','left_corneal_graft','left_glaucoma','left_dry_eye','left_scleritis','left_squint_surgery','left_trabeculectomy','left_traumatic_cataract','left_uveitis','left_vitrectomy'), array('header'=>'Left eye', 'nolabel' => true))?>
+		</div>
+	</div>
+</div>
 
 

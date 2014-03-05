@@ -13,17 +13,7 @@ class m121023_120425_uat_changes extends CDbMigration
 		$this->addColumn('et_ophcocataractreferral_currentrefraction', 'right_type_other', 'varchar(100)');
 		$this->alterColumn('et_ophcocataractreferral_currentrefraction', 'left_type_id', "int(10) unsigned NULL");
 		$this->alterColumn('et_ophcocataractreferral_currentrefraction', 'right_type_id', "int(10) unsigned NULL");
-		
-		$this->addColumn('et_ophcocataractreferral_previousrefraction', 'left_type_other', 'varchar(100)');
-		$this->addColumn('et_ophcocataractreferral_previousrefraction', 'right_type_other', 'varchar(100)');
-		$this->alterColumn('et_ophcocataractreferral_previousrefraction', 'left_type_id', "int(10) unsigned NULL");
-		$this->alterColumn('et_ophcocataractreferral_previousrefraction', 'right_type_id', "int(10) unsigned NULL");
-		
-		$this->addColumn('et_ophcocataractreferral_surgeryrefraction', 'left_type_other', 'varchar(100)');
-		$this->addColumn('et_ophcocataractreferral_surgeryrefraction', 'right_type_other', 'varchar(100)');
-		$this->alterColumn('et_ophcocataractreferral_surgeryrefraction', 'left_type_id', "int(10) unsigned NULL");
-		$this->alterColumn('et_ophcocataractreferral_surgeryrefraction', 'right_type_id', "int(10) unsigned NULL");
-		
+
 	}
 
 	public function down()
@@ -35,18 +25,10 @@ class m121023_120425_uat_changes extends CDbMigration
 		$this->alterColumn('et_ophcocataractreferral_previousrefraction', 'right_type_id', "int(10) unsigned NOT NULL");
 		$this->alterColumn('et_ophcocataractreferral_surgeryrefraction', 'left_type_id', "int(10) unsigned NOT NULL");
 		$this->alterColumn('et_ophcocataractreferral_surgeryrefraction', 'right_type_id', "int(10) unsigned NOT NULL");
-		
-		
+
 		$this->dropColumn('et_ophcocataractreferral_currentrefraction', 'left_type_other');
 		$this->dropColumn('et_ophcocataractreferral_currentrefraction', 'right_type_other');
 
-				
-		$this->dropColumn('et_ophcocataractreferral_previousrefraction', 'left_type_other');
-		$this->dropColumn('et_ophcocataractreferral_previousrefraction', 'right_type_other');
-		
-		$this->dropColumn('et_ophcocataractreferral_surgeryrefraction', 'left_type_other');
-		$this->dropColumn('et_ophcocataractreferral_surgeryrefraction', 'right_type_other');
-		
 		$this->insert('et_ophcocataractreferral_refraction_type',array('name'=>'Other','display_order'=>4));
 		
 	}

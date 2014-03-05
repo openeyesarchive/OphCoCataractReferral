@@ -23,116 +23,107 @@ $key = 0;
 $right_readings = (isset($_POST['visualacuity_readings_valid']) ? $element->convertReadings(@$_POST['visualacuity_reading'], 'right') : $element->getFormReadings('right'));
 $left_readings = (isset($_POST['visualacuity_readings_valid']) ? $element->convertReadings(@$_POST['visualacuity_reading'], 'left') : $element->getFormReadings('left'));
 ?>
-<section class="element <?php echo $element->elementType->class_name ?>"
-				 data-element-type-id="<?php echo $element->elementType->id ?>"
-				 data-element-type-class="<?php echo $element->elementType->class_name ?>"
-				 data-element-type-name="<?php echo $element->elementType->name ?>"
-				 data-element-display-order="<?php echo $element->elementType->display_order ?>">
-	<element-header>
-		<h3 class="element-title"><?php  echo $element->elementType->name; ?></h3>
-	</element-header>
-	<div class="element-fields element-eyes row">
-		<input type="hidden" name="visualacuity_readings_valid" value="1" />
-		<?php echo $form->hiddenInput($element, 'unit_id', false); ?>
-		<?php echo $form->hiddenInput($element, 'eye_id', false, array('class' => 'sideField')); ?>
-		<div class="element-eye right-eye column left side<?php if (!$element->hasRight()) {?> inactive<?php }?>" data-side="right">
-			<div class="active-form">
-				<a href="#" class="icon-remove-side remove-side">Remove side</a>
-				<table class="blank"<?php if (!$right_readings) { ?> style="display: none;" <?php } ?>>
-					<tbody>
-					<?php foreach ($right_readings as $reading) {
-						// Adjust currently element readings to match unit steps
-						$reading->loadClosest($element->unit->id);
-						$this->renderPartial('form_Element_OphCoCataractReferral_VisualAcuity_Reading', array(
-								'key' => $key,
-								'reading' => $reading,
-								'side' => $reading->side,
-								'values' => $values,
-								'val_options' => $val_options,
-								'methods' => CHtml::listData(OphCoCataractReferral_VisualAcuity_Method::model()->notDeletedOrPk($reading->method_id)->findAll(array('order'=>'display_order')),'id','name'),
-						));
-						$key++;
-					}?>
-					</tbody>
-				</table>
-				<div class="field-row row noReadings"<?php if ($right_readings) { ?> style="display: none;" <?php } ?>>
-					<div class="large-4 column">
-						<div class="field-info">Not recorded</div>
-					</div>
-					<div class="large-8 column end">
-						<?php echo $form->checkBox($element,'right_unable_to_assess',array('text-align'=>'right','nowrapper'=>true))?>
-						<?php echo $form->checkBox($element,'right_eye_missing',array('text-align'=>'right','nowrapper'=>true))?>
-					</div>
+<div class="element-fields element-eyes row">
+	<input type="hidden" name="visualacuity_readings_valid" value="1" />
+	<?php echo $form->hiddenInput($element, 'unit_id', false); ?>
+	<?php echo $form->hiddenInput($element, 'eye_id', false, array('class' => 'sideField')); ?>
+	<div class="element-eye right-eye column left side<?php if (!$element->hasRight()) {?> inactive<?php }?>" data-side="right">
+		<div class="active-form">
+			<a href="#" class="icon-remove-side remove-side">Remove side</a>
+			<table class="blank"<?php if (!$right_readings) { ?> style="display: none;" <?php } ?>>
+				<tbody>
+				<?php foreach ($right_readings as $reading) {
+					// Adjust currently element readings to match unit steps
+					$reading->loadClosest($element->unit->id);
+					$this->renderPartial('form_Element_OphCoCataractReferral_VisualAcuity_Reading', array(
+							'key' => $key,
+							'reading' => $reading,
+							'side' => $reading->side,
+							'values' => $values,
+							'val_options' => $val_options,
+							'methods' => CHtml::listData(OphCoCataractReferral_VisualAcuity_Method::model()->notDeletedOrPk($reading->method_id)->findAll(array('order'=>'display_order')),'id','name'),
+					));
+					$key++;
+				}?>
+				</tbody>
+			</table>
+			<div class="field-row row noReadings"<?php if ($right_readings) { ?> style="display: none;" <?php } ?>>
+				<div class="large-4 column">
+					<div class="field-info">Not recorded</div>
 				</div>
+				<div class="large-8 column end">
+					<?php echo $form->checkBox($element,'right_unable_to_assess',array('text-align'=>'right','nowrapper'=>true))?>
+					<?php echo $form->checkBox($element,'right_eye_missing',array('text-align'=>'right','nowrapper'=>true))?>
+				</div>
+			</div>
+			<div class="field-row">
+				<button class="button small secondary addReading">
+					Add
+				</button>
+			</div>
+			<?php if ($element->right_comments || $element->getSetting('notes')) { ?>
 				<div class="field-row">
-					<button class="button small secondary addReading">
-						Add
-					</button>
+					<?php echo $form->textArea($element, 'right_comments', array('rows' => 1, 'nowrapper'=>true)) ?>
 				</div>
-				<?php if ($element->right_comments || $element->getSetting('notes')) { ?>
-					<div class="field-row">
-						<?php echo $form->textArea($element, 'right_comments', array('rows' => 1, 'nowrapper'=>true)) ?>
-					</div>
-				<?php } ?>
-			</div>
-			<div class="inactive-form">
-				<div class="add-side">
-					<a href="#">
-						Add right side <span class="icon-add-side"></span>
-					</a>
-				</div>
-			</div>
+			<?php } ?>
 		</div>
-		<div class="element-eye left-eye column right side<?php if (!$element->hasLeft()) {?> inactive<?php }?>" data-side="left">
-			<div class="active-form">
-				<a href="#" class="icon-remove-side remove-side">Remove side</a>
-				<table class="blank"<?php if (!$left_readings) { ?> style="display: none;" <?php } ?>>
-					<tbody>
-					<?php foreach ($left_readings as $reading) {
-						// Adjust currently element readings to match unit steps
-						$reading->loadClosest($element->unit->id);
-						$this->renderPartial('form_Element_OphCoCataractReferral_VisualAcuity_Reading', array(
-								'key' => $key,
-								'reading' => $reading,
-								'side' => $reading->side,
-								'values' => $values,
-								'val_options' => $val_options,
-								'methods' => CHtml::listData(OphCoCataractReferral_VisualAcuity_Method::model()->notDeletedOrPk($reading->method_id)->findAll(array('order'=>'display_order')),'id','name'),
-						));
-						$key++;
-					}?>
-					</tbody>
-				</table>
-				<div class="field-row row noReadings"<?php if ($right_readings) { ?> style="display: none;" <?php } ?>>
-					<div class="large-4 column">
-						<div class="field-info">Not recorded</div>
-					</div>
-					<div class="large-8 column">
-						<?php echo $form->checkBox($element,'left_unable_to_assess',array('text-align'=>'right','nowrapper'=>true))?>
-						<?php echo $form->checkBox($element,'left_eye_missing',array('text-align'=>'right','nowrapper'=>true))?>
-					</div>
-				</div>
-				<div class="field-row">
-					<button class="button small secondary addReading">
-						Add
-					</button>
-				</div>
-				<?php if ($element->left_comments || $element->getSetting('notes')) { ?>
-					<div class="field-row">
-						<?php echo $form->textArea($element, 'left_comments', array('rows' => 1, 'nowrapper'=>true)) ?>
-					</div>
-				<?php } ?>
-			</div>
-			<div class="inactive-form">
-				<div class="add-side">
-					<a href="#">
-						Add left side <span class="icon-add-side"></span>
-					</a>
-				</div>
+		<div class="inactive-form">
+			<div class="add-side">
+				<a href="#">
+					Add right side <span class="icon-add-side"></span>
+				</a>
 			</div>
 		</div>
 	</div>
-</section>
+	<div class="element-eye left-eye column right side<?php if (!$element->hasLeft()) {?> inactive<?php }?>" data-side="left">
+		<div class="active-form">
+			<a href="#" class="icon-remove-side remove-side">Remove side</a>
+			<table class="blank"<?php if (!$left_readings) { ?> style="display: none;" <?php } ?>>
+				<tbody>
+				<?php foreach ($left_readings as $reading) {
+					// Adjust currently element readings to match unit steps
+					$reading->loadClosest($element->unit->id);
+					$this->renderPartial('form_Element_OphCoCataractReferral_VisualAcuity_Reading', array(
+							'key' => $key,
+							'reading' => $reading,
+							'side' => $reading->side,
+							'values' => $values,
+							'val_options' => $val_options,
+							'methods' => CHtml::listData(OphCoCataractReferral_VisualAcuity_Method::model()->notDeletedOrPk($reading->method_id)->findAll(array('order'=>'display_order')),'id','name'),
+					));
+					$key++;
+				}?>
+				</tbody>
+			</table>
+			<div class="field-row row noReadings"<?php if ($right_readings) { ?> style="display: none;" <?php } ?>>
+				<div class="large-4 column">
+					<div class="field-info">Not recorded</div>
+				</div>
+				<div class="large-8 column">
+					<?php echo $form->checkBox($element,'left_unable_to_assess',array('text-align'=>'right','nowrapper'=>true))?>
+					<?php echo $form->checkBox($element,'left_eye_missing',array('text-align'=>'right','nowrapper'=>true))?>
+				</div>
+			</div>
+			<div class="field-row">
+				<button class="button small secondary addReading">
+					Add
+				</button>
+			</div>
+			<?php if ($element->left_comments || $element->getSetting('notes')) { ?>
+				<div class="field-row">
+					<?php echo $form->textArea($element, 'left_comments', array('rows' => 1, 'nowrapper'=>true)) ?>
+				</div>
+			<?php } ?>
+		</div>
+		<div class="inactive-form">
+			<div class="add-side">
+				<a href="#">
+					Add left side <span class="icon-add-side"></span>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
 <script id="visualacuity_reading_template" type="text/html">
 	<?php
 	$this->renderPartial('form_Element_OphCoCataractReferral_VisualAcuity_Reading', array(

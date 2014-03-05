@@ -10,8 +10,6 @@ class m140205_162148_remove_soft_deletion_from_models_that_dont_need_it extends 
 		'et_ophcocataractreferral_patientdetails',
 		'et_ophcocataractreferral_posteriorsegment',
 		'et_ophcocataractreferral_previous_ophthalmic_history',
-		'et_ophcocataractreferral_previousrefraction',
-		'et_ophcocataractreferral_surgeryrefraction',
 		'et_ophcocataractreferral_visualacuity',
 		'ophcocataractreferral_visualacuity_reading',
 	);

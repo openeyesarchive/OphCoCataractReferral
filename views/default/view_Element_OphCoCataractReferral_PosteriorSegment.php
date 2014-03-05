@@ -1,19 +1,14 @@
-<section class="element">
-	<header class="element-header">
-		<h3 class="element-title"><?php echo $element->elementType->name?></h3>
-	</header>
-	<div class="element-data element-eyes row">
-		<div class="element-eye right-eye column">
-			<div class="data-row">
-				<div class="data-value">
+<div class="element-data element-eyes row">
+	<div class="element-eye right-eye column">
+		<div class="data-row">
+			<div class="data-value">
 				<?php echo $element->right_eye?>
-				</div>
 			</div>
 		</div>
-		<div class="element-eye left-eye column">
-			<div class="data-row">
-				<div class="data-value">
-			<?php echo $element->left_eye?>
-		</div>
 	</div>
-</section>
+	<div class="element-eye left-eye column">
+		<div class="data-row">
+			<div class="data-value">
+				<?php echo $element->left_eye?>
+			</div>
+		</div>

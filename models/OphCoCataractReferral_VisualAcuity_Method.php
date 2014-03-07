@@ -72,4 +72,6 @@ class OphCoCataractReferral_VisualAcuity_Method extends BaseActiveRecordVersione
 				'criteria'=>$criteria,
 		));
 	}
+
 }
+

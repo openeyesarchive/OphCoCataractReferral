@@ -94,7 +94,7 @@ $(document).ready(function() {
 		}
 	});
 
-	$(this).delegate('#event_content .Element_OphCoCataractReferral_VisualAcuity .removeReading', 'click', function(e) {
+	$(this).delegate('.Element_OphCoCataractReferral_VisualAcuity .removeReading', 'click', function(e) {
 		var block = $(this).closest('.data');
 		$(this).closest('tr').remove();
 		if ($('tbody', block).children('tr').length == 0) {

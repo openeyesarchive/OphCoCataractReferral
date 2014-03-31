@@ -19,10 +19,26 @@
 ?>
 <?php
 list($values, $val_options) = $element->getUnitValuesForForm();
+$methods = CHtml::listData(OphCoCataractReferral_VisualAcuity_Method::model()->notDeleted($element->methodValues)->findAll(array('order'=>'display_order')),'id','name');
 $key = 0;
 $right_readings = (isset($_POST['visualacuity_readings_valid']) ? $element->convertReadings(@$_POST['visualacuity_reading'], 'right') : $element->getFormReadings('right'));
 $left_readings = (isset($_POST['visualacuity_readings_valid']) ? $element->convertReadings(@$_POST['visualacuity_reading'], 'left') : $element->getFormReadings('left'));
 ?>
+
+
+<?php
+/*
+$this->beginClip('element-title-additional');
+if ($element->isNewRecord) { ?>
+	<?php echo CHtml::dropDownList('visualacuity_unit_change', @$element->unit_id, CHtml::listData(OphCoCataractReferral_VisualAcuityUnit::model()->notDeletedOrPk(@$element->unit_id)->findAll(array('condition'=>'tooltip=:tt','params'=>array(':tt' => true),'order' => 'name asc')),'id','name'), array('class'=>'inline')); ?>
+<?php } ?>
+<?php if ($element->unit->information) {?>
+	<div class="info"><small><em><?php echo $element->unit->information ?></em></small></div>
+<?php }
+$this->endClip('element-title-additional');*/
+?>
+
+
 <div class="element-fields element-eyes row">
 	<input type="hidden" name="visualacuity_readings_valid" value="1" />
 	<?php echo $form->hiddenInput($element, 'unit_id', false); ?>
@@ -41,7 +57,7 @@ $left_readings = (isset($_POST['visualacuity_readings_valid']) ? $element->conve
 							'side' => $reading->side,
 							'values' => $values,
 							'val_options' => $val_options,
-							'methods' => CHtml::listData(OphCoCataractReferral_VisualAcuity_Method::model()->notDeletedOrPk($reading->method_id)->findAll(array('order'=>'display_order')),'id','name'),
+							'methods' => $methods,
 					));
 					$key++;
 				}?>
@@ -89,7 +105,7 @@ $left_readings = (isset($_POST['visualacuity_readings_valid']) ? $element->conve
 							'side' => $reading->side,
 							'values' => $values,
 							'val_options' => $val_options,
-							'methods' => CHtml::listData(OphCoCataractReferral_VisualAcuity_Method::model()->notDeletedOrPk($reading->method_id)->findAll(array('order'=>'display_order')),'id','name'),
+							'methods' => $methods,
 					));
 					$key++;
 				}?>
@@ -131,7 +147,7 @@ $left_readings = (isset($_POST['visualacuity_readings_valid']) ? $element->conve
 			'side' => '{{side}}',
 			'values' => $values,
 			'val_options' => $val_options,
-			'methods' => CHtml::listData(OphCoCataractReferral_VisualAcuity_Method::model()->notDeleted()->findAll(array('order'=>'display_order')),'id','name'),
+			'methods' => $methods,
 	));
 	?>
 </script>
@@ -139,7 +155,7 @@ $left_readings = (isset($_POST['visualacuity_readings_valid']) ? $element->conve
 	$(document).ready(function() {
 		OphCoCataractReferral_VisualAcuity_method_ids = [ <?php
 		$first = true;
-		foreach (CHtml::listData(OphCoCataractReferral_VisualAcuity_Method::model()->notDeleted()->findAll(array('order'=>'display_order')),'id','name') as $index => $method) {
+		foreach ($methods as $index => $method) {
 			if (!$first) {
 				echo ', ';
 			}

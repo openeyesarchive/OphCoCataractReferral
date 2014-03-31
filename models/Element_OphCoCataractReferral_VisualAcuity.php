@@ -425,4 +425,18 @@ class Element_OphCoCataractReferral_VisualAcuity extends SplitEventTypeElement
 
 		return $text."\n";
 	}
+
+	/**
+	 * Get the list of currently used method ids
+	 */
+	public function getMethodValues()
+	{
+		$method_values = array();
+
+		foreach ($this->readings as $reading) {
+			$method_values[] = $reading->method_id;
+		}
+
+		return $method_values;
+	}
 }

@@ -41,7 +41,7 @@
 		</div>
 	</div>
 </div>
-</div>
+
 <script type="text/javascript">
 	$(document).ready(function() {
 		OphCoCataractReferral_Refraction_init('<?php echo $element->elementType->class_name ?>');
